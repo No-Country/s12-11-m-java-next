@@ -3,6 +3,8 @@ import Image from 'next/image'
 export default function Home () {
   const a = 12
   const b = 12
+  const bf = 12
+
 
   return (
     <main className='flex min-h-screen flex-col items-center justify-between p-24'>
