@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="artistas")
+@Table(name="artista")
 public class Artista extends Usuario{
     @OneToMany(mappedBy = "artista")
     private List<Album> albums;
