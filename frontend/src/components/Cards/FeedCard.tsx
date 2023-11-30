@@ -8,13 +8,13 @@ function FeedCard() {
         <h3>Nombre publicacion</h3>
       </div>
       <p className="mt-5 mb-5">
-        {" "}
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed tempore
         officiis odit explicabo in minus necessitatibus, sit quas corrupti.
         Dicta repellendus autem ratione ea et animi odit molestiae? Perferendis,
         culpa?
       </p>
-      <div className="bg-gray-300 w-full h-full rounded-xl "> </div>
+      {/* deberia ser una imagen */}
+      <div className="bg-gray-300 w-full h-full rounded-xl"> </div>
     </div>
   )
 }
