@@ -9,7 +9,7 @@ const Sidebar = () => {
     console.log(params.routes);
 
     return (
-        <aside className='p-5'>
+        <aside className='p-5 w-52'>
             <ul className='flex flex-col gap-10'>
 
                 {LinkFeed.map(res =>
