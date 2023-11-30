@@ -1,3 +1,4 @@
+import { Header } from "@/components/Header/Header"
 
 const routesLayout = ({
     children,
@@ -5,7 +6,12 @@ const routesLayout = ({
     children: React.ReactNode
 }) => {
     return (
-        children
+        <>
+            <Header />
+            <main>
+                {children}
+            </main>
+        </>
     )
 }
 
