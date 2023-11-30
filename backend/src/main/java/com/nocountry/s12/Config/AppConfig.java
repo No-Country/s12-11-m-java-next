@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.nocountry.s12.Repository.UserRepository;
+import com.nocountry.s12.Repository.UsuarioRepository;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AppConfig {
 
-    private final UserRepository userRepository;
+    private final UsuarioRepository usuarioRepository;
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception
@@ -46,7 +46,7 @@ public class AppConfig {
 
     @Bean
     public UserDetailsService userDetailService() {
-        return username -> userRepository.findByEmail(username)
+        return username -> usuarioRepository.findByUsername(username)
         .orElseThrow(()-> new UsernameNotFoundException("User not fournd"));
     }
 

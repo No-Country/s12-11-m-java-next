@@ -10,10 +10,12 @@ import org.springframework.stereotype.Service;
 import com.nocountry.s12.Dto.AuthResponse;
 import com.nocountry.s12.Dto.LoginDto;
 import com.nocountry.s12.Dto.RegistroDto;
-import com.nocountry.s12.Enum.Role;
+import com.nocountry.s12.Enum.Roles;
 import com.nocountry.s12.Jwt.JwtService;
-import com.nocountry.s12.Repository.UserRepository;
-import com.nocountry.s12.models.User;
+import com.nocountry.s12.Repository.ArtistaRepository;
+import com.nocountry.s12.Repository.UsuarioRepository;
+import com.nocountry.s12.models.Artista;
+import com.nocountry.s12.models.Usuario;
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,14 +23,15 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthService {
 
-    private final UserRepository userRepository;
+    private final UsuarioRepository usuarioRepository;
+    private final ArtistaRepository artistaRepository;    
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
     public AuthResponse login(LoginDto datos) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(datos.getEmail(), datos.getPassword()));
-        UserDetails user = userRepository.findByEmail(datos.getEmail()).orElseThrow();
+        UserDetails user = usuarioRepository.findByUsername(datos.getEmail()).orElseThrow();
         String token = jwtService.getToken(user);
         return AuthResponse.builder()
             .token(token)
@@ -38,24 +41,32 @@ public class AuthService {
 
     public AuthResponse registro(RegistroDto datos) {
     	
-        Optional<User> userOptional = userRepository.findByEmail(datos.getEmail());
-        if (userOptional.isPresent()) {
-            throw new RuntimeException("Ya existe un usuario con ese email");
+    	
+    	
+//        Optional<Usuario> userOptional = usuarioRepository.findByUsername(datos.getEmail());
+//        if (userOptional.isPresent()) {
+//            throw new RuntimeException("Ya existe un usuario con ese email");
+//        }
+        
+        Optional<Artista> artistaOptional = artistaRepository.findByUsername(datos.getEmail());
+        if (artistaOptional.isPresent()) {
+            throw new RuntimeException("Ya existe un ARTISTA con ese email");
         }
         
-        User user = User.builder()
-            .email(datos.getEmail())
-            .password(passwordEncoder.encode(datos.getPassword()))
-            .nombre(datos.getNombre())
-            .apellido(datos.getApellido())
-            .pais(datos.getPais())
-            .role(Role.valueOf(datos.getRol()))
-            .build();
+        Artista artista = new Artista();
+        
+        artista.setUsername(datos.getEmail());
+        artista.setPassword(passwordEncoder.encode(datos.getPassword()));
+        artista.setRol(Roles.valueOf(datos.getRol()));
+        artista.setNombreArtistico(datos.getNombreArtistico());
+        artista.setDescripcion(datos.getDescripcion());
+        artista.setAlta(true);
+        
 
-        userRepository.save(user);
+        artistaRepository.save(artista);
 
         return AuthResponse.builder()
-            .token(jwtService.getToken(user))
+            .token(jwtService.getToken(artista))
             .build();
         
     }

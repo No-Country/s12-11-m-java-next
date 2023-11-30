@@ -17,16 +17,22 @@ public class TestController {
         return "Hola Mundo";
     }
     
-    @Secured("COMPRADOR")
-    @GetMapping("endpointComprador")
-    public String endpointComprador() {
-        return "Hola, soy un comprador";
+    @Secured("ARTISTA")
+    @GetMapping("endpointArtista")
+    public String endpointArtista() {
+        return "Hola, soy un artista";
     }
     
-    @Secured("VENDEDOR")
-    @GetMapping("endpointVendedor")
-    public String endpointVendedor() {
-        return "Hola, soy un vendedor";
+    @Secured("PRODUCTOR")
+    @GetMapping("endpointProductor")
+    public String endpointProductor() {
+        return "Hola, soy un Productor";
+    }
+    
+    @Secured("OYENTE")
+    @GetMapping("endpointOyente")
+    public String endpointOyente() {
+        return "Hola, soy un Oyente";
     }
     
 }
