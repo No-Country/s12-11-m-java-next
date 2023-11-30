@@ -1,9 +1,18 @@
-import RegisterSuccess from '@/components/RegisterSuccess/page'
+import RegisterSuccess from '@/components/RegisterSuccess/RegisterSuccess'
 import React from 'react'
-
+import db from '../../../utils/Components'
 const pageRegisterSuccess = () => {
+
+
+
+    const data = db.slice(0, 4)
     return (
-        <RegisterSuccess />
+
+
+        data.map(res => <RegisterSuccess key={res.numero} />)
+
+
+
     )
 }
 
