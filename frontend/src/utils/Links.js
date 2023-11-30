@@ -1,31 +1,31 @@
-import { IoIosMusicalNotes, IoIosVideocam } from "react-icons/io"
 import { FaRegCalendarCheck } from "react-icons/fa6"
+import { IoIosMusicalNotes, IoIosVideocam } from "react-icons/io"
 import { MdOutlineExplore, MdOutlinePostAdd } from "react-icons/md"
 
 export const LinkFeed = [
   {
     label: "Subir música",
-    path: "/routes/uploadMusic",
+    path: "/uploadMusic",
     icon: IoIosMusicalNotes,
   },
   {
     label: "Subir videos",
-    path: "/routes/uploadVideos",
+    path: "/uploadVideos",
     icon: IoIosVideocam,
   },
   {
     label: "Subir post",
-    path: "/routes/uploadPost",
+    path: "/uploadPost",
     icon: MdOutlinePostAdd,
   },
   {
     label: "Subir evento",
-    path: "/routes/uploadEvento",
+    path: "/uploadEvento",
     icon: FaRegCalendarCheck,
   },
   {
     label: "Explorar",
-    path: "/routes/explorar",
+    path: "/explorar",
     icon: MdOutlineExplore,
   },
 ]
@@ -33,14 +33,14 @@ export const LinkFeed = [
 export const LinkHeader = [
   {
     label: "Home",
-    path: "/routes/home",
+    path: "/home",
   },
   {
     label: "Feed",
-    path: "/routes/feed",
+    path: "/feed",
   },
   {
     label: "Descubre",
-    path: "/routes/descubre",
+    path: "/descubre",
   },
 ]

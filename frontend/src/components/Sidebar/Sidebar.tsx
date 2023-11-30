@@ -1,8 +1,7 @@
 'use client'
-import React from 'react'
-import { LinkFeed } from '../../utils/Links'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
+import { LinkFeed } from '../../utils/Links'
 
 const Sidebar = () => {
     const params = useParams()
