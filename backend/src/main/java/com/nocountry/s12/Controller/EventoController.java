@@ -4,10 +4,13 @@
  */
 package com.nocountry.s12.Controller;
 
+import org.springframework.web.bind.annotation.RestController;
+
 /**
  *
  * @author Admin
  */
+@RestController
 public class EventoController {
     
 }
