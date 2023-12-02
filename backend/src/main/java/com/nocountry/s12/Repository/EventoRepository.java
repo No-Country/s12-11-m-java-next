@@ -4,10 +4,17 @@
  */
 package com.nocountry.s12.Repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.nocountry.s12.models.Evento;
+
 /**
  *
  * @author Admin
  */
-public class EventoRepository {
+
+@Repository
+public interface EventoRepository extends JpaRepository<Evento, Long>{
     
 }
