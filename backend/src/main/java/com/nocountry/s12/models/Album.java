@@ -33,6 +33,7 @@ public class Album {
     private Long id;
     private String genero;
     private LocalDate fechaPublicacion;
+    private Boolean alta;
     
     @OneToMany(mappedBy = "album")
     private List<Cancion> canciones;
