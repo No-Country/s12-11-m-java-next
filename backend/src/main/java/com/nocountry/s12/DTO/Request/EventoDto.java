@@ -1,4 +1,4 @@
-package com.nocountry.s12.DTO;
+package com.nocountry.s12.Dto.Request;
 
 import java.time.LocalDate;
 

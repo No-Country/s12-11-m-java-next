@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-import com.nocountry.s12.DTO.EventoDto;
+import com.nocountry.s12.Dto.Request.EventoDto;
 import com.nocountry.s12.models.Evento;
 
 @Mapper

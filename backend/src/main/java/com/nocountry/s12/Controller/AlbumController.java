@@ -4,8 +4,8 @@
  */
 package com.nocountry.s12.Controller;
 
-import com.nocountry.s12.DTO.Request.AlbumRequestDTO;
-import com.nocountry.s12.DTO.Response.AlbumResponseDTO;
+import com.nocountry.s12.Dto.Request.AlbumRequestDTO;
+import com.nocountry.s12.Dto.Response.AlbumResponseDTO;
 import com.nocountry.s12.Exception.MiException;
 import com.nocountry.s12.Service.AlbumServiceImpl;
 import jakarta.validation.Valid;

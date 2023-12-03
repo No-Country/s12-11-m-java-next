@@ -1,4 +1,4 @@
-package com.nocountry.s12.Dto;
+package com.nocountry.s12.Dto.Request;
 
 
 import lombok.AllArgsConstructor;
