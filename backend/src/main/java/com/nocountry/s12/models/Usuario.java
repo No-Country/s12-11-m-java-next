@@ -56,6 +56,12 @@ public class Usuario implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "lista_id")
     )
     private List<ListaReproduccion> listaReproduccion;
+    
+    @OneToOne
+    private Imagen fotoPerfil;
+    
+    @OneToOne
+    private Imagen fotoPortada;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

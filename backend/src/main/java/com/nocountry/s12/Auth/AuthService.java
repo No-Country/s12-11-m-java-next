@@ -17,6 +17,7 @@ import com.nocountry.s12.Repository.UsuarioRepository;
 import com.nocountry.s12.models.Artista;
 import com.nocountry.s12.models.Usuario;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @Service
