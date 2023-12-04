@@ -5,7 +5,7 @@ import { MdOutlineExplore, MdOutlinePostAdd } from "react-icons/md"
 export const LinkFeed = [
   {
     label: "Subir música",
-    path: "/uploadMusic",
+    path: "/perfil/musica",
     icon: IoIosMusicalNotes,
   },
   {
@@ -15,17 +15,17 @@ export const LinkFeed = [
   },
   {
     label: "Subir post",
-    path: "/uploadPost",
+    path: "/perfil/post",
     icon: MdOutlinePostAdd,
   },
   {
     label: "Subir evento",
-    path: "/uploadEvento",
+    path: "/perfil/eventos",
     icon: FaRegCalendarCheck,
   },
   {
     label: "Explorar",
-    path: "/explorar",
+    path: "/descubre",
     icon: MdOutlineExplore,
   },
 ]
