@@ -36,11 +36,11 @@ export const LinkHeader = [
     path: "/home",
   },
   {
-    label: "Feed",
-    path: "/feed",
-  },
-  {
     label: "Descubre",
     path: "/descubre",
+  },
+  {
+    label: "Feed",
+    path: "/feed",
   },
 ]

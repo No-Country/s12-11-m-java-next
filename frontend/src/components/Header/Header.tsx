@@ -1,19 +1,41 @@
+'use client'
 import { LinkHeader } from '@/utils/Links'
 import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 export const Header = () => {
+    const pathname = usePathname()
+    const router = useRouter();
+
+    useEffect(() => {
+        pathname === '/' && router.push('/home')
+    }, [])
+
     return (
-        <header className='p-1 h-20 flex items-center justify-between bg-[#DEDEDE]'>
-            <Link href='/' className='ml-2 w-14 h-14 rounded-full bg-black text-white flex justify-center items-center'>logo</Link>
-            {/* <ul className='flex'> */}
-            {LinkHeader.map(res =>
-                <div key={res.label}><Link href={res.path}>{res.label}</Link></div>
-            )}
-            {/* </ul> */}
-            <div className='flex items-center'>
+        <header className='py-1 px-4 h-20 flex items-center justify-between bg-[#DEDEDE]'>
+            <div className='flex items-center gap-24'>
+                <div className='text-lg font-bold mx-10'>LOGO</div>
+                <div className='flex gap-16'>
+                    {LinkHeader.map(res =>
+                        <Link
+                            className={
+                                pathname === `${res.path}`
+                                    ? "font-bold border-b-2 border-black"
+                                    : ""
+                            }
+                            key={res.label}
+                            href={res.path}
+                        >
+                            {res.label}
+                        </Link>
+                    )}
+                </div>
+            </div>
+            <div className='flex gap-10 items-center'>
                 <Link href={'/perfil/musica'} className='ml-2 w-14 h-14 rounded-full bg-black text-white flex justify-center items-center'>perfil</Link>
-                <Link className='mx-4' href='/auth/register'>CREAR CUENTA</Link>
-                <Link className='mx-4 rounded-full bg-[#ABABAB] text-black p-4' href='/auth/login'>INICIAR SESIÓN</Link>
+                <Link className='font-semibold' href='/auth/register'>CREAR CUENTA</Link>
+                <Link className='font-semibold rounded-full bg-[#ABABAB] text-black px-6 py-2' href='/auth/login'>INICIAR SESIÓN</Link>
             </div>
         </header>
     )
