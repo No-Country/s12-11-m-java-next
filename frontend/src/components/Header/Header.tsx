@@ -10,7 +10,8 @@ export const Header = () => {
                 <div key={res.label}><Link href={res.path}>{res.label}</Link></div>
             )}
             {/* </ul> */}
-            <div>
+            <div className='flex items-center'>
+                <Link href={'/perfil/musica'} className='ml-2 w-14 h-14 rounded-full bg-black text-white flex justify-center items-center'>perfil</Link>
                 <Link className='mx-4' href='/auth/register'>CREAR CUENTA</Link>
                 <Link className='mx-4 rounded-full bg-[#ABABAB] text-black p-4' href='/auth/login'>INICIAR SESIÓN</Link>
             </div>
