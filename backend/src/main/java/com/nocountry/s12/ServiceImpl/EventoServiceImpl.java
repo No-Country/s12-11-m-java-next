@@ -1,18 +1,22 @@
 package com.nocountry.s12.ServiceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nocountry.s12.Dto.EventoDto;
 import com.nocountry.s12.Repository.EventoRepository;
 import com.nocountry.s12.Service.EventoService;
 import com.nocountry.s12.models.Evento;
 
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class EventoServiceImpl implements EventoService<Evento, Long>{
 
     
@@ -24,10 +28,21 @@ public class EventoServiceImpl implements EventoService<Evento, Long>{
 
     @Override
     @Transactional
-    public List<Evento> findAll() throws Exception {
+    public List<EventoDto> findAll() throws Exception {
         try {
             List<Evento> eventos = eventoRepository.findAll();
-            return eventos;
+            List<EventoDto> listaEventoDto = new ArrayList<EventoDto>();
+            for(Evento eventosLista : eventos){
+                EventoDto dto = new EventoDto();
+                dto.setFechaEvento(eventosLista.getFechaEvento());
+                dto.setHora(eventosLista.getHora());
+                dto.setIdEvento(eventosLista.getId());
+                dto.setLugar(eventosLista.getLugar());
+                dto.setPrecio(eventosLista.getPrecio());
+                dto.setTitulo(eventosLista.getTitulo());
+                listaEventoDto.add(dto);
+            }
+            return listaEventoDto;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }

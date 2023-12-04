@@ -1,6 +1,8 @@
-package com.nocountry.s12.DTO;
+package com.nocountry.s12.Dto;
 
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
@@ -12,5 +14,7 @@ public class EventoDto {
     private String lugar;
     private String hora;
     private Double precio;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechaEvento;
+    
 }

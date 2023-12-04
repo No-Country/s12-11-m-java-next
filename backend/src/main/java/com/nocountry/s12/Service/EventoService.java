@@ -6,6 +6,8 @@ package com.nocountry.s12.Service;
 
 import java.util.List;
 
+import com.nocountry.s12.Dto.EventoDto;
+
 
 /**
  *
@@ -15,7 +17,7 @@ import java.util.List;
 
 public interface EventoService <Evento, Long>{
     
-    public List<Evento> findAll() throws Exception;
+    public List<EventoDto> findAll() throws Exception;
     public Evento findById(Long id) throws Exception;
     public Evento save(Evento evento) throws Exception;
     public Evento update(Long id, Evento evento) throws Exception;
