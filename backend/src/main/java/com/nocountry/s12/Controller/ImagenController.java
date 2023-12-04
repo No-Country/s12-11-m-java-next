@@ -53,13 +53,9 @@ public class ImagenController {
 		if (bi == null) {
 			return new ResponseEntity("imagen no válida", HttpStatus.BAD_REQUEST);
 		}
-		Map result = cloudinaryService.upload(multipartFile);
-		Imagen imagen = new Imagen();
-		imagen.setName((String) result.get("original_filename"));
-		imagen.setImagenUrl((String) result.get("url"));
-		imagen.setCloudinaryId((String) result.get("public_id"));
+		
+		Imagen imagen = imagenService.save(multipartFile);
 
-		imagenService.save(imagen);
 		return new ResponseEntity(imagen, HttpStatus.OK);
 	}
 

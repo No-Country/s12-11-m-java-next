@@ -11,6 +11,7 @@ import com.nocountry.s12.Dto.Request.LoginDto;
 import com.nocountry.s12.Dto.Request.RegistroDto;
 import com.nocountry.s12.Dto.Response.AuthResponse;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -30,7 +31,7 @@ public class AuthController {
     }
 
     @PostMapping("registro")
-    public ResponseEntity<AuthResponse> registro(@RequestBody RegistroDto datos) {
+    public ResponseEntity<AuthResponse> registro(@RequestBody @Valid RegistroDto datos) {
     	try {
     		return ResponseEntity.ok(authService.registro(datos));
         } catch (RuntimeException e) {
