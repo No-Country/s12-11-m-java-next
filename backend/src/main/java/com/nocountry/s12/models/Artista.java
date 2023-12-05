@@ -34,4 +34,8 @@ public class Artista extends Usuario{
     
     @OneToMany(mappedBy = "artista")
     private List<Evento> eventos;
+    
+    private String campoArtistico;
+    private String generoMusical;
+
 }
