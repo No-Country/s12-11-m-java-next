@@ -2,21 +2,21 @@ import Link from 'next/link'
 
 const pageHome = () => {
     return (
-        <div className='text-black bg-[#DEDEDE] h-full'>
-            <section>
+        <div className='bg-gradient-to-b from-lightViolet to-darkViolet text-white h-full'>
+            <section className='bg-gradient-to-b from-lightViolet to-darkViolet text-white'>
                 <div className="flex flex-col justify-center container mx-auto gap-6 h-[60vh]">
                     <h1 className="text-7xl">FRASE PRINCIPAL</h1>
                     <p className="text-lg font-semibold ml-2">DESCRIPCION GENERAL</p>
                     <div className='mt-6'>
                         <Link
                             href='/auth/register'
-                            className='px-8 py-3 bg-[#1A1A1A] text-white rounded-full'>
+                            className='px-8 py-3 bg-rosa text-white rounded-full'>
                             COMIENZA GRATIS
                         </Link>
                     </div>
                 </div>
             </section>
-            <section className='bg-white'>
+            <section>
                 <div className="flex items-center justify-evenly container mx-auto h-[50vh]">
                     <div className='text-center'>
                         <h1 className='text-xl font-semibold mb-2'>SUBTITLE</h1>
@@ -38,7 +38,7 @@ const pageHome = () => {
                     </div>
                 </div>
             </section>
-            <section className='bg-white'>
+            <section className=''>
                 <div className="flex items-center justify-evenly container mx-auto h-[60vh]">
                     <div className='text-center'>
                         <h1 className='text-xl font-semibold mb-2'>SUBTITLE</h1>
@@ -48,7 +48,7 @@ const pageHome = () => {
                     </div>
                 </div>
             </section>
-            <section className='bg-white'>
+            <section className=''>
                 <div className="flex items-center justify-evenly container mx-auto h-[60vh]">
                     <div className='text-center'>
                         <h1 className='text-xl font-semibold mb-2'>SUBTITLE</h1>
@@ -58,7 +58,7 @@ const pageHome = () => {
                     </div>
                 </div>
             </section>
-            <footer className='py-9'>
+            <footer className='py-9 bg-rosa'>
                 <div className="container mx-auto flex justify-between ">
                     <div className="md:w-1/4 mb-4 md:mb-0 mt-2 sm:mt-0 sm:ml-0">
                         <h3 className="text-xl font-semibold">CONTACTO</h3>
@@ -76,7 +76,7 @@ const pageHome = () => {
                         <p className='my-4'>Suscríbete a nuestra newsletter para conocer todas las novedades</p>
                         <div className='flex flex-col gap-4'>
                             <input className='p-2 rounded-lg' placeholder='Email' type='email' />
-                            <button className="bg-[#ABABAB] font-bold py-2 px-4 rounded-full">
+                            <button className="bg-rosa font-bold py-2 px-4 rounded-full">
                                 Suscribir
                             </button>
                         </div>

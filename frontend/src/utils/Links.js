@@ -2,6 +2,21 @@ import { FaRegCalendarCheck } from "react-icons/fa6"
 import { IoIosMusicalNotes, IoIosVideocam } from "react-icons/io"
 import { MdOutlineExplore, MdOutlinePostAdd } from "react-icons/md"
 
+export const LinkPerfil = [
+  {
+    label: "Música",
+    path: "/perfil/musica",
+  },
+  {
+    label: "Posts",
+    path: "/perfil/posts",
+  },
+  {
+    label: "Eventos",
+    path: "/perfil/eventos",
+  },
+]
+
 export const LinkFeed = [
   {
     label: "Subir música",

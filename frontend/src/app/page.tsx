@@ -1,7 +1,3 @@
-import { Header } from '@/components/Header/Header';
-
-function Home () {
-  return (<Header />);
+export default function Home() {
+  return (null);
 }
-
-export default Home;

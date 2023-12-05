@@ -8,7 +8,7 @@ const routesLayout = ({
     return (
         <>
             <Header />
-            <main>
+            <main className="bg-gradient-to-b from-lightViolet to-darkViolet text-white">
                 {children}
             </main>
         </>

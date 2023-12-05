@@ -8,7 +8,7 @@ function SuggestionCard() {
       <div className="bg-gray-300 w-20 h-20 rounded-xl mt-2 mb-1"></div>
       <h5 className="uppercase mb-1 ">nombre y apellido</h5>
       <span className="text-sm">TIPO DE USER</span>
-      <button className="px-5 py-2 mt-2 bg-slate-200 rounded-2xl">
+      <button className="px-5 py-2 mt-2 bg-negro text-white rounded-2xl">
         Seguir
       </button>
     </div>
