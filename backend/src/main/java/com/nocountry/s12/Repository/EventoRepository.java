@@ -4,10 +4,13 @@
  */
 package com.nocountry.s12.Repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.nocountry.s12.models.Evento;
+
 
 /**
  *
@@ -16,5 +19,7 @@ import com.nocountry.s12.models.Evento;
 
 @Repository
 public interface EventoRepository extends JpaRepository<Evento, Long>{
+
+    Optional<Evento> findByTitulo(String titulo);
     
 }

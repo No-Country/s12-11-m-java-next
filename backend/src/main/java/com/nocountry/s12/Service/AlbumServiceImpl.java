@@ -4,8 +4,8 @@
  */
 package com.nocountry.s12.Service;
 
-import com.nocountry.s12.DTO.Request.AlbumRequestDTO;
-import com.nocountry.s12.DTO.Response.AlbumResponseDTO;
+import com.nocountry.s12.Dto.Request.AlbumRequestDTO;
+import com.nocountry.s12.Dto.Response.AlbumResponseDTO;
 import com.nocountry.s12.Exception.MiException;
 import com.nocountry.s12.Repository.AlbumRepository;
 import com.nocountry.s12.models.Album;
@@ -31,7 +31,8 @@ public class AlbumServiceImpl implements AlbumService {
     @Override
     public List<AlbumResponseDTO> listar() {
         List<Album> listaAlbum = albumRepository.findAll();
-        List<AlbumResponseDTO> listaAlbumDTO = listaAlbum.stream().map(AlbumResponseDTO::new).collect(Collectors.toList());
+        List<AlbumResponseDTO> listaAlbumDTO = listaAlbum.stream()
+        .map(AlbumResponseDTO::new).collect(Collectors.toList());
         return listaAlbumDTO;
     }
 
