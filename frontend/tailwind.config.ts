@@ -15,6 +15,9 @@ const config: Config = {
         'rosa': '#dcc6e0',
         'negro': '#151515'
       },
+      boxShadow: {
+        shadowInset: 'inset 0px -20px 20px -15px #111',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

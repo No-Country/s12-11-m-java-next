@@ -9,7 +9,7 @@ const pagePerfil = ({
 }) => {
     return (
         <section className='flex flex-col'>
-            <article className='w-full h-96 flex flex-col justify-end px-5'>
+            <article className='w-full h-96 flex flex-col justify-end px-5 shadow-shadowInset'>
                 <span className='flex flex-col gap-5'>
                     <span className='text-xl font-bold'>nombre artistico</span>
                     <span>genero musical</span>
