@@ -6,7 +6,8 @@ package com.nocountry.s12.Service;
 
 import java.util.List;
 
-import com.nocountry.s12.Dto.EventoDto;
+import com.nocountry.s12.Dto.Request.EventoRequestDTO;
+import com.nocountry.s12.Dto.Response.EventoResponseDTO;
 
 
 /**
@@ -15,12 +16,12 @@ import com.nocountry.s12.Dto.EventoDto;
  */
 
 
-public interface EventoService <Evento, Long>{
+public interface EventoService <EventoDto, Long>{
     
-    public List<EventoDto> findAll() throws Exception;
-    public Evento findById(Long id) throws Exception;
-    public Evento save(Evento evento) throws Exception;
-    public Evento update(Long id, Evento evento) throws Exception;
+    public List<EventoResponseDTO> findAll() throws Exception;
+    public EventoResponseDTO findById(Long id) throws Exception;
+    public EventoResponseDTO save(EventoRequestDTO evento) throws Exception;
+    public EventoResponseDTO update(Long id, EventoRequestDTO evento) throws Exception;
     public boolean delete(Long id) throws Exception;
 
 }

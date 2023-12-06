@@ -7,9 +7,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.nocountry.s12.Dto.AuthResponse;
-import com.nocountry.s12.Dto.LoginDto;
-import com.nocountry.s12.Dto.RegistroDto;
+import com.nocountry.s12.Dto.Request.LoginDto;
+import com.nocountry.s12.Dto.Request.RegistroDto;
+import com.nocountry.s12.Dto.Response.AuthResponse;
 import com.nocountry.s12.Enum.Roles;
 import com.nocountry.s12.Jwt.JwtService;
 import com.nocountry.s12.Repository.ArtistaRepository;
@@ -17,6 +17,7 @@ import com.nocountry.s12.Repository.UsuarioRepository;
 import com.nocountry.s12.models.Artista;
 import com.nocountry.s12.models.Usuario;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @Service

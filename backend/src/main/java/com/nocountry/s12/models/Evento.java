@@ -34,6 +34,7 @@ public class Evento {
     private String hora;
     private Double precio;
     private LocalDate fechaEvento;
+    private String descripcion;
     
     @ManyToOne
     @JoinColumn(name="id_artista")
