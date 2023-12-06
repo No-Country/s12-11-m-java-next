@@ -1,43 +1,35 @@
-'use client'
-import { Switch } from "@/components/swich/switch";
 import Link from "next/link";
 
-
-
-export default function SingUpPage() {
+export default function SingUpPage () {
     return (
-        <>
-            <main className="relative min-h-screen flex justify-center">
-                <div className="w-full h-[370px] bg-[#DEDEDE]"></div>
-                <form className="absolute  max-w-4xl top-[8%] rounded-md w-full ">
-                    <h1 className="text-4xl font-semibold text-center">CREAR CUENTA</h1>
-                    <div className="bg-[#EDEDED] border-2 border-gray-500 mt-16 p-2 rounded-2xl">
-                        <div className="max-w-md w-full mb-10 m-auto">
-                            <div className=" m-auto flex flex-col gap-3 mt-12 w-full">
-                                <label className="text-black font-semibold">Email</label>
-                                <input className="p-2 rounded-md w-full border-gray-500 border-2 outline-none" />
-                            </div>
-                            <div className=" m-auto flex flex-col gap-3 mt-5 w-full">
-                                <label className="text-black font-semibold">Contraseña</label>
-                                <input className="p-2 rounded-md w-full border-gray-500 border-2 outline-none" />
-                            </div>
-                            <div className=" m-auto flex flex-col gap-3 mt-5 w-full">
-                                <label className="text-black font-semibold">Repetir contraseña</label>
-                                <input className="p-2 rounded-md w-full border-gray-500 border-2 outline-none" />
-                            </div>
-                            <div className="flex gap-3 items-center">
-                                <Switch />
-                                <p className="font-semibold">Recordarme</p>
-                            </div>
-                        </div>
+        <div className='bg-[#151515] text-white flex flex-col p-8'>
+            <Link href='/home'>Volver</Link>
+            <div className='flex flex-col h-full justify-center items-center'>
+                <div className='mb-9'>
+                    <h1 className='text-2xl font-bold mb-2'>Bienvenido!</h1>
+                    <p>Crea una cuenta para comenzar</p>
+                </div>
+                <form className='flex flex-col gap-6 mb-5 w-2/4'>
+                    <div className='flex flex-col gap-2'>
+                        <label>Nombre artístico</label>
+                        <input className='p-3 bg-[#151515] border-2 rounded-xl border-gray-700' type="text" placeholder='Nombre' />
                     </div>
-                    <div className="max-w-max  w-full mt-12 m-auto">
-                        <Link href={'/auth/registerSuccess'} className=" w-full py-3 px-16 rounded-3xl font-semibold  bg-gray-200">
-                            CONTINUAR
-                        </Link>
+                    <div className='flex flex-col gap-2'>
+                        <label>Email</label>
+                        <input className='p-3 bg-[#151515] border-2 rounded-xl border-gray-700' type="text" placeholder='Email' />
                     </div>
+                    <div className='flex flex-col gap-2'>
+                        <label>Contraseña</label>
+                        <input className='p-3 bg-[#151515] border-2 rounded-xl border-gray-700' type="password" placeholder='Contraseña' />
+                    </div>
+                    <div className='flex flex-col gap-2'>
+                        <label>Repetir contraseñaa</label>
+                        <input className='p-3 bg-[#151515] border-2 rounded-xl border-gray-700' type="password" placeholder='Contraseña' />
+                    </div>
+                    <button className='bg-[#DCC6E0] text-black rounded-full p-2'>Registrarme</button>
                 </form>
-            </main>
-        </>
+                <Link href='/auth/login'>Iniciar sesión</Link>
+            </div>
+        </div>
     )
 }

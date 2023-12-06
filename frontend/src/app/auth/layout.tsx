@@ -1,16 +1,14 @@
-import Link from "next/link"
+import Image from 'next/image'
+import bgImage from "../../assets/img/background.jpg"
 
 const authLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <section className="bg-negro pt-2">
-      <Link
-        href="/"
-        className="ml-2 w-14 h-14 rounded-full bg-black text-white flex justify-center items-center"
-      >
-        logo
-      </Link>
+    <div className='grid grid-cols-2 h-screen'>
       {children}
-    </section>
+      <div className='flex relative'>
+        <Image src={bgImage} alt='Background image' />
+      </div>
+    </div>
   )
 }
 
