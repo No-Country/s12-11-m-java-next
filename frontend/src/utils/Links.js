@@ -48,7 +48,7 @@ export const LinkFeed = [
 export const LinkHeader = [
   {
     label: "Home",
-    path: "/home",
+    path: "/",
   },
   {
     label: "Descubre",

@@ -1,22 +1,17 @@
 'use client'
 import { LinkHeader } from '@/utils/Links'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
+import { useState } from 'react'
 import { IoPerson } from "react-icons/io5"
 
 
 export const Header = () => {
     const [log, setLog] = useState(false)
     const pathname = usePathname()
-    const router = useRouter();
-
-    useEffect(() => {
-        pathname === '/' && router.push('/home')
-    }, [])
 
     return (
-        <header className='py-1 px-4 h-20 flex items-center justify-between bg-darkViolet text-rosa'>
+        <header className={`py-1 px-4 h-20 flex items-center justify-between text-rosa bg-transparent ${ pathname !== '/' && 'shadow-md' }`}>
             <div className='flex items-center gap-24'>
                 <div className='text-lg font-bold mx-10'>LOGO</div>
                 <div className='flex gap-16'>
