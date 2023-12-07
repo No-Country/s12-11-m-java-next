@@ -21,8 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ArtistaController {
 
-    private final ArtistaService artistaService;	
-	
+    private final ArtistaService artistaService;
 	
     @GetMapping("/listarTodos")
     public ResponseEntity<List<Artista>> listarTodos(){
@@ -36,10 +35,6 @@ public class ArtistaController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-	
-	
-	
-	
 	
     @PatchMapping("/baja")
     public ResponseEntity<?> bajaArtista(@RequestParam Integer id){
