@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const postEvents = async (eventData: any) => {
     await axios.post(
-        `http://18.117.188.107:8080/eventos/`, eventData
+        `http://3.139.80.10:8080/eventos/`, eventData
     )
         .then(function (response: any) {
             console.log(response);

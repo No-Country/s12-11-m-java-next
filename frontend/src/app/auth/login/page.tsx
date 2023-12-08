@@ -17,7 +17,7 @@ const LoginPage = () => {
         <section className=' text-white flex flex-col w-1/2 h-screen'>
             <div className='flex items-center self-start pt-8 pl-5'>
                 <FaArrowLeft />
-                <Link href='/home' className='pl-1 self-start'>Volver</Link>
+                <Link href='/' className='pl-1 self-start'>Volver</Link>
             </div>
             <div className='flex flex-col h-full justify-center items-center'>
                 <div className='mb-9'>
@@ -26,8 +26,7 @@ const LoginPage = () => {
                 </div>
                 <form className='flex flex-col gap-6 my-9 w-[60%]' onSubmit={(e) => {
                     e.preventDefault();
-                    loginPost(userData);
-                    router.push('/descubre')
+                    loginPost(userData, router);
                 }}>
                     <div className='flex flex-col gap-2'>
                         <label>Email</label>

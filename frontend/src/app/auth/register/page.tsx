@@ -27,8 +27,8 @@ export default function SingUpPage() {
                 </div>
                 <form className='flex flex-col gap-6  w-[60%]' onSubmit={(e) => {
                     e.preventDefault();
-                    registerPost(userData);
-                    router.push('/descubre')
+                    registerPost(userData, router);
+
                 }}>
                     <div className='flex flex-col gap-2'>
                         <label>Nombre artístico</label>

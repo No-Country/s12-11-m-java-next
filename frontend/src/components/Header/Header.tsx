@@ -2,13 +2,16 @@
 import { LinkHeader } from '@/utils/Links'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IoPerson } from "react-icons/io5"
 
 
 export const Header = () => {
-    const [log, setLog] = useState(localStorage.getItem('tKeyId'))
+    const [log, setLog] = useState('false')
     const pathname = usePathname()
+    useEffect(() => {
+        localStorage.getItem('tKeyId') ? setLog(`${localStorage.getItem('tKeyId')}`) : setLog(log)
+    }, [])
 
     return (
         <header className={`py-1 px-4 h-20 flex items-center justify-between text-rosa bg-transparent ${pathname !== '/' && 'shadow-md'}`}>
@@ -31,7 +34,7 @@ export const Header = () => {
                 </div>
             </div>
             <div className='flex gap-10 items-center'>
-                {pathname === '/home' && log === null ?
+                {log === 'false' ?
                     <>
                         <Link className='font-semibold px-6 py-2 border-2 border-rosa rounded-full' href='/auth/register'>CREAR CUENTA</Link>
                         <Link className='font-semibold rounded-full bg-rosa text-negro px-6 py-2' href='/auth/login'>INICIAR SESIÓN</Link>

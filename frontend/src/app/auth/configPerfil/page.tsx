@@ -1,14 +1,17 @@
+import RedirectNoLogin from "@/components/RedirectNoLogin/redirectNoLogin";
 import Link from "next/link";
 import React from "react"
 import { FaArrowLeft } from "react-icons/fa";
 const pageConfigPerfil = () => {
+
   return (
     // componetizar  elementos como el input , el switch o el form
 
     <section className="h-full w-full flex flex-col items-center">
+      <RedirectNoLogin />
       <div className='flex text-white items-center self-start pt-8 pl-5'>
         <FaArrowLeft />
-        <Link href='/perfil' className='pl-1 self-start'>Volver</Link>
+        <Link href='/' className='pl-1 self-start'>Volver</Link>
       </div>
       <div className="flex flex-col items-center p-10 text-white justify-center w-96">
         <h1 className="text-xl">EDITAR PERFIL</h1>
