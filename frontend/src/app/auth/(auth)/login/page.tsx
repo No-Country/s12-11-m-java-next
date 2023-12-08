@@ -1,11 +1,9 @@
 'use client'
-import Image from 'next/image'
-import Link from 'next/link'
-import bgImage from "../../../assets/img/background.jpg"
-import { useRouter } from 'next/navigation'
 import loginPost from '@/utils/loginRequest/loginPost'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa"
 
 const LoginPage = () => {
     const [userData, setUserData] = useState({
@@ -14,8 +12,8 @@ const LoginPage = () => {
     })
     const router = useRouter()
     return (
-        <section className=' text-white flex flex-col w-1/2 h-screen'>
-            <div className='flex items-center self-start pt-8 pl-5'>
+        <section className='text-white flex flex-col p-8'>
+            <div className='flex items-center gap-4 pl-3'>
                 <FaArrowLeft />
                 <Link href='/' className='pl-1 self-start'>Volver</Link>
             </div>
