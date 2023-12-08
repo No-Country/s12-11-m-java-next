@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .disable())
             .authorizeHttpRequests(authRequest ->
               authRequest
-                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/auth/**", "/swagger-ui/**" , "/documentacion.html").permitAll()
                 .anyRequest().permitAll()             
 //                .anyRequest().authenticated()
                 )

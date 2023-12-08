@@ -18,27 +18,26 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
-    
-    private final AuthService authService;
-    
-    @PostMapping("login")
-    public ResponseEntity<AuthResponse> login(@RequestBody LoginDto datos) {
-    	try {
-    		return ResponseEntity.ok(authService.login(datos));
-        } catch (RuntimeException e) {
-            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-    }
 
-    @PostMapping("registro")
-    public ResponseEntity<AuthResponse> registro(@RequestBody @Valid RegistroDto datos) {
-    	try {
-    		return ResponseEntity.ok(authService.registro(datos));
-        } catch (RuntimeException e) {
-            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-    }
-    
-    
-    
+	private final AuthService authService;
+
+	@PostMapping("login")
+	public ResponseEntity<?> login(@RequestBody LoginDto datos) {
+		try {
+			return ResponseEntity.ok(authService.login(datos));
+		} catch (RuntimeException e) {
+			System.out.println(e.getMessage());
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+
+	@PostMapping("registro")
+	public ResponseEntity<?> registro(@RequestBody @Valid RegistroDto datos) {
+		try {
+			return ResponseEntity.ok(authService.registro(datos));
+		} catch (RuntimeException e) {
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+
 }

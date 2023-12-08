@@ -4,9 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,11 +14,8 @@ import org.springframework.stereotype.Service;
 import com.nocountry.s12.Dto.Request.EventoRequestDTO;
 import com.nocountry.s12.Dto.Response.EventoResponseDTO;
 import com.nocountry.s12.Exception.MiException;
-import com.nocountry.s12.Jwt.JwtService;
-import com.nocountry.s12.Repository.ArtistaRepository;
 import com.nocountry.s12.Repository.EventoRepository;
 import com.nocountry.s12.Service.EventoService;
-import com.nocountry.s12.models.Artista;
 import com.nocountry.s12.models.Evento;
 
 import jakarta.transaction.Transactional;
@@ -32,7 +27,6 @@ public class EventoServiceImpl implements EventoService<EventoRequestDTO, Long>{
 
     
     private final EventoRepository eventoRepository;
-    private final ArtistaRepository artistaRepository;
    
 
     // public EventoServiceImpl(EventoRepository eventoRepository, ArtistaRepository artistaRepository) {

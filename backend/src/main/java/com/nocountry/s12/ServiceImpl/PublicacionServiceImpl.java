@@ -87,7 +87,6 @@ public class PublicacionServiceImpl implements PublicacionService {
 
     @Override
     public Publicacion editarPublicacion(Long idPublicacion, PublicacionRequestDTO publicacionRequestDTO) {
-        Optional<Usuario> usuarioAutenticado = obtenerUsuarioAutenticado();
 
 
         Publicacion publicacion = publicacionRepository.findById(idPublicacion)
@@ -107,7 +106,6 @@ public class PublicacionServiceImpl implements PublicacionService {
 
     @Override
     public boolean eliminarPublicacion(Long idPublicacion) {
-        Optional<Usuario> usuarioAutenticado = obtenerUsuarioAutenticado();
 
         Publicacion publicacion = publicacionRepository.findById(idPublicacion)
                 .orElseThrow(() -> new EntityNotFoundException("No se encontró la publicación con ID: " + idPublicacion));

@@ -16,7 +16,8 @@ public class Reaccion {
     private Long id;
     private String comentario;
     private Integer meGusta;
+    
     @ManyToOne
     @JoinColumn(name="id_publicacion")
-    private Publication publicacion;
+    private Publicacion publicacion;
 }

@@ -23,13 +23,13 @@ public class PublicacionController {
         return ResponseEntity.ok(publicaciones);
     }
 
-    @GetMapping("/usuario/{id}")
+    @GetMapping("/{usuarioId}")
     public ResponseEntity<List<PublicacionResponseDTO>> getPublicacionesPorUsuario(@PathVariable("id") Integer id){
         List<PublicacionResponseDTO> publicaciones = publicacionService.getPublicacionesPorUsuario(id);
         return ResponseEntity.ok(publicaciones);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{publicacionId}")
     public ResponseEntity<PublicacionResponseDTO> getPublicacionPorId(@PathVariable("id") Long id){
         return ResponseEntity.ok(publicacionService.getPublicacionPorId(id));
     }

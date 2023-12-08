@@ -23,8 +23,6 @@ import com.nocountry.s12.Service.CloudinaryService;
 import com.nocountry.s12.Service.ImagenService;
 import com.nocountry.s12.models.Imagen;
 
-
-
 @RestController
 @RequestMapping("/imagen")
 public class ImagenController {
@@ -35,10 +33,11 @@ public class ImagenController {
 	@Autowired
 	ImagenService imagenService;
 
-	@GetMapping("/list")
+	@GetMapping
 	public ResponseEntity<List<Imagen>> list() {
 		List<Imagen> list = imagenService.list();
-		return new ResponseEntity(list, HttpStatus.OK);
+		return new ResponseEntity<List<Imagen>>(list, HttpStatus.OK);
+
 	}
 
 	@GetMapping("/{fileId}")
@@ -47,25 +46,26 @@ public class ImagenController {
 		return ResponseEntity.status(HttpStatus.OK).body(imageData);
 	}
 
-	@PostMapping("/upload")
+	@PostMapping
 	public ResponseEntity<?> upload(@RequestParam("imagen") MultipartFile multipartFile) throws IOException {
 		BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
 		if (bi == null) {
-			return new ResponseEntity("imagen no válida", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>("imagen no válida", HttpStatus.BAD_REQUEST);
 		}
-		
+
+		// se puede cambiar por un Dto "ImagenResponseDto" para seguir el patrón
 		Imagen imagen = imagenService.save(multipartFile);
 
-		return new ResponseEntity(imagen, HttpStatus.OK);
+		return new ResponseEntity<Imagen>(imagen, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") Long id) throws IOException {
 		if (!imagenService.exists(id))
-			return new ResponseEntity("no existe", HttpStatus.NOT_FOUND);
+			return new ResponseEntity<String>("no existe", HttpStatus.NOT_FOUND);
 		Imagen imagen = imagenService.getImagen(id).get();
 		Map result = cloudinaryService.delete(imagen.getCloudinaryId());
 		imagenService.delete(id);
-		return new ResponseEntity("imagen eliminada", HttpStatus.OK);
+		return new ResponseEntity<String>("imagen eliminada", HttpStatus.OK);
 	}
 }

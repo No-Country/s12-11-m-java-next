@@ -17,7 +17,6 @@ import org.springframework.web.server.ResponseStatusException;
 import com.nocountry.s12.Dto.Request.ModificaArtistaDTO;
 import com.nocountry.s12.Dto.Response.ArtistaDTO;
 import com.nocountry.s12.Service.ArtistaService;
-import com.nocountry.s12.models.Artista;
 
 
 import lombok.RequiredArgsConstructor;
@@ -133,7 +132,7 @@ public class ArtistaController {
         	artistaService.bajaArtista(id);
             return ResponseEntity.ok("Artista dado de baja con éxito");
         } catch (RuntimeException e) {
-            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
 
     }
