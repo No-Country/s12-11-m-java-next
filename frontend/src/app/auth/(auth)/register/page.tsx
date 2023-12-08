@@ -15,7 +15,6 @@ export default function SingUpPage () {
         descripcion: "Lero lo lei lo lei"
     })
 
-
     return (
         <section className='text-white flex flex-col p-8'>
             <div className='flex items-center gap-4 pl-3'>

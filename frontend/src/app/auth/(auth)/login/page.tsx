@@ -15,7 +15,7 @@ const LoginPage = () => {
         <section className='text-white flex flex-col p-8'>
             <div className='flex items-center gap-4 pl-3'>
                 <FaArrowLeft />
-                <Link href='/' className='pl-1 self-start'>Volver</Link>
+                <Link href='/'>Volver</Link>
             </div>
             <div className='flex flex-col h-full justify-center items-center'>
                 <div className='mb-9'>
