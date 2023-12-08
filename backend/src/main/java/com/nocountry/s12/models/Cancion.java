@@ -29,10 +29,11 @@ public class Cancion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
-    private Double duracion;
-    private LocalDate fechaCreacion;
-    private String urlVideo;
+    private String titulo;
+    private String Genero;
+    private LocalDate fechaSubida;
+    private String imgUrl;
+    private String audioUrl;
     
     @ManyToOne
     @JoinColumn(name="id_album")
