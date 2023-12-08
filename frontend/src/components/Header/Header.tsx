@@ -11,14 +11,14 @@ export const Header = () => {
     const pathname = usePathname()
 
     return (
-        <header className={`py-1 px-4 h-20 flex items-center justify-between text-rosa bg-transparent ${ pathname !== '/' && 'shadow-md' }`}>
+        <header className={`py-1 px-4 h-20 flex items-center justify-between text-rosa bg-transparent ${pathname !== '/' && 'shadow-md'}`}>
             <div className='flex items-center gap-24'>
                 <div className='text-lg font-bold mx-10'>LOGO</div>
                 <div className='flex gap-16'>
                     {LinkHeader.map(res =>
                         <Link
                             className={
-                                pathname === `${ res.path }`
+                                pathname === `${res.path}`
                                     ? "font-bold border-b-2 border-rosa"
                                     : ""
                             }

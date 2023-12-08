@@ -4,15 +4,15 @@ const pageConfigPerfil = () => {
   return (
     // componetizar  elementos como el input , el switch o el form
 
-    <main className="min-h-full ">
-      <div className="flex flex-col items-center mt-20 text-white mx-[650px] ">
+    <section className="h-full w-full flex  justify-center">
+      <div className="flex flex-col items-center p-10 text-white justify-center w-96">
         <h1 className="text-xl">EDITAR PERFIL</h1>
-        <p className="mt-4">
+        <p className="my-4">
           Lorem ipsum dolor sit amet consectetur sit amet conse sit amet
           consesit amet conse adipisicing elit. consesit amet conse adipisicing
-          elit. consesit amet conse adipisicing elit.
+          elit.
         </p>
-        <form action="" className="w-full flex flex-col  items-center mb-32 ">
+        <form action="" className=" flex flex-col  items-center ">
           {/*  input file */}
           <div className="rounded-md border border-dashed border-gray-500 bg-transparent p-4 shadow-md w-36">
             <label
@@ -66,8 +66,8 @@ const pageConfigPerfil = () => {
               className="rounded-lg py-2 px-3 border-2 "
             />
           </div>
-          <div className="flex flex-col mt-8 ">
-            <h3 className="text-lg ">¿Eres Artista?</h3>
+          <div className="flex flex-col mt-8 self-start">
+            <h3 className="text-lg">¿Eres Artista?</h3>
             {/* SWICTCH PARA SI O NO */}
             <label
               htmlFor="Toggle1"
@@ -122,7 +122,7 @@ const pageConfigPerfil = () => {
           </button>
         </form>
       </div>
-    </main>
+    </section>
   )
 }
 

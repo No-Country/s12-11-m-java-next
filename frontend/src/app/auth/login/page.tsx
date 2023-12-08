@@ -14,10 +14,10 @@ const LoginPage = () => {
     })
     const router = useRouter()
     return (
-        <div className=' text-white flex flex-col p-8'>
-            <div className='flex items-center gap-4 pl-3'>
+        <section className=' text-white flex flex-col w-1/2 h-screen'>
+            <div className='flex items-center self-start pt-8 pl-5'>
                 <FaArrowLeft />
-                <Link href='/home'>Volver</Link>
+                <Link href='/home' className='pl-1 self-start'>Volver</Link>
             </div>
             <div className='flex flex-col h-full justify-center items-center'>
                 <div className='mb-9'>
@@ -43,7 +43,7 @@ const LoginPage = () => {
                 </form>
                 <Link href='/auth/register'>Registrarme</Link>
             </div>
-        </div>
+        </section>
     )
 }
 
