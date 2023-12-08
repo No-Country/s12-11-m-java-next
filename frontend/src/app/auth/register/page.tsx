@@ -1,7 +1,19 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
 import bgImage from "../../../assets/img/background.jpg"
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import registerPost from '@/utils/registerRequest/registerPost'
 export default function SingUpPage() {
+    const router = useRouter()
+    const [userData, setUserData] = useState({
+        email: "artista13@gmail.com",
+        password: "Ae12345+",
+        rol: "ARTISTA",
+        nombreArtistico: "Shakira",
+        descripcion: "Lero lo lei lo lei"
+    })
     return (
         <section className='w-full h-screen flex'>
             <div className=' text-white flex flex-col  h-full w-1/2'>
@@ -11,7 +23,11 @@ export default function SingUpPage() {
                         <h1 className='text-2xl font-bold mb-2'>Bienvenido!</h1>
                         <p>Crea una cuenta para comenzar</p>
                     </div>
-                    <form className='flex flex-col gap-6 my-9 w-[60%]'>
+                    <form className='flex flex-col gap-6 my-9 w-[60%]' onSubmit={(e) => {
+                        e.preventDefault();
+                        registerPost(userData);
+                        router.push('/descubre')
+                    }}>
                         <div className='flex flex-col gap-2'>
                             <label>Nombre artístico</label>
                             <input className='p-4 bg-transparent border-2 rounded-xl border-gray-rosa' type="text" placeholder='Nombre' />

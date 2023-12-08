@@ -7,7 +7,7 @@ import { IoPerson } from "react-icons/io5";
 
 
 export const Header = () => {
-    const [log, setLog] = useState(false)
+    const [log, setLog] = useState(localStorage.getItem('tKeyId'))
     const pathname = usePathname()
     const router = useRouter();
 
@@ -36,7 +36,7 @@ export const Header = () => {
                 </div>
             </div>
             <div className='flex gap-10 items-center'>
-                {pathname === '/home' && log ?
+                {pathname === '/home' && log === null ?
                     <>
                         <Link className='font-semibold px-6 py-2 border-2 border-rosa rounded-full' href='/auth/register'>CREAR CUENTA</Link>
                         <Link className='font-semibold rounded-full bg-rosa text-negro px-6 py-2' href='/auth/login'>INICIAR SESIÓN</Link>
