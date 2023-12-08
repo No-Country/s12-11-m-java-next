@@ -1,11 +1,10 @@
 'use client'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
 import { LinkFeed } from '../../utils/Links'
 
 const Sidebar = () => {
-    const params = useParams()
-    console.log(params.routes);
+    // const params = useParams()
+    // console.log(params.routes);
 
     return (
         <aside className='p-5 w-52 mt-10'>

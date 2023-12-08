@@ -1,12 +1,10 @@
-import React from "react"
-import bgImage from "../../assets/img/background.jpg"
 import Image from "next/image"
 
-function FeedCard() {
+function FeedCard () {
   return (
     <div className="flex flex-col border p-6 border-black roun rounded-3xl w-[678px] h-[500px] bg-white text-black">
       <div className="flex items-center gap-4">
-        <Image src={bgImage} alt="" className="bg-black w-12 h-12 rounded-full" />
+        <Image src='/auth_bg.jpg' width='48' height='48' alt="" className="w-12 h-12 rounded-full" />
         <h3>Nombre publicacion</h3>
       </div>
       <p className="mt-5 mb-5">
