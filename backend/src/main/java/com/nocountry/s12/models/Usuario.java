@@ -43,9 +43,10 @@ public class Usuario implements UserDetails {
     private String zona;
     private LocalDate fechaNacimiento;
     private boolean alta;
-    //private List<Publicacion> publicaciones;
-    //private List<ListaReproduccion> listasReproduccion;
-    
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Publicacion> publicaciones;
+
     @Enumerated(EnumType.STRING)
     private Roles rol;
 
