@@ -4,6 +4,7 @@
  */
 package com.nocountry.s12.Exception;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -23,4 +24,5 @@ public class GlobalExceptionHandler {
         String errorMessage = ex.getBindingResult().getFieldErrors().get(0).getDefaultMessage();
         return ResponseEntity.badRequest().body("{\"message\": \"" + errorMessage + "\"}");
     }
+
 }
