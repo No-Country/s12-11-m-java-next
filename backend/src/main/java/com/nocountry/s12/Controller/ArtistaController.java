@@ -56,7 +56,7 @@ public class ArtistaController {
 	
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> verArtista(@PathVariable("id") Integer id){
+    public ResponseEntity<?> verArtista(@PathVariable("id") Long id){
         try {
                 ArtistaDTO artistaDTO = artistaService.verArtista(id);
 
@@ -114,7 +114,7 @@ public class ArtistaController {
     }
 	
     @PutMapping("/{id}")
-    public ResponseEntity<?> modificarArtista(@PathVariable("id") Integer id, 
+    public ResponseEntity<?> modificarArtista(@PathVariable("id") Long id, 
     		@RequestBody ModificaArtistaDTO modificaArtistaDTO){
     	try {
         	ArtistaDTO artistaModificado = artistaService.modificarArtista(id, modificaArtistaDTO);    	
@@ -127,7 +127,7 @@ public class ArtistaController {
 	
 
     @PatchMapping("/baja")
-    public ResponseEntity<?> bajaArtista(@RequestParam Integer id){
+    public ResponseEntity<?> bajaArtista(@RequestParam Long id){
         try {
         	artistaService.bajaArtista(id);
             return ResponseEntity.ok("Artista dado de baja con éxito");

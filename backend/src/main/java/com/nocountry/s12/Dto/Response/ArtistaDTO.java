@@ -1,21 +1,8 @@
 package com.nocountry.s12.Dto.Response;
 
-
 import java.time.LocalDate;
-import java.util.List;
-
 import com.nocountry.s12.Enum.Roles;
-import com.nocountry.s12.models.Imagen;
-import com.nocountry.s12.models.ListaReproduccion;
-
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
 import lombok.Data;
-
 
 
 @Data

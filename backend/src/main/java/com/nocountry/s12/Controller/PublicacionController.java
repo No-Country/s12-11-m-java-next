@@ -24,7 +24,7 @@ public class PublicacionController {
     }
 
     @GetMapping("/{usuarioId}")
-    public ResponseEntity<List<PublicacionResponseDTO>> getPublicacionesPorUsuario(@PathVariable("id") Integer id){
+    public ResponseEntity<List<PublicacionResponseDTO>> getPublicacionesPorUsuario(@PathVariable("id") Long id){
         List<PublicacionResponseDTO> publicaciones = publicacionService.getPublicacionesPorUsuario(id);
         return ResponseEntity.ok(publicaciones);
     }

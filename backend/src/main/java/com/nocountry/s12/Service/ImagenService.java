@@ -31,7 +31,7 @@ public class ImagenService {
 
     public Imagen save(MultipartFile multipartFile) throws IOException{
     	
-		Map result = cloudinaryService.upload(multipartFile);
+		Map <?,?>result = cloudinaryService.upload(multipartFile);
 		Imagen imagen = new Imagen();
 		imagen.setName((String) result.get("original_filename"));
 		imagen.setImagenUrl((String) result.get("url"));

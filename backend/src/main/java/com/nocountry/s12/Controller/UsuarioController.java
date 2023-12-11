@@ -30,7 +30,7 @@ public class UsuarioController {
 	private final ImagenService imagenService;
     
     @PostMapping("/fotoPerfil/{id}")
-    public ResponseEntity<?> fotoPerfil(@PathVariable("id") Integer id, @RequestParam("imagen") MultipartFile multipartFile)  throws IOException {
+    public ResponseEntity<?> fotoPerfil(@PathVariable("id") Long id, @RequestParam("imagen") MultipartFile multipartFile)  throws IOException {
     	try {
         	Usuario usuario = usuarioRepository.findById(id).orElseThrow();
         	

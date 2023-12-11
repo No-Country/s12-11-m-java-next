@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 
-public record EventoRequestDTO(
+public record EventoRequestDTO_BACKUP_1180(
     Long idEvento,
     String titulo,
     String lugar,

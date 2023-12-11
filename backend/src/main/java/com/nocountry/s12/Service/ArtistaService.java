@@ -34,7 +34,7 @@ public class ArtistaService {
 	}	
 	
 
-	public ArtistaDTO verArtista(Integer id) {
+	public ArtistaDTO verArtista(Long id) {
 		Artista artista = artistaRepository.findById(id).get();
         ArtistaDTO artistaDto = artistaMapper.ArtistaToArtistaDTO(artista);
 		return artistaDto;
@@ -58,7 +58,7 @@ public class ArtistaService {
 		return listaArtistasDto;
     }
     
-	public ArtistaDTO modificarArtista(Integer id, ModificaArtistaDTO modificaArtistaDTO) {
+	public ArtistaDTO modificarArtista(Long id, ModificaArtistaDTO modificaArtistaDTO) {
 		Artista artistaModificado = artistaRepository.findById(id).get();	
 		
 		artistaModificado.setNombreCompleto(modificaArtistaDTO.getNombre());
@@ -75,7 +75,7 @@ public class ArtistaService {
 	    return artistaModificadoDTO;	
 	}
 
-	public void bajaArtista(Integer id) {
+	public void bajaArtista(Long id) {
 		Optional<Artista> artistaOptional = artistaRepository.findById(id);
 
 		if (!artistaOptional.isPresent()) {

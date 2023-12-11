@@ -3,8 +3,6 @@ package com.nocountry.s12.Controller;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-
 import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +62,7 @@ public class ImagenController {
 		if (!imagenService.exists(id))
 			return new ResponseEntity<String>("no existe", HttpStatus.NOT_FOUND);
 		Imagen imagen = imagenService.getImagen(id).get();
-		Map result = cloudinaryService.delete(imagen.getCloudinaryId());
+		cloudinaryService.delete(imagen.getCloudinaryId());
 		imagenService.delete(id);
 		return new ResponseEntity<String>("imagen eliminada", HttpStatus.OK);
 	}
