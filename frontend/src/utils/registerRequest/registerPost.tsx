@@ -5,7 +5,7 @@ const registerPost = async (userData: any, router: any) => {
     )
         .then(function (response: any) {
             console.log('se registro pa');
-            router.push('/descubre')
+            router.push('/auth/login')
         })
         .catch(function (err: any) {
             console.log(err);
