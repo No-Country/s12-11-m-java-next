@@ -1,12 +1,9 @@
-'use client'
-import ImgAuth from "@/components/ImgAuth/ImgAuth"
-import RedirectNoLogin from "@/components/RedirectNoLogin/redirectNoLogin"
+import Image from 'next/image'
+
 const authLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className='flex bg-gradient-to-b from-lightViolet to-darkViolet h-full w-full '>
-      <RedirectNoLogin />
+    <div className='h-screen w-screen'>
       {children}
-      <ImgAuth />
     </div>
   )
 }

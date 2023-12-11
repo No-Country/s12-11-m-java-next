@@ -1,9 +1,14 @@
+import { Genres } from "@/components/genres/Genres"
+import { Music } from "@/components/music/Music"
 
 
 const pageDescubre = () => {
 
     return (
-        <section>descubre</section>
+        <main>
+            <Genres />
+            <Music />
+        </main>
     )
 }
 

@@ -1,13 +1,12 @@
-import RedirectNoLogin from "@/components/RedirectNoLogin/redirectNoLogin";
+import RedirectNoLogin from '@/components/RedirectNoLogin/redirectNoLogin';
 import Link from "next/link";
-import React from "react"
 import { FaArrowLeft } from "react-icons/fa";
 const pageConfigPerfil = () => {
 
   return (
     // componetizar  elementos como el input , el switch o el form
 
-    <section className="h-full w-full flex flex-col items-center">
+    <section className="h-screen w-full flex flex-col items-center">
       <RedirectNoLogin />
       <div className='flex text-white items-center self-start pt-8 pl-5'>
         <FaArrowLeft />
@@ -92,7 +91,7 @@ const pageConfigPerfil = () => {
           </div>
           <div className="flex gap-10 mt-8 w-full ">
             <div className="flex flex-col justify-center w-1/2">
-              <label htmlFor="artisticName"> Nombre Artitico</label>
+              <label htmlFor="artisticName"> Nombre Artistico</label>
               <input
                 type="text"
                 id="artisticName"
