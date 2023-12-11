@@ -12,16 +12,18 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
- *
  * @author Admin
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<String> handleValidationException(MethodArgumentNotValidException ex) {
-        String errorMessage = ex.getBindingResult().getFieldErrors().get(0).getDefaultMessage();
-        return ResponseEntity.badRequest().body("{\"message\": \"" + errorMessage + "\"}");
-    }
 
+  @ExceptionHandler(MethodArgumentNotValidException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public ResponseEntity<String> handleValidationException(
+      MethodArgumentNotValidException ex) {
+    String errorMessage = ex.getBindingResult().getFieldErrors().get(0)
+        .getDefaultMessage();
+    return ResponseEntity.badRequest()
+        .body("{\"message\": \"" + errorMessage + "\"}");
+  }
 }
