@@ -1,13 +1,10 @@
 import { Genres } from "@/components/descubre/Genres"
-import { Music } from "@/components/music/Music"
-import { FaSearch } from "react-icons/fa";
-import Artist from "@/components/descubre/Artist";
-import PlayMusic from "@/components/descubre/PlayMusic";
-
+import { FaSearch } from "react-icons/fa"
+import Artist from "@/components/descubre/Artist"
+import { Song } from "@/components/descubre/Song"
 
 const pageDescubre = () => {
-
-    const data = [1, 3, 4, 5, 6, 7]
+    const data = [1, 3, 4, 5, 6, 7, 8, 9, 0]
 
     return (
         <main className="w-full relative  mb-20">
@@ -15,25 +12,20 @@ const pageDescubre = () => {
                 <FaSearch />
                 <input className="w-full bg-transparent outline-none" />
             </div>
-            <section className="p-4 w-full h-96 relative overflow-hidden">
+            <section className="p-4 w-full h-96 relative overflow-hidden text-center mt-10">
                 <h2 className="text-2xl font-semibold">Artistas destacados</h2>
 
-                <div className="flex mt-4 gap-4 absolute justify-start ">
+                <div className="w-full flex mt-4 gap-4 absolute justify-center ">
                     {
-                        data.map(item => (
+                        data.slice(0, 6).map(item => (
                             <Artist key={item} />
                         ))
                     }
                 </div>
             </section>
-            <section className="p-4 w-full h-52 relative overflow-hidden">
-                <h2>Generos Musicales</h2>
-                <div className="flex mt-4 gap-4 absolute justify-start ">
-                    {
-                        data.map(item => (
-                            <Genres key={item} />
-                        ))
-                    }
+            <section className="p-4 w-full h-52 relative overflow-hidden text-center">
+                <div className="w-full flex mt-4 gap-4 absolute justify-center ">
+                    <Genres />
                 </div>
             </section>
             <section className="full p-4">
@@ -41,7 +33,7 @@ const pageDescubre = () => {
                 <div className="flex flex-col gap-3 w-full">
                     {
                         data.map(item => (
-                            <PlayMusic key={item} />
+                            <Song key={item} />
                         ))
                     }
                 </div>
