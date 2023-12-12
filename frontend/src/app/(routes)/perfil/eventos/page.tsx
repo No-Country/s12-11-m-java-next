@@ -5,12 +5,12 @@ import getEvents from '@/utils/getEvents/getEvents'
 import React, { useEffect, useState } from 'react'
 
 const pageEventos = () => {
-    const [data, setData] = useState([1, 2, 3, 4, 5])
+    const [data, setData] = useState([])
     useEffect(() => {
         data[0] ? {} : getEvents(setData)
     }, [data])
     return (
-        <div className='flex gap-5 flex-wrap justify-center'>
+        <div className='flex gap-[2.4rem] flex-wrap max-w-[1500px] w-full self-center'>
             <AddEventCard />
             {data.map(res => (
                 <EventCard key={res.idEvento} data={res} />
