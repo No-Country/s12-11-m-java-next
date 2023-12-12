@@ -6,10 +6,7 @@ import { useState } from 'react'
 import { FaArrowLeft } from "react-icons/fa"
 import Image from 'next/image'
 const LoginPage = () => {
-    const [userData, setUserData] = useState({
-        email: "artista13@gmail.com",
-        password: "Ae12345+"
-    })
+    const [userData, setUserData] = useState({})
     const router = useRouter()
     return (
         <section className='text-white flex'>
@@ -29,11 +26,15 @@ const LoginPage = () => {
                     }}>
                         <div className='flex flex-col gap-2'>
                             <label>Email</label>
-                            <input className='p-4 bg-transparent border-2 rounded-xl border-gray-rosa' type="text" placeholder='Email' />
+                            <input onChange={(e) => { setUserData({ ...userData, email: e.target.value }) }}
+                                className='p-4 bg-transparent border-2 rounded-xl border-gray-rosa outline-none' type="text"
+                                placeholder='Email' required />
                         </div>
                         <div className='flex flex-col gap-2'>
                             <label>Contraseña</label>
-                            <input className='p-4 bg-transparent border-2 rounded-xl border-gray-rosa' type="password" placeholder='Contraseña' />
+                            <input onChange={(e) => { setUserData({ ...userData, password: e.target.value }) }}
+                                className='p-4 bg-transparent border-2 rounded-xl border-gray-rosa outline-none' type="password"
+                                placeholder='Contraseña' required />
                         </div>
                         <div className='flex justify-center'>
                             <button className='bg-rosa text-black rounded-full px-14 py-3 font-bold'>Iniciar sesión</button>
@@ -42,7 +43,7 @@ const LoginPage = () => {
                     <Link href='/auth/register'>Registrarme</Link>
                 </div>
             </article>
-            <Image src='/auth_bg.jpg' width={50000} height={500000} alt='Background image'
+            <Image priority src='/auth_bg.jpg' width={50000} height={500000} alt='Background image'
                 className='object-cover left-30 h-screen w-1/2' />
         </section>
     )

@@ -1,4 +1,4 @@
-import RedirectNoLogin from '@/components/RedirectNoLogin/redirectNoLogin';
+import { RedirectNoLogin } from '@/components/RedirectNoLogin/RedirectNoLogin';
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 const pageConfigPerfil = () => {

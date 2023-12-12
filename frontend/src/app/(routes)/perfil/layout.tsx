@@ -1,5 +1,5 @@
+import { RedirectNoLogin } from '@/components/RedirectNoLogin/RedirectNoLogin'
 import PerfilNavBar from '@/components/Perfil/PerfilNavBar'
-import RedirectNoLogin from '@/components/RedirectNoLogin/RedirectNoLogin'
 import Link from 'next/link'
 import React from 'react'
 
@@ -10,7 +10,7 @@ const pagePerfil = ({
 }) => {
     return (
         <section className='flex flex-col'>
-            <RedirectNoLogin />
+
             <article className='w-full h-96 flex flex-col justify-end px-5 shadow-shadowInset'>
                 <span className='flex flex-col gap-5'>
                     <span className='text-xl font-bold'>nombre artistico</span>
@@ -26,7 +26,7 @@ const pagePerfil = ({
                     <Link href={'/auth/configPerfil'} className=' mb-5 w-fit px-4 py-2 bg-rosa text-negro  rounded-full'>Editar perfil</Link>
                 </span>
             </article>
-            <article className='flex flex-col w-full gap-10 px-5 bg-darkViolet text-white min-h-[36vh] h-auto py-5 '>
+            <article className='flex flex-col w-full gap-10 px-5 bg-darkViolet text-white min-h-[42vh] h-auto py-5 '>
                 <PerfilNavBar />
                 {children}
             </article>
