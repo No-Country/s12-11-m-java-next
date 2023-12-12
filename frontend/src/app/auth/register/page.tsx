@@ -12,7 +12,7 @@ export default function SingUpPage() {
         apellidoCompleto: "",
         email: '',
         password: "",
-        role: 'OYENTE'
+        rol: 'OYENTE'
     })
 
     return (

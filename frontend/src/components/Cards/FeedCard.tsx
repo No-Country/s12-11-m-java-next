@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 
 function FeedCard() {
-  const [data, setData] = useState([1, 2, 3, 4, 5])
+  const [data, setData] = useState([])
   useEffect(() => {
     data[0] ? {} : getEvents(setData)
   }, [data])

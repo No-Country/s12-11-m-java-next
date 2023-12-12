@@ -1,8 +1,16 @@
 import axios from 'axios'
-
+const token = localStorage.getItem('tKeyId')
 const postEvents = async (eventData: any, closeModal: any) => {
     await axios.post(
-        `http://3.139.80.10:8080/eventos/`, eventData
+        `http://18.116.86.45:8080/eventos`,
+        eventData
+        ,
+        {
+            headers:
+                { Authorization: `Bearer ${token}` }
+        }
+
+
     )
         .then(function (response: any) {
             closeModal()

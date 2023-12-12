@@ -72,6 +72,16 @@ const AddEventCard = () => {
                     </label>
                     <label htmlFor="">
                         <small></small>
+                        <input required onChange={(e) => {
+                            setEventData({
+                                ...eventData,
+                                lugar: e.target.value
+                            })
+                        }}
+                            type="text" placeholder='Lugar' className='border-2 p-2 border-negro rounded-md w-full' />
+                    </label>
+                    <label htmlFor="">
+                        <small></small>
                         <textarea required onChange={(e) => {
                             setEventData({
                                 ...eventData,
