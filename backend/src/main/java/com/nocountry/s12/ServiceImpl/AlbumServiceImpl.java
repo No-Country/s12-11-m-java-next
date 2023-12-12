@@ -2,13 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.nocountry.s12.Service;
+package com.nocountry.s12.ServiceImpl;
 
 import com.nocountry.s12.Dto.Request.AlbumRequestDTO;
 import com.nocountry.s12.Dto.Response.AlbumResponseDTO;
 import com.nocountry.s12.Exception.MiException;
 import com.nocountry.s12.Repository.AlbumRepository;
+import com.nocountry.s12.Service.AlbumService;
+import com.nocountry.s12.Service.ArtistaService;
 import com.nocountry.s12.models.Album;
+import com.nocountry.s12.models.Artista;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
@@ -24,15 +27,15 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AlbumServiceImpl implements AlbumService {
-//Falta definir lo de las canciones y asignarle un artista al crear el album
 
     private final AlbumRepository albumRepository;
+    private final ArtistaService artistaService;
 
     @Override
     public List<AlbumResponseDTO> listar() {
         List<Album> listaAlbum = albumRepository.findAll();
         List<AlbumResponseDTO> listaAlbumDTO = listaAlbum.stream()
-        .map(AlbumResponseDTO::new).collect(Collectors.toList());
+                .map(AlbumResponseDTO::new).collect(Collectors.toList());
         return listaAlbumDTO;
     }
 
@@ -44,24 +47,17 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public AlbumResponseDTO crear(AlbumRequestDTO albumDTO) throws MiException {
+    public AlbumResponseDTO crear(AlbumRequestDTO albumDTO, String usernameArtista) throws MiException {
         Album nuevoAlbum = new Album();
 
         try {
             LocalDate fechaPublicacion = validarFecha(albumDTO.fechaPublicacion());
+            Artista artista = artistaService.getByUsername(usernameArtista);
 
             nuevoAlbum.setGenero(albumDTO.genero());
             nuevoAlbum.setFechaPublicacion(fechaPublicacion);
             nuevoAlbum.setAlta(true);
-            /*
-        List<Cancion> canciones = album.getCanciones();
-        if (canciones != null && !canciones.isEmpty()) {
-            for (Cancion cancion : canciones) {
-                cancion.setAlbum(album);
-                cancionRepository.save(cancion);
-            }
-        nuevoAlbum.setCanciones(album.getCanciones());    
-        }*/
+            nuevoAlbum.setArtista(artista);
 
             albumRepository.save(nuevoAlbum);
         } catch (Exception e) {
