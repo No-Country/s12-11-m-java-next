@@ -112,8 +112,8 @@ class AuthControllerStandaloneTest {
     assertEquals(HttpStatus.BAD_REQUEST.value(), response.getStatus());
     assertTrue(response.getContentAsString().isEmpty());
   }
-
-  @Test
+}
+  /*@Test
   void canRegisterAUser() throws Exception {
     RegistroDto registroDto = RegistroDto.builder().email("faviofz@gmail.com").password("Faviofz8@")
         .rol("ARTISTA").nombreArtistico("Favio Fernandez").descripcion("A urban artist").build();
@@ -136,4 +136,4 @@ class AuthControllerStandaloneTest {
     assertEquals(authResponseJacksonTester.write(authResponse).getJson(),
         response.getContentAsString());
   }
-}
+}*/

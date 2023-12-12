@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import com.nocountry.s12.Dto.Request.AlbumRequestDTO;
 import com.nocountry.s12.Dto.Response.AlbumResponseDTO;
 import com.nocountry.s12.Jwt.JwtService;
-import com.nocountry.s12.Service.AlbumServiceImpl;
+import com.nocountry.s12.ServiceImpl.AlbumServiceImpl;
 import jakarta.persistence.EntityNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
