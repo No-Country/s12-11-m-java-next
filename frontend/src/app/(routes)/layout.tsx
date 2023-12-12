@@ -1,4 +1,5 @@
-import { Header } from "@/components/Header/Header"
+import { Header } from '@/components/Header/Header'
+
 
 const routesLayout = ({
     children,
@@ -6,12 +7,10 @@ const routesLayout = ({
     children: React.ReactNode
 }) => {
     return (
-        <>
+        <main className="bg-gradient-to-b from-lightViolet to-darkViolet text-white">
             <Header />
-            <main>
-                {children}
-            </main>
-        </>
+            {children}
+        </main>
     )
 }
 
