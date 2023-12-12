@@ -17,7 +17,6 @@ import org.springframework.web.server.ResponseStatusException;
 import com.nocountry.s12.Dto.Request.ModificaArtistaDTO;
 import com.nocountry.s12.Dto.Response.ArtistaDTO;
 import com.nocountry.s12.Service.ArtistaService;
-import com.nocountry.s12.models.Artista;
 
 
 import lombok.RequiredArgsConstructor;
@@ -27,8 +26,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ArtistaController {
 
-    private final ArtistaService artistaService;	
-	
+    private final ArtistaService artistaService;
 	
     @GetMapping("/listarTodos")
     public ResponseEntity<List<ArtistaDTO>> listarTodos(){
@@ -56,9 +54,9 @@ public class ArtistaController {
         }
     }
 	
-	
+
     @GetMapping("/{id}")
-    public ResponseEntity<?> verArtista(@PathVariable("id") Integer id){
+    public ResponseEntity<?> verArtista(@PathVariable("id") Long id){
         try {
                 ArtistaDTO artistaDTO = artistaService.verArtista(id);
 
@@ -116,7 +114,7 @@ public class ArtistaController {
     }
 	
     @PutMapping("/{id}")
-    public ResponseEntity<?> modificarArtista(@PathVariable("id") Integer id, 
+    public ResponseEntity<?> modificarArtista(@PathVariable("id") Long id, 
     		@RequestBody ModificaArtistaDTO modificaArtistaDTO){
     	try {
         	ArtistaDTO artistaModificado = artistaService.modificarArtista(id, modificaArtistaDTO);    	
@@ -127,13 +125,14 @@ public class ArtistaController {
     	
     }
 	
+
     @PatchMapping("/baja")
-    public ResponseEntity<?> bajaArtista(@RequestParam Integer id){
+    public ResponseEntity<?> bajaArtista(@RequestParam Long id){
         try {
         	artistaService.bajaArtista(id);
             return ResponseEntity.ok("Artista dado de baja con éxito");
         } catch (RuntimeException e) {
-            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
 
     }

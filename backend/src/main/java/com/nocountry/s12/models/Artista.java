@@ -8,25 +8,28 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-import java.time.LocalDate;
 import java.util.List;
 
-import com.nocountry.s12.Enum.Roles;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="artista")
 public class Artista extends Usuario{
-    private String nombreArtistico;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String nombreArtistico;
     private String descripcion;
 	
     @OneToMany(mappedBy = "artista")

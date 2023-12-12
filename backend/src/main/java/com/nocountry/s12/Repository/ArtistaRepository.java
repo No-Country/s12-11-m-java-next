@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.nocountry.s12.models.Artista;
 
-public interface ArtistaRepository extends JpaRepository<Artista, Integer> {
+public interface ArtistaRepository extends JpaRepository<Artista, Long> {
 	Optional<Artista> findByUsername(String username);
 	
 	List<Artista> findByAltaTrue();

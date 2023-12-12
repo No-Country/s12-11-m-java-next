@@ -8,8 +8,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
@@ -30,7 +28,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Usuario implements UserDetails {
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombreCompleto;
@@ -43,9 +45,10 @@ public class Usuario implements UserDetails {
     private String zona;
     private LocalDate fechaNacimiento;
     private boolean alta;
-    //private List<Publicacion> publicaciones;
-    //private List<ListaReproduccion> listasReproduccion;
-    
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Publicacion> publicaciones;
+
     @Enumerated(EnumType.STRING)
     private Roles rol;
 
