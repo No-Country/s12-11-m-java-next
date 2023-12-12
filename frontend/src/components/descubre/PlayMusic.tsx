@@ -3,7 +3,7 @@ import { FaCirclePlay } from "react-icons/fa6";
 
 const PlayMusic = () => {
     return (
-        <div className="flex bg-violet-700 items-center p-2 justify-between max-w-5xl h-36 w-full">
+        <div className="flex items-center p-2 justify-between  h-36 w-full">
             <div className="flex gap-10 items-center">
         <div className="bg-black rounded-md flex items-center justify-center h-32 w-36">
             <FaCirclePlay className="text-white text-3xl"/>

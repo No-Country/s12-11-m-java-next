@@ -1,4 +1,4 @@
-import { Genres } from "@/components/genres/Genres"
+import { Genres } from "@/components/descubre/Genres"
 import { Music } from "@/components/music/Music"
 
 export default function Discover() {
