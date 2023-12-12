@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.nocountry.s12.Dto.Request.ModificaArtistaDTO;
 import com.nocountry.s12.Dto.Response.ArtistaDTO;
+import com.nocountry.s12.Enum.Roles;
 import com.nocountry.s12.Exception.UserNotExistException;
 import com.nocountry.s12.Repository.ArtistaRepository;
 import com.nocountry.s12.mapper.ArtistaMapper;
@@ -64,6 +65,7 @@ public class ArtistaService {
 		artistaModificado.setNombreCompleto(modificaArtistaDTO.getNombre());
 		artistaModificado.setApellidoCompleto(modificaArtistaDTO.getApellido());
 		artistaModificado.setUsername(modificaArtistaDTO.getEmail());
+		artistaModificado.setRol(Roles.valueOf(modificaArtistaDTO.getRol()));
 		artistaModificado.setNombreArtistico(modificaArtistaDTO.getNombreArtistico());
 		artistaModificado.setDescripcion(modificaArtistaDTO.getDescripcion());
 		artistaModificado.setCampoArtistico(modificaArtistaDTO.getCampoArtistico());
