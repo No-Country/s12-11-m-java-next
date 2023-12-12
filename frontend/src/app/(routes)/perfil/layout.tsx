@@ -1,5 +1,5 @@
+import { RedirectNoLogin } from '@/components/RedirectNoLogin/RedirectNoLogin'
 import PerfilNavBar from '@/components/Perfil/PerfilNavBar'
-import RedirectNoLogin from '@/components/RedirectNoLogin/RedirectNoLogin'
 import Link from 'next/link'
 import React from 'react'
 
