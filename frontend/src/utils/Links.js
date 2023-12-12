@@ -24,11 +24,6 @@ export const LinkFeed = [
     icon: IoIosMusicalNotes,
   },
   {
-    label: "Subir videos",
-    path: "/uploadVideos",
-    icon: IoIosVideocam,
-  },
-  {
     label: "Subir post",
     path: "/perfil/post",
     icon: MdOutlinePostAdd,

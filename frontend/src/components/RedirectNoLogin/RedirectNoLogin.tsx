@@ -9,6 +9,6 @@ export const RedirectNoLogin = () => {
     }, [])
     const router = useRouter()
     log === 'false' ? router.push('/auth/login') : <></>
-    return (<></>)
+    return (null)
 }
 
