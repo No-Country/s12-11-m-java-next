@@ -1,4 +1,5 @@
 'use client'
+import postMusica from '@/utils/postMusica/postMusica';
 import React, { useEffect, useRef, useState } from 'react'
 import { FaPlus } from 'react-icons/fa6';
 
@@ -35,8 +36,7 @@ const AddMusicCard = () => {
                         );
                         // formDataMusic.append('file', fileImg.audio, fileMusic.audio);
                         console.log(formDataMusic);
-
-                        postMusic(formDataMusic, FormData, closeModal)
+                        //postMusica(closeModal, formDataMusic)
                     }}
                     className='flex flex-col gap-5 justify-center p-10'
                 >
@@ -49,20 +49,18 @@ const AddMusicCard = () => {
                         <input required name='img' type="file" className='hidden' id='fileMusicImg' />
                     </label>
                     <label htmlFor="">
-                        <small></small>
                         <input required name='titulo' type="text" placeholder='Titulo' className='border-2 p-2 border-negro rounded-md w-full' />
                     </label>
                     <label htmlFor="" className='flex gap-5'>
                         <input required name='genero' type="text" placeholder='Genero' className='border-2 p-2 border-negro rounded-md w-full' />
                     </label>
                     <label htmlFor="">
-                        <small></small>
                         <input name='fecha' type="text" defaultValue={fecha} hidden />
-                        <input name='albunId' type="number" defaultValue={1} hidden />
-                        <input required name='precio' type="number" placeholder='precio' className='border-2 p-2 border-negro rounded-md w-full' />
+                        {/* <input name='albumId' type="number" defaultValue={1} hidden /> */}
                     </label>
                     <label className='flex w-full justify-between'>
-                        <input type='submit' className='px-4 py-2 bg-negro text-white rounded-full cursor-pointer' value='Crear evento' />
+                        <input type='submit' className='px-4 py-2 bg-negro text-white rounded-full cursor-pointer'
+                            value='Subir archivo' />
                         <span onClick={closeModal} className='px-4 py-2 bg-negro text-white rounded-full'>Cancelar</span>
                     </label>
                 </form>
