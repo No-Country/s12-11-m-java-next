@@ -113,10 +113,11 @@ class AuthControllerStandaloneTest {
     assertTrue(response.getContentAsString().isEmpty());
   }
 }
-  /*@Test
+  @Test
   void canRegisterAUser() throws Exception {
     RegistroDto registroDto = RegistroDto.builder().email("faviofz@gmail.com").password("Faviofz8@")
-        .rol("ARTISTA").nombreArtistico("Favio Fernandez").descripcion("A urban artist").build();
+        .rol("ARTISTA").nombreCompleto("Favio Fernandez").apellidoCompleto(
+            "Favio Fernandez").build();
     AuthResponse authResponse = new AuthResponse("token");
 
     //given
@@ -136,4 +137,4 @@ class AuthControllerStandaloneTest {
     assertEquals(authResponseJacksonTester.write(authResponse).getJson(),
         response.getContentAsString());
   }
-}*/
+}
