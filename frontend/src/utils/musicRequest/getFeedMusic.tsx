@@ -1,7 +1,8 @@
 import axios from 'axios'
-const getEvents = async (setData: any) => {
+const URL = process.env.NEXT_PUBLIC_URL_API
+const getFeedMusic = async (setData: any) => {
     await axios.get(
-        `http://3.139.80.10:8080/eventos/`,
+        `${URL}musica/`,
     )
         .then(function (response: any) {
             setData(response.data);
@@ -10,5 +11,4 @@ const getEvents = async (setData: any) => {
             console.log(err);
         })
 }
-
-export default getEvents
+export default getFeedMusic

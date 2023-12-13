@@ -24,24 +24,14 @@ export const LinkFeed = [
     icon: IoIosMusicalNotes,
   },
   {
-    label: "Subir videos",
-    path: "/uploadVideos",
-    icon: IoIosVideocam,
-  },
-  {
     label: "Subir post",
-    path: "/perfil/post",
+    path: "/perfil/posts",
     icon: MdOutlinePostAdd,
   },
   {
     label: "Subir evento",
     path: "/perfil/eventos",
     icon: FaRegCalendarCheck,
-  },
-  {
-    label: "Explorar",
-    path: "/descubre",
-    icon: MdOutlineExplore,
   },
 ]
 

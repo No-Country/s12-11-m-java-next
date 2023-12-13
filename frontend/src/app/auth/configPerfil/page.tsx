@@ -1,27 +1,29 @@
+'use client'
 import { RedirectNoLogin } from '@/components/RedirectNoLogin/RedirectNoLogin';
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
 import { FaArrowLeft } from "react-icons/fa";
 const pageConfigPerfil = () => {
-
   return (
     // componetizar  elementos como el input , el switch o el form
 
-    <section className="h-screen w-full flex flex-col items-center">
+    <section className="h-full w-full flex flex-col items-center bg-gradient-to-t from-lightViolet to-darkViolet">
       <RedirectNoLogin />
-      <div className='flex text-white items-center self-start pt-8 pl-5'>
+      <div className='h-full w-full flex text-white items-center  pt-10 pl-5'>
         <FaArrowLeft />
         <Link href='/' className='pl-1 self-start'>Volver</Link>
       </div>
-      <div className="flex flex-col items-center p-10 text-white justify-center w-96">
+      <button onClick={() => { localStorage.clear() }} className='relative bottom-8 self-end text-white mr-5 px-4 py-2 border-2 border-white rounded-full'>Cerrar sesión</button>
+      <div className="flex flex-col items-center p-10 text-white justify-center w-[600px]">
         <h1 className="text-xl">EDITAR PERFIL</h1>
-        <p className="my-4">
+        <p className="my-4 w-full">
           Lorem ipsum dolor sit amet consectetur sit amet conse sit amet
           consesit amet conse adipisicing elit. consesit amet conse adipisicing
           elit.
         </p>
         <form action="" className=" flex flex-col  items-center ">
           {/*  input file */}
-          <div className="rounded-md border border-dashed border-gray-500 bg-transparent p-4 shadow-md w-36">
+          <div className="rounded-md border border-dashed border-gray-500 bg-transparent p-4 shadow-md w-full">
             <label
               htmlFor="upload"
               className="flex flex-col items-center gap-2 cursor-pointer"

@@ -1,31 +1,31 @@
 'use client'
 import registerPost from '@/utils/registerRequest/registerPost'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { FaArrowLeft } from "react-icons/fa"
-import Image from 'next/image'
-export default function SingUpPage() {
+export default function SingUpPage () {
     const router = useRouter()
     const [userData, setUserData] = useState({
         nombreCompleto: "",
         apellidoCompleto: "",
         email: '',
         password: "",
-        role: 'OYENTE'
+        rol: 'OYENTE'
     })
 
     return (
         <section className='text-white flex w-full h-screen'>
             <article className='text-white w-1/2 flex flex-col p-8'>
-                <div className='flex items-center gap-4 pl-3'>
+                <Link href='/' className='flex items-center gap-4 pl-3'>
                     <FaArrowLeft />
-                    <Link href='/home'>Volver</Link>
-                </div>
+                    <p>Volver</p>
+                </Link>
                 <div className='flex flex-col h-full justify-center items-center'>
                     <div className='mb-6'>
-                        <h1 className='text-5xl font-bold mb-2'>Bienvenido!</h1>
-                        <p className='font-bold'>Crea una cuenta para comenzar</p>
+                        <h1 className='text-4xl font-bold mb-2'>Bienvenido!</h1>
+                        <p className='font-semibold'>Crea una cuenta para comenzar</p>
                     </div>
                     <form className='flex flex-col gap-6  w-[60%]' onSubmit={(e) => {
                         e.preventDefault();
@@ -40,7 +40,7 @@ export default function SingUpPage() {
                                         nombreCompleto: e.target.value
                                     })
                                 }}
-                                className='p-4 bg-transparent border-2 rounded-xl border-gray-rosa outline-none' type="text"
+                                className='p-3 bg-transparent border-2 rounded-xl border-gray-rosa outline-none' type="text"
                                 placeholder='Nombre' />
                         </div>
                         <div className='flex flex-col gap-2'>
@@ -51,7 +51,7 @@ export default function SingUpPage() {
                                     apellidoCompleto: e.target.value
                                 })
                             }}
-                                className='p-4 bg-transparent border-2 rounded-xl border-gray-rosa outline-none' type="text"
+                                className='p-3 bg-transparent border-2 rounded-xl border-gray-rosa outline-none' type="text"
                                 placeholder='Contraseña' />
                         </div>
                         <div className='flex flex-col gap-2'>
@@ -62,7 +62,7 @@ export default function SingUpPage() {
                                     email: e.target.value
                                 })
                             }}
-                                className='p-4 bg-transparent border-2 rounded-xl border-gray-rosa outline-none' type="email"
+                                className='p-3 bg-transparent border-2 rounded-xl border-gray-rosa outline-none' type="email"
                                 placeholder='Email' />
                         </div>
                         <div className='flex flex-col gap-2'>
@@ -73,7 +73,7 @@ export default function SingUpPage() {
                                     password: e.target.value
                                 })
                             }}
-                                className='p-4 bg-transparent border-2 rounded-xl border-gray-rosa outline-none' type="password"
+                                className='p-3 bg-transparent border-2 rounded-xl border-gray-rosa outline-none' type="password"
                                 placeholder='Contraseña' />
                         </div>
                         <label className="relative inline-flex items-center cursor-pointer">
@@ -89,7 +89,7 @@ export default function SingUpPage() {
                             <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">{userData.role}</span>
                         </label>
                         <div className='flex justify-center'>
-                            <button className='bg-rosa text-black rounded-full px-14 py-3 font-bold'>Registrarme</button>
+                            <button className='bg-rosa text-black rounded-full px-10 py-2 font-bold'>Registrarme</button>
                         </div>
                     </form>
                     <Link href='/auth/login' className='mt-5'>Iniciar sesión</Link>

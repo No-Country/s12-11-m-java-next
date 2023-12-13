@@ -1,7 +1,8 @@
 import axios from "axios"
+const URL = process.env.NEXT_PUBLIC_URL_API
 const loginPost = async (userData: any, router: any) => {
     await axios.post(
-        `http://3.139.80.10:8080/auth/login`, userData
+        `${URL}auth/login`, userData
     )
         .then(function (response: any) {
             localStorage.setItem('tKeyId', response.data.token);

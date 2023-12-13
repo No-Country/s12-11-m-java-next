@@ -1,51 +1,44 @@
 import { Header } from '@/components/Header/Header';
 import Link from 'next/link';
-
-export default function Home () {
+import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa6';
+import { SiExpertsexchange } from "react-icons/si";
+export default function Home() {
   return (
     <div className='bg-gradient-to-b from-darkViolet to-lightViolet text-white h-full'>
       <div className="bg-home_bg text-white bg-cover">
         <Header />
-        <section className="text-white">
-          <div className="flex flex-col justify-end container mx-auto py-6 gap-6 h-[60vh]">
-            <h1 className="text-7xl font-semibold max-w-5xl">El lugar indicado para renovar tu playlist</h1>
-            <p className="text-lg ml-2">Descubre artistas independientes cerca de tí o de cualquier lugar del mundo</p>
+        <section className="text-white p-8">
+          <div className="flex flex-col justify-end mx-auto gap-6 h-[60vh]">
+            <h1 className="text-6xl font-semibold max-w-5xl">El lugar indicado para renovar tu playlist</h1>
+            {/* <p className="text-lg ml-2">Descubre artistas independientes cerca de tí o de cualquier lugar del mundo</p> */}
             <div className='mt-6'>
               <Link
                 href='/descubre'
-                className='px-8 py-3 bg-rosa text-black font-bold rounded-full'>
+                className='px-5 py-3 bg-rosa text-black font-bold rounded-full'>
                 COMIENZA AHORA
               </Link>
             </div>
           </div>
         </section>
       </div>
-      <section>
-        <div className="flex-col md:flex-row flex items-center justify-evenly mx-auto h-[50vh]">
-          <div className='text-center'>
-            <h1 className='text-4xl font-bold mb-2'>Encuentra</h1>
-            <div className='px-16'>
-              <p className='text-xl'>
-                Descubre exactamente el tipo de artista o canción que estás buscando escuchar, a través de nuestros filtros.
-              </p>
-            </div>
-          </div>
-          <div className='text-center'>
-            <h1 className='text-4xl font-bold mb-2'>Conecta</h1>
-            <div className='px-16'>
-              <p className='text-xl'>
-                Sigue a los artistas que te gusten. Habla con ellos, ve a sus eventos o contratalos para el tuyo.
-              </p>
-            </div>
-          </div>
-          <div className='text-center'>
-            <h1 className='text-4xl font-bold mb-2'>Comparte</h1>
-            <div className='px-16'>
-              <p className='text-xl'>
-                Si eres artista, sube toda tu música. Si eres oyente, disfrútala.
-              </p>
-            </div>
-          </div>
+      <section className="sm:flex-col md:flex-row flex items-center justify-evenly mx-auto h-[50vh]">
+        <div className='text-center max-w-[30%]'>
+          <h1 className='text-3xl font-bold mb-2'>Encuentra</h1>
+          <p className='text-sm'>
+            Descubre exactamente el tipo de artista o canción que estás buscando escuchar, a través de nuestros filtros.
+          </p>
+        </div>
+        <div className='text-center max-w-[30%]'>
+          <h1 className='text-3xl font-bold mb-2'>Conecta</h1>
+          <p className='text-sm'>
+            Sigue a los artistas que te gusten. Habla con ellos, ve a sus eventos o contratalos para el tuyo.
+          </p>
+        </div>
+        <div className='text-center max-w-[30%]'>
+          <h1 className='text-3xl font-bold mb-2'>Comparte</h1>
+          <p className='text-sm'>
+            Si eres artista, sube toda tu música. Si eres oyente, disfrútala.
+          </p>
         </div>
       </section>
       <section className=''>
@@ -68,28 +61,29 @@ export default function Home () {
           </div>
         </div>
       </section>
-      <footer className='py-9 bg-[#DCC6E0] text-black'>
+      <footer className='p-9 bg-[#DCC6E0] text-black'>
         <div className="container mx-auto flex justify-between items-center flex-col md:flex-row md:items-start">
           <div className="md:w-1/4 mb-4 md:mb-0 mt-2 sm:mt-0 sm:ml-0 md:text-start text-center">
             <h3 className="text-xl font-semibold">CONTACTO</h3>
             <div className='flex flex-col'>
-              <Link className="mt-1" href="mailto:info@mediconnect.com">email@email.com</Link>
-              <Link className="mt-1" href="/">Preguntas Frecuentes</Link>
+              <Link className="mt-1 text-sm" href="mailto:info@mediconnect.com">email@email.com</Link>
+              <Link className="mt-1 text-sm" href="/">Preguntas Frecuentes</Link>
             </div>
           </div>
           <div className="md:w-1/4 mb-4 md:mb-0 mt-2 sm:mt-0 sm:ml-0 md:text-start text-center">
             <h3 className="text-xl font-semibold">LEGAL</h3>
             <div className='flex flex-col'>
-              <Link className='mt-1' href="/">Términos de uso</Link>
-              <Link className='mt-1' href="/">Política de privacidad</Link>
+              <Link className='mt-1 text-sm' href="/">Términos de uso</Link>
+              <Link className='mt-1 text-sm' href="/">Política de privacidad</Link>
             </div>
           </div>
           <div className="md:w-1/4 mb-4 md:mb-0 mt-2 sm:mt-0 sm:ml-0 md:text-start text-center">
             <h3 className="text-xl font-semibold">Síguenos</h3>
             <ul className='flex gap-4'>
-              {/* <li className="hover:scale-125 duration-1000 bg-[#ABABAB] rounded-full p-2">a</li>
-                        <li className="hover:scale-125 duration-1000 bg-[#ABABAB] rounded-full p-2">a</li>
-                        <li className="hover:scale-125 duration-1000 bg-[#ABABAB] rounded-full p-2">a</li> */}
+              <li className="hover:scale-[1.8] duration-500 p-2"><FaInstagram /></li>
+              <li className="hover:scale-[1.8] duration-500 p-2"><FaFacebook /></li>
+              <li className="hover:scale-[1.8] duration-500 p-2"><FaYoutube /></li>
+              <li className="hover:scale-[1.8] duration-500 p-2"><SiExpertsexchange /></li>
             </ul>
           </div>
         </div>
