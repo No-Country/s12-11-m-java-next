@@ -17,7 +17,7 @@ const AddMusicCard = () => {
     return (
 
         <div className='flex items-center px-4 text-white self-start border-b-2 w-full cursor-pointer'>
-            <button className='h-12 items-center flex gap-3'
+            <button className='h-12 items-center flex gap-5'
                 onClick={openModal}>
                 <FaPlus className='h-6' />
                 <span>Agregar Canción</span>

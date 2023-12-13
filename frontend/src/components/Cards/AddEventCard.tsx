@@ -12,7 +12,7 @@ const AddEventCard = () => {
         modalEventos.current !== null ? modalEventos.current.close() : {};
     };
     return (
-        <div className='flex h-36 w-96 items-center gap-5 bg-slate-200 rounded-md px-4 text-negro self-start'>
+        <div className='flex h-36 w-[450px] items-center gap-5 bg-slate-200 rounded-md px-4 text-negro self-start'>
             <button className='bg-white rounded-md h-28 w-28 flex justify-center items-center'
                 onClick={openModal}>
                 <FaPlus className='h-12 w-12' />
