@@ -3,7 +3,6 @@ package com.nocountry.s12.Dto.Response;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.nocountry.s12.models.Artista;
 import com.nocountry.s12.models.Evento;
 
 public record EventoResponseDTO(

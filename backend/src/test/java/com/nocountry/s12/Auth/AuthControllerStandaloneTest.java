@@ -5,14 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nocountry.s12.Dto.Request.LoginDto;
 import com.nocountry.s12.Dto.Request.RegistroDto;
 import com.nocountry.s12.Dto.Response.AuthResponse;
 import java.nio.charset.StandardCharsets;
-import javax.xml.validation.ValidatorHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -114,11 +112,11 @@ class AuthControllerStandaloneTest {
     assertEquals(HttpStatus.BAD_REQUEST.value(), response.getStatus());
     assertTrue(response.getContentAsString().isEmpty());
   }
-
   @Test
   void canRegisterAUser() throws Exception {
     RegistroDto registroDto = RegistroDto.builder().email("faviofz@gmail.com").password("Faviofz8@")
-        .rol("ARTISTA").nombreArtistico("Favio Fernandez").descripcion("A urban artist").build();
+        .rol("ARTISTA").nombreCompleto("Favio Fernandez").apellidoCompleto(
+            "Favio Fernandez").build();
     AuthResponse authResponse = new AuthResponse("token");
 
     //given

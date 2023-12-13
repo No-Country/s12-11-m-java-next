@@ -16,7 +16,7 @@ import com.nocountry.s12.Dto.Response.EventoResponseDTO;
  */
 
 
-public interface EventoService <EventoDto, Long>{
+public interface EventoService {
     
     public List<EventoResponseDTO> findAll() throws Exception;
     public EventoResponseDTO findById(Long id) throws Exception;

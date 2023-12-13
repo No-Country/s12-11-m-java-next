@@ -23,7 +23,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class EventoServiceImpl implements EventoService<EventoRequestDTO, Long>{
+public class EventoServiceImpl implements EventoService{
 
     
     private final EventoRepository eventoRepository;

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.nocountry.s12.Dto.Request.ModificaArtistaDTO;
 import com.nocountry.s12.Dto.Response.ArtistaDTO;
+import com.nocountry.s12.Enum.Roles;
 import com.nocountry.s12.Exception.UserNotExistException;
 import com.nocountry.s12.Repository.ArtistaRepository;
 import com.nocountry.s12.mapper.ArtistaMapper;
@@ -34,7 +35,7 @@ public class ArtistaService {
 	}	
 	
 
-	public ArtistaDTO verArtista(Integer id) {
+	public ArtistaDTO verArtista(Long id) {
 		Artista artista = artistaRepository.findById(id).get();
         ArtistaDTO artistaDto = artistaMapper.ArtistaToArtistaDTO(artista);
 		return artistaDto;
@@ -58,12 +59,13 @@ public class ArtistaService {
 		return listaArtistasDto;
     }
     
-	public ArtistaDTO modificarArtista(Integer id, ModificaArtistaDTO modificaArtistaDTO) {
+	public ArtistaDTO modificarArtista(Long id, ModificaArtistaDTO modificaArtistaDTO) {
 		Artista artistaModificado = artistaRepository.findById(id).get();	
 		
 		artistaModificado.setNombreCompleto(modificaArtistaDTO.getNombre());
 		artistaModificado.setApellidoCompleto(modificaArtistaDTO.getApellido());
 		artistaModificado.setUsername(modificaArtistaDTO.getEmail());
+		artistaModificado.setRol(Roles.valueOf(modificaArtistaDTO.getRol()));
 		artistaModificado.setNombreArtistico(modificaArtistaDTO.getNombreArtistico());
 		artistaModificado.setDescripcion(modificaArtistaDTO.getDescripcion());
 		artistaModificado.setCampoArtistico(modificaArtistaDTO.getCampoArtistico());
@@ -75,7 +77,7 @@ public class ArtistaService {
 	    return artistaModificadoDTO;	
 	}
 
-	public void bajaArtista(Integer id) {
+	public void bajaArtista(Long id) {
 		Optional<Artista> artistaOptional = artistaRepository.findById(id);
 
 		if (!artistaOptional.isPresent()) {
@@ -86,4 +88,9 @@ public class ArtistaService {
 		artistaRepository.save(artista);
 	}
 
+        public Artista getByUsername(String username){
+		Optional<Artista> artistaOp = artistaRepository.findByUsername(username);
+                Artista artista = artistaOp.get();
+                return artista;
+	}
 }

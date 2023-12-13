@@ -1,9 +1,7 @@
 package com.nocountry.s12.Dto.Request;
 
-import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.nocountry.s12.models.Evento;
 
 
 

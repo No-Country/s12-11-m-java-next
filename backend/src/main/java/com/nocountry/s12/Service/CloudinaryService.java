@@ -29,15 +29,15 @@ public class CloudinaryService {
     }
     
 
-    public Map upload(MultipartFile multipartFile) throws IOException {
+    public Map<?,?> upload(MultipartFile multipartFile) throws IOException {
         File file = convert(multipartFile);
-        Map result = cloudinary.uploader().upload(file, ObjectUtils.asMap("folder", "Fotos/"));
+        Map<?,?> result = cloudinary.uploader().upload(file, ObjectUtils.asMap("folder", "Fotos/"));
         file.delete();
         return result;
     }
 
-    public Map delete(String id) throws IOException {
-        Map result = cloudinary.uploader().destroy(id, ObjectUtils.emptyMap());
+    public Map<?,?> delete(String id) throws IOException {
+        Map<?,?> result = cloudinary.uploader().destroy(id, ObjectUtils.emptyMap());
         return result;
     }
 

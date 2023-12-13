@@ -41,7 +41,7 @@ public class AuthService {
 
 		Optional<Artista> artistaOptional = artistaRepository.findByUsername(datos.getEmail());
 		if (artistaOptional.isPresent()) {
-			throw new RuntimeException("Ya existe un ARTISTA con ese email");
+			throw new RuntimeException("Ya existe un USUARIO con ese email");
 		}
 
 		Artista artista = new Artista();
@@ -49,8 +49,8 @@ public class AuthService {
 		artista.setUsername(datos.getEmail());
 		artista.setPassword(passwordEncoder.encode(datos.getPassword()));
 		artista.setRol(Roles.valueOf(datos.getRol()));
-		artista.setNombreArtistico(datos.getNombreArtistico());
-		artista.setDescripcion(datos.getDescripcion());
+		artista.setNombreCompleto(datos.getNombreCompleto());
+		artista.setApellidoCompleto(datos.getApellidoCompleto());
 		artista.setAlta(true);
 
 		artistaRepository.save(artista);

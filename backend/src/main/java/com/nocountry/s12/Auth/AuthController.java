@@ -2,7 +2,6 @@ package com.nocountry.s12.Auth;
 
 import com.nocountry.s12.Dto.Request.LoginDto;
 import com.nocountry.s12.Dto.Request.RegistroDto;
-import com.nocountry.s12.Dto.Response.AuthResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

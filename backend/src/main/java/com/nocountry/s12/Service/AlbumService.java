@@ -16,7 +16,7 @@ import java.util.List;
 public interface AlbumService {
     List<AlbumResponseDTO> listar();
     AlbumResponseDTO obtenerPorID(Long id);
-    AlbumResponseDTO crear(AlbumRequestDTO album) throws MiException;
+    AlbumResponseDTO crear(AlbumRequestDTO album, String usernameArtista) throws MiException;
     AlbumResponseDTO modificar(Long id, AlbumRequestDTO album) throws MiException;
     void eliminar(Long id);
     AlbumResponseDTO baja(Long id);

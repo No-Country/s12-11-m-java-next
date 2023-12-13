@@ -26,11 +26,14 @@ public class RegistroDto {
   @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!]).{8,15}$", message = "La contrase\u00F1a no cumple con los requisitos, ingrese letras mayusculas y minusculas, numeros, un caracter especial y maximo 15")
   String password;
   String rol;
+  
   @NotBlank(message = "Campo obligatorio.")
-  @Size(min = 2, max = 30, message = "El nombre artístico debe contener entre 2 y 30 caracteres.")
-  String nombreArtistico;
+  @Size(min = 2, max = 30, message = "El nombre debe contener entre 2 y 30 caracteres.")   
+  String nombreCompleto;
+  
   @NotBlank(message = "Campo obligatorio.")
-  @Size(min = 10, max = 100, message = "La descripción debe contener entre 10 y 100 caracteres.")
-  String descripcion;
+  @Size(min = 2, max = 30, message = "El apellido debe contener entre 2 y 30 caracteres.") 
+  String apellidoCompleto;
+  
 
 }

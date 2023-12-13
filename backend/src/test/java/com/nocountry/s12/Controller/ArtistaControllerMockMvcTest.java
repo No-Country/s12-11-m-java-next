@@ -60,7 +60,7 @@ class ArtistaControllerMockMvcTest {
     artistaDTO.setId(1L);
 
     //given
-    given(artistaService.verArtista(1)).willReturn(artistaDTO);
+    given(artistaService.verArtista(1L)).willReturn(artistaDTO);
 
     //when
     MockHttpServletResponse response = mockMvc.perform(
@@ -136,7 +136,7 @@ class ArtistaControllerMockMvcTest {
   @Test
   void canSoftDeleteAnArtist() throws Exception {
     //given
-    willDoNothing().given(artistaService).bajaArtista(1);
+    willDoNothing().given(artistaService).bajaArtista(1L);
 
     //when
     MockHttpServletResponse response = mockMvc.perform(

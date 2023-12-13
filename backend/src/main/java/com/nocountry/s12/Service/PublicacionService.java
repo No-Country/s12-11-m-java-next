@@ -9,7 +9,7 @@ import java.util.List;
 public interface PublicacionService {
 
     List<PublicacionResponseDTO> getPublicaciones();
-    List<PublicacionResponseDTO> getPublicacionesPorUsuario(Integer idUsuario);
+    List<PublicacionResponseDTO> getPublicacionesPorUsuario(Long idUsuario);
     PublicacionResponseDTO getPublicacionPorId(Long idPublicacion);
     Publicacion crearPublicacion(PublicacionRequestDTO publicacionRequestDTO);
     Publicacion editarPublicacion(Long idPublicacion, PublicacionRequestDTO publicacionRequestDTO);

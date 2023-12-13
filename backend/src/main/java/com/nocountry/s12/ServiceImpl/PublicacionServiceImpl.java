@@ -43,7 +43,7 @@ public class PublicacionServiceImpl implements PublicacionService {
     }
 
     @Override
-    public List<PublicacionResponseDTO> getPublicacionesPorUsuario(Integer idUsuario) {
+    public List<PublicacionResponseDTO> getPublicacionesPorUsuario(Long idUsuario) {
         Usuario usuario = obtenerUsuarioPorId(idUsuario);
         List<Publicacion> publicaciones = usuario.getPublicaciones();
 
@@ -120,7 +120,7 @@ public class PublicacionServiceImpl implements PublicacionService {
     }
 
 
-    private Usuario obtenerUsuarioPorId(Integer idUsuario) {
+    private Usuario obtenerUsuarioPorId(Long idUsuario) {
         return usuarioRepository.findById(idUsuario)
                 .orElseThrow(UserNotExistException::new);
     }
