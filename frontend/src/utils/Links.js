@@ -33,11 +33,6 @@ export const LinkFeed = [
     path: "/perfil/eventos",
     icon: FaRegCalendarCheck,
   },
-  {
-    label: "Explorar",
-    path: "/descubre",
-    icon: MdOutlineExplore,
-  },
 ]
 
 export const LinkHeader = [

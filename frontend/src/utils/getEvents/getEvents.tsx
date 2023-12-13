@@ -1,7 +1,8 @@
 import axios from 'axios'
+const URL = process.env.NEXT_PUBLIC_URL_API
 const getEvents = async (setData: any) => {
     await axios.get(
-        `http://18.116.86.45:8080/eventos`,
+        `${URL}eventos/`,
     )
         .then(function (response: any) {
             setData(response.data);

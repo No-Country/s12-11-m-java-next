@@ -1,8 +1,8 @@
 import axios from 'axios'
-const token = localStorage.getItem('tKeyId')
-const postEvents = async (eventData: any, closeModal: any) => {
+const URL = process.env.NEXT_PUBLIC_URL_API
+const postEvents = async (eventData: any, closeModal: any, token: any) => {
     await axios.post(
-        `http://18.116.86.45:8080/eventos`,
+        `${URL}eventos`,
         eventData
         ,
         {

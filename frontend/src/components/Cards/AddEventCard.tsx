@@ -6,14 +6,12 @@ const AddEventCard = () => {
     })
     const modalEventos = useRef<HTMLDialogElement>(null);
     const openModal = () => {
-        modalEventos.current != null ? modalEventos.current.showModal() : modalEventos;
+        modalEventos.current !== null ? modalEventos.current.showModal() : {};
     };
-
     const closeModal = () => {
-        modalEventos.current != null ? modalEventos.current.close() : {};
+        modalEventos.current !== null ? modalEventos.current.close() : {};
     };
     return (
-
         <div className='flex h-36 w-96 items-center gap-5 bg-slate-200 rounded-md px-4 text-negro self-start'>
             <button className='bg-white rounded-md h-28 w-28 flex justify-center items-center'
                 onClick={openModal}>
@@ -22,11 +20,11 @@ const AddEventCard = () => {
             <span>Agregar un evento</span>
             <dialog ref={modalEventos} className='rounded-md'>
                 <form action=""
+                    onReset={closeModal}
                     onSubmit={(e) => {
                         e.preventDefault();
-                        console.log(eventData);
-
-                        postEvents(eventData, closeModal)
+                        const token = localStorage.getItem('tKeyId')
+                        postEvents(eventData, closeModal, token)
                     }}
                     className='flex flex-col gap-5 justify-center p-10'
                 >
@@ -61,7 +59,6 @@ const AddEventCard = () => {
                             type="time" placeholder='Horario' className='border-2 p-2 border-negro rounded-md w-full' />
                     </label>
                     <label htmlFor="">
-                        <small></small>
                         <input required onChange={(e) => {
                             setEventData({
                                 ...eventData,
@@ -71,7 +68,6 @@ const AddEventCard = () => {
                             type="number" placeholder='precio' className='border-2 p-2 border-negro rounded-md w-full' />
                     </label>
                     <label htmlFor="">
-                        <small></small>
                         <input required onChange={(e) => {
                             setEventData({
                                 ...eventData,
@@ -81,7 +77,6 @@ const AddEventCard = () => {
                             type="text" placeholder='Lugar' className='border-2 p-2 border-negro rounded-md w-full' />
                     </label>
                     <label htmlFor="">
-                        <small></small>
                         <textarea required onChange={(e) => {
                             setEventData({
                                 ...eventData,
@@ -92,7 +87,7 @@ const AddEventCard = () => {
                     </label>
                     <label className='flex w-full justify-between'>
                         <input type='submit' className='px-4 py-2 bg-negro text-white rounded-full cursor-pointer' value='Crear evento' />
-                        <button onClick={closeModal} className='px-4 py-2 bg-negro text-white rounded-full'>Cancelar</button>
+                        <input type='reset' className='px-4 py-2 bg-negro text-white rounded-full' value='Cancelar' />
                     </label>
                 </form>
             </dialog>

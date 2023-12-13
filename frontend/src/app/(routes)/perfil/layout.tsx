@@ -22,7 +22,6 @@ const pagePerfil = ({
                     <span>{70} Seguidos</span>
                     <span>{12} Canciones</span>
                     <span>{3} Álbumes</span>
-                    <button className='ml-10 mb-5 w-fit px-4 py-2 bg-rosa text-negro rounded-full'>Seguir</button>
                     <Link href={'/auth/configPerfil'} className=' mb-5 w-fit px-4 py-2 bg-rosa text-negro  rounded-full'>Editar perfil</Link>
                 </span>
             </article>

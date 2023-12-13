@@ -14,11 +14,6 @@ const AddMusicCard = () => {
     const closeModal = () => {
         modalMusica.current != null ? modalMusica.current.close() : {};
     };
-    // useEffect(() => {
-    //     !fileImg ? setFileImg(fileImg) : {},
-    //         !fileMusic ? setFileMusic(fileMusic) : {}
-    // }, [fileImg, fileMusic])
-
     return (
 
         <div className='flex items-center px-4 text-white self-start border-b-2 w-full cursor-pointer'>
@@ -29,14 +24,15 @@ const AddMusicCard = () => {
             </button>
             <dialog ref={modalMusica} className='rounded-md'>
                 <form action="" encType="multipart/form-data"
+                    onReset={closeModal}
                     onSubmit={(e) => {
                         e.preventDefault();
+                        const token = localStorage.getItem('tKeyId')
                         const formDataMusic = Object.fromEntries(
-                            new FormData(e.target)
+                            new FormData(e.currentTarget)
                         );
-                        // formDataMusic.append('file', fileImg.audio, fileMusic.audio);
                         console.log(formDataMusic);
-                        //postMusica(closeModal, formDataMusic)
+                        postMusica(closeModal, formDataMusic, token)
                     }}
                     className='flex flex-col gap-5 justify-center p-10'
                 >
@@ -61,7 +57,7 @@ const AddMusicCard = () => {
                     <label className='flex w-full justify-between'>
                         <input type='submit' className='px-4 py-2 bg-negro text-white rounded-full cursor-pointer'
                             value='Subir archivo' />
-                        <span onClick={closeModal} className='px-4 py-2 bg-negro text-white rounded-full'>Cancelar</span>
+                        <input type='reset' className='px-4 py-2 bg-negro text-white rounded-full' value='Cancelar' />
                     </label>
                 </form>
             </dialog>
