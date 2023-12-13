@@ -1,5 +1,5 @@
 'use client'
-import getEvents from "@/utils/getEvents/getEvents"
+import getEvents from "@/utils/eventsRequest/getFeedEvents"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 
@@ -8,8 +8,6 @@ function FeedCard() {
   useEffect(() => {
     data[0] ? {} : getEvents(setData)
   }, [data])
-  console.log(data);
-
   return (
     <>
       <article className="flex flex-col w-full gap-10 py-5 items-center" >

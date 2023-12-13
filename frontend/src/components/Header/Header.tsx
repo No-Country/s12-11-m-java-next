@@ -10,18 +10,18 @@ export const Header = () => {
     const [log, setLog] = useState('false')
     const pathname = usePathname()
     useEffect(() => {
-        localStorage.getItem('tKeyId') ? setLog(`${ localStorage.getItem('tKeyId') }`) : setLog(log)
+        localStorage.getItem('tKeyId') !== null ? setLog(`${localStorage.getItem('tKeyId')}`) : setLog(log)
     }, [])
 
     return (
-        <header className={`py-3 px-4 flex items-center justify-between text-rosa bg-transparent ${ pathname !== '/' && 'shadow-md' }`}>
+        <header className={`py-3 px-4 flex items-center justify-between text-rosa bg-transparent ${pathname !== '/' && 'shadow-md'}`}>
             <div className='flex items-center gap-24'>
                 <div className='text-lg font-bold mx-10'>LOGO</div>
                 <div className='flex gap-16'>
                     {LinkHeader.map(res =>
                         <Link
                             className={
-                                pathname === `${ res.path }`
+                                pathname === `${res.path}`
                                     ? "font-semibold border-b-2 border-rosa"
                                     : ""
                             }

@@ -1,13 +1,13 @@
 'use client'
-import getMusic from '@/utils/getMusic/getMusic'
 import React, { useEffect, useState } from 'react'
 import { FaCirclePlay } from 'react-icons/fa6'
-import AudioPlayer from '../descubre/Audioplayer'
+import AudioPlayer from '../Discover/Audioplayer'
+import getFeedMusic from '@/utils/musicRequest/getFeedMusic'
 
 const MusicFeedCard = () => {
     const [data, setData] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
     useEffect(() => {
-        data[0] ? {} : getMusic(setData)
+        data[0] ? {} : getFeedMusic(setData)
     }, [data])
     return (
         <>{data.map(res =>

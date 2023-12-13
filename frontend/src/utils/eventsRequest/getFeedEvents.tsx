@@ -1,6 +1,6 @@
 import axios from 'axios'
 const URL = process.env.NEXT_PUBLIC_URL_API
-const getEvents = async (setData: any) => {
+const getFeedEvents = async (setData: any) => {
     await axios.get(
         `${URL}eventos/`,
     )
@@ -12,4 +12,4 @@ const getEvents = async (setData: any) => {
         })
 }
 
-export default getEvents
+export default getFeedEvents

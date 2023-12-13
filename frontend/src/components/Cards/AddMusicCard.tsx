@@ -1,5 +1,5 @@
 'use client'
-import postMusica from '@/utils/postMusica/postMusica';
+import postMusica from '@/utils/musicRequest/postMusica';
 import React, { useEffect, useRef, useState } from 'react'
 import { FaPlus } from 'react-icons/fa6';
 

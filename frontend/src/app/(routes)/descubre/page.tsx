@@ -1,7 +1,7 @@
-import Artist from "@/components/descubre/Artist"
-import AudioPlayer from '@/components/descubre/Audioplayer'
-import { Genres } from "@/components/descubre/Genres"
-import { Song } from '@/components/descubre/Song'
+import Artist from "@/components/Discover/Artist"
+import AudioPlayer from '@/components/Discover/Audioplayer'
+import { Genres } from "@/components/Discover/Genres"
+import { Song } from '@/components/Discover/Song'
 import { FaSearch } from "react-icons/fa"
 
 const pageDescubre = () => {

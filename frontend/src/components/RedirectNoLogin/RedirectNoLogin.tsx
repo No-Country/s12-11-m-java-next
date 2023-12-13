@@ -1,14 +1,12 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
 
 export const RedirectNoLogin = () => {
-    const [log, setLog] = useState('false')
-    useEffect(() => {
-        localStorage.getItem('tKeyId') !== null ? setLog(`${localStorage.getItem('tKeyId')}`) : setLog(log)
-    }, [])
+    //localStorage.setItem('tKeyId', 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2FxdWluQGdtYWlsLmNvbSIsImlhdCI6MTcwMjQxNTkxNCwiZXhwIjoxNzAyNTAyMzE0fQ.OJS-03nn0asE5Pf64ku-pfCIp_AraI-whhhxx_p4OHc')
     const router = useRouter()
-    log === 'false' ? router.push('/auth/login') : <></>
+    !localStorage.getItem('tKeyId') ?
+        router.push('/auth/login')
+        : <></>
     return (null)
 }
 

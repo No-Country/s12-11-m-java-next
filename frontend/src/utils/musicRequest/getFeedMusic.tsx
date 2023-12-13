@@ -1,6 +1,6 @@
 import axios from 'axios'
 const URL = process.env.NEXT_PUBLIC_URL_API
-const getMusic = async (setData: any) => {
+const getFeedMusic = async (setData: any) => {
     await axios.get(
         `${URL}musica/`,
     )
@@ -11,4 +11,4 @@ const getMusic = async (setData: any) => {
             console.log(err);
         })
 }
-export default getMusic
+export default getFeedMusic
