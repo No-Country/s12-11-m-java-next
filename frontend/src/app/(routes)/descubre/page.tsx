@@ -1,7 +1,8 @@
-import { Genres } from "@/components/descubre/Genres"
-import { FaSearch } from "react-icons/fa"
 import Artist from "@/components/descubre/Artist"
-import { Song } from "@/components/descubre/Song"
+import AudioPlayer from '@/components/descubre/Audioplayer'
+import { Genres } from "@/components/descubre/Genres"
+import { Song } from '@/components/descubre/Song'
+import { FaSearch } from "react-icons/fa"
 
 const pageDescubre = () => {
     const data = [1, 3, 4, 5, 6, 7, 8, 9, 0]
@@ -38,10 +39,8 @@ const pageDescubre = () => {
                     }
                 </div>
             </section>
-            <div className="fixed bottom-0 left-0 h-14 w-full bg-white text-negro">
-                <p>
-                    reproductor
-                </p>
+            <div className="fixed bottom-0 left-0 h-14 w-full bg-rosa text-negro">
+                <AudioPlayer />
             </div>
         </main>
     )
