@@ -9,11 +9,11 @@ const pageDescubre = () => {
 
     return (
         <main className="w-full relative  mb-20">
-            <div className="flex items-center border-2 mt-14 rounded-md gap-3 p-2 max-w-sm  w-full m-auto">
-                <FaSearch />
+            <div className="flex items-center border-2 border-rosa mt-10 rounded-xl gap-3 p-2 max-w-sm  w-full m-auto">
+                <FaSearch className='text-rosa' />
                 <input className="w-full bg-transparent outline-none" />
             </div>
-            <section className="p-4 w-full h-96 relative overflow-hidden text-center mt-10">
+            {/* <section className="p-4 w-full h-96 relative overflow-hidden text-center mt-10">
                 <h2 className="text-2xl font-semibold">Artistas destacados</h2>
 
                 <div className="w-full flex mt-4 gap-4 absolute justify-center ">
@@ -23,14 +23,14 @@ const pageDescubre = () => {
                         ))
                     }
                 </div>
-            </section>
+            </section> */}
             <section className="p-4 w-full h-52 relative overflow-hidden text-center">
-                <div className="w-full flex mt-4 gap-4 absolute justify-center ">
+                <div className="w-full flex gap-4 absolute justify-center ">
                     <Genres />
                 </div>
             </section>
             <section className="full p-4">
-                <h2 className="text-2xl font-semibold">Musica</h2>
+                <h1 className="text-2xl font-semibold">Musica</h1>
                 <div className="flex flex-col gap-3 w-full">
                     {
                         data.map(item => (

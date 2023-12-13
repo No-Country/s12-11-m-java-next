@@ -12,7 +12,7 @@ const pagePerfil = ({
         <section className='flex flex-col'>
             <RedirectNoLogin />
             <Account />
-            <article className='flex flex-col w-full gap-5 px-5 bg-darkViolet text-white min-h-[42vh] h-auto py-5 '>
+            <article className='flex flex-col w-full gap-5 px-5 bg-darkViolet text-white min-h-[42vh] h-auto py-5'>
                 <AccountNavBar />
                 {children}
             </article>

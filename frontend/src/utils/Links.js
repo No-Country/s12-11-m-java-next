@@ -25,7 +25,7 @@ export const LinkFeed = [
   },
   {
     label: "Subir post",
-    path: "/perfil/post",
+    path: "/perfil/posts",
     icon: MdOutlinePostAdd,
   },
   {

@@ -1,7 +1,8 @@
 import { Header } from '@/components/Header/Header';
 import Link from 'next/link';
-
-export default function Home () {
+import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa6';
+import { SiExpertsexchange } from "react-icons/si";
+export default function Home() {
   return (
     <div className='bg-gradient-to-b from-darkViolet to-lightViolet text-white h-full'>
       <div className="bg-home_bg text-white bg-cover">
@@ -79,9 +80,10 @@ export default function Home () {
           <div className="md:w-1/4 mb-4 md:mb-0 mt-2 sm:mt-0 sm:ml-0 md:text-start text-center">
             <h3 className="text-xl font-semibold">Síguenos</h3>
             <ul className='flex gap-4'>
-              {/* <li className="hover:scale-125 duration-1000 bg-[#ABABAB] rounded-full p-2">a</li>
-                        <li className="hover:scale-125 duration-1000 bg-[#ABABAB] rounded-full p-2">a</li>
-                        <li className="hover:scale-125 duration-1000 bg-[#ABABAB] rounded-full p-2">a</li> */}
+              <li className="hover:scale-[1.8] duration-500 p-2"><FaInstagram /></li>
+              <li className="hover:scale-[1.8] duration-500 p-2"><FaFacebook /></li>
+              <li className="hover:scale-[1.8] duration-500 p-2"><FaYoutube /></li>
+              <li className="hover:scale-[1.8] duration-500 p-2"><SiExpertsexchange /></li>
             </ul>
           </div>
         </div>

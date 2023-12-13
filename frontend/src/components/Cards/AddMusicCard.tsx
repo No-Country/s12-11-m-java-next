@@ -1,4 +1,5 @@
 'use client'
+import { genres } from '@/utils/genres';
 import postMusica from '@/utils/musicRequest/postMusica';
 import React, { useEffect, useRef, useState } from 'react'
 import { FaPlus } from 'react-icons/fa6';
@@ -38,17 +39,22 @@ const AddMusicCard = () => {
                 >
                     <label htmlFor="fileMusic" className='border-2 p-2 border-negro border-dotted rounded-md w-full h-[43px] text-center cursor-pointer'>
                         + Agregar musica
-                        <input required name='audio' type="file" className='hidden' id='fileMusic' />
+                        <input required name='audio' type="file" hidden id='fileMusic' />
                     </label>
                     <label htmlFor="fileMusicImg" className='border-2 p-2 border-negro border-dotted rounded-md w-full h-[43px] text-center cursor-pointer'>
                         + Agregar imagen
-                        <input required name='img' type="file" className='hidden' id='fileMusicImg' />
+                        <input required name='img' type="file" hidden id='fileMusicImg' />
                     </label>
                     <label htmlFor="">
                         <input required name='titulo' type="text" placeholder='Titulo' className='border-2 p-2 border-negro rounded-md w-full' />
                     </label>
-                    <label htmlFor="" className='flex gap-5'>
-                        <input required name='genero' type="text" placeholder='Genero' className='border-2 p-2 border-negro rounded-md w-full' />
+                    <label htmlFor="" className='flex flex-col'>
+                        <small>Elija un genero</small>
+                        <select name="genero" id="" placeholder='Genero' defaultValue={''} className='outline-none border-2 p-2 border-negro rounded-md w-full'>
+                            {genres.map(res =>
+                                <option value={res.title} key={res.id}>{res.title}</option>
+                            )}
+                        </select>
                     </label>
                     <label htmlFor="">
                         <input name='fecha' type="text" defaultValue={fecha} hidden />

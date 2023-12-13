@@ -16,9 +16,6 @@ export const Genres = () => {
           </Link>
         ))}
       </div>
-      <Link href="#" className="text-sm text-right pr-4 underline">
-        Ver más
-      </Link>
     </section>
   )
 }

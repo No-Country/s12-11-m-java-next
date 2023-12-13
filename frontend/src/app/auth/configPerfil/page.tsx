@@ -7,7 +7,7 @@ const pageConfigPerfil = () => {
   return (
     // componetizar  elementos como el input , el switch o el form
 
-    <section className="h-full w-full flex flex-col items-center">
+    <section className="h-full w-full flex flex-col items-center bg-gradient-to-t from-lightViolet to-darkViolet">
       <RedirectNoLogin />
       <div className='h-full w-full flex text-white items-center  pt-10 pl-5'>
         <FaArrowLeft />
