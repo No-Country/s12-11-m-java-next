@@ -7,7 +7,7 @@ import playlist from '../AudioPlayer/playlist';
 
 
 const AudioPlayer = () => {
-  const [mute, setMute] = useState(false)
+  const [prevVolume, setPrevVolume] = useState(0)
   const {
     playNextTrack,
     playPreviousTrack,
@@ -16,6 +16,7 @@ const AudioPlayer = () => {
     toggleRepeat,
     toggleShuffle,
     setPlaybackPosition,
+    setVolumePosition,
   } = useAudioPlayer(playlist);
 
   const {
@@ -23,6 +24,7 @@ const AudioPlayer = () => {
     playbackState,
     shuffle,
     currentTrackDuration,
+    volume,
     currentTrackPlaybackPosition,
     currentTrackMetadata,
   } = playerState;
@@ -45,8 +47,10 @@ const AudioPlayer = () => {
     }
   }
 
-  function computeVolume (): number {
-
+  function setVolume (value: number) {
+    if (volume !== null) {
+      setVolumePosition(value);
+    }
   }
 
   function formatTime (timeInSeconds: number | null): string {
@@ -56,6 +60,15 @@ const AudioPlayer = () => {
     const minutes = `${ numberOfMinutes }`.padStart(2, '0');
     const seconds = `${ numberOfSeconds }`.padStart(2, '0');
     return `${ minutes }:${ seconds }`;
+  }
+
+  const handleMuted = () => {
+    if (volume !== 0) {
+      setPrevVolume(volume)
+      setVolume(0)
+    } else {
+      setVolume(prevVolume)
+    }
   }
 
   return (
@@ -82,14 +95,18 @@ const AudioPlayer = () => {
         </div>
       </div>
       <div className='flex gap-2 items-center'>
-        <button>
+        {volume === 0
+          ? <button onClick={handleMuted}><FaVolumeMute size={20} /></button>
+          : <button onClick={handleMuted}><FaVolumeUp size={20} /></button>
+        }
+        {/* <button>
           <FaVolumeUp size={20} />
         </button>
         <button>
           <FaVolumeMute size={20} />
-        </button>
-        <input type='range' min='1' max='100' value={computeProgress()} step='0.25' className='slider-volume' onChange={(event) => {
-          setProgress(parseInt(event?.target.value));
+        </button> */}
+        <input type='range' min='0' max='1' value={volume} step='0.01' className='slider-volume' onChange={(event) => {
+          setVolume(event.target.valueAsNumber);
         }} />
       </div>
     </section>

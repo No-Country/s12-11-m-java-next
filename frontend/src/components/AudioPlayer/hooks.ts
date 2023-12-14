@@ -22,6 +22,9 @@ function useAudioPlayer (playlist: Playlist): AudioPlayer {
   function setPlaybackPosition (position: number) {
     playerRef.current?.setPlaybackPosition(position);
   }
+  function setVolumePosition (position: number) {
+    playerRef.current?.setVolumePosition(position);
+  }
 
   function toggleShuffle () {
     playerRef.current?.toggleShuffle();
@@ -49,6 +52,7 @@ function useAudioPlayer (playlist: Playlist): AudioPlayer {
 
   return {
     setPlaybackPosition,
+    setVolumePosition,
     playerState,
     toggleShuffle,
     toggleRepeat,

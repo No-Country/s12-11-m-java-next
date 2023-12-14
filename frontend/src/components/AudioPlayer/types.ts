@@ -15,6 +15,7 @@ export interface TrackMetadata {
 /* === Controls === */
 export interface Controls {
   setPlaybackPosition: (position: number) => void;
+  setVolumePosition: (position: number) => void;
   toggleShuffle: () => void;
   toggleRepeat: () => void;
   togglePlayPause: () => void;
@@ -31,6 +32,7 @@ export interface PlayerState {
   playbackState: PlaybackState;
   repeat: boolean;
   shuffle: boolean;
+  volume: number;
 }
 
 export type PlaybackState = 'PLAYING' | 'PAUSED';
@@ -42,4 +44,5 @@ export const InitialPlayerState: PlayerState = {
   playbackState: 'PAUSED',
   repeat: false,
   shuffle: false,
+  volume: 1
 };

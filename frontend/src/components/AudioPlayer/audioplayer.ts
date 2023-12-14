@@ -32,6 +32,7 @@ export function createAudioplayer (
       playbackState: getPlaybackState(),
       repeat,
       shuffle,
+      volume: getCurrentTrackVolume(),
     };
   }
 
@@ -45,6 +46,9 @@ export function createAudioplayer (
 
   function getCurrentTrackDuration (): number | null {
     return isNaN(audioElement.duration) ? null : audioElement.duration;
+  }
+  function getCurrentTrackVolume (): number {
+    return isNaN(audioElement.volume) ? 0 : audioElement.volume;
   }
 
   function getCurrentTrackPlaybackPosition (): number | null {
@@ -117,7 +121,6 @@ export function createAudioplayer (
   function init () {
     setupAudioElementListeners();
     loadTrack(0);
-    console.log(audioElement.volume)
   }
 
   function cleanup () {
@@ -131,6 +134,10 @@ export function createAudioplayer (
   function setPlaybackPosition (position: number) {
     if (isNaN(position)) return;
     audioElement.currentTime = position;
+  }
+
+  function setVolumePosition (position: number) {
+    audioElement.volume = position;
   }
 
   function toggleShuffle () {
@@ -173,6 +180,7 @@ export function createAudioplayer (
   init();
   return {
     setPlaybackPosition,
+    setVolumePosition,
     toggleShuffle,
     toggleRepeat,
     playNextTrack,
