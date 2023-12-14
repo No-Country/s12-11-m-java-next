@@ -4,29 +4,27 @@ import com.nocountry.s12.Dto.Request.PublicacionRequestDTO;
 import com.nocountry.s12.Dto.Response.PublicacionResponseDTO;
 import com.nocountry.s12.Exception.UserNotExistException;
 import com.nocountry.s12.Repository.PublicacionRepository;
-import com.nocountry.s12.Repository.UsuarioRepository;
 import com.nocountry.s12.Service.PublicacionService;
 import com.nocountry.s12.models.Publicacion;
-import com.nocountry.s12.models.Usuario;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class PublicacionServiceImpl implements PublicacionService {
 
     @Autowired
     private PublicacionRepository publicacionRepository;
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
 
     @Override
     public List<PublicacionResponseDTO> getPublicaciones() {
@@ -43,22 +41,29 @@ public class PublicacionServiceImpl implements PublicacionService {
     }
 
     @Override
-    public List<PublicacionResponseDTO> getPublicacionesPorUsuario(Long idUsuario) {
-        Usuario usuario = obtenerUsuarioPorId(idUsuario);
-        List<Publicacion> publicaciones = usuario.getPublicaciones();
+    @Transactional
+    public List<PublicacionResponseDTO> getPublicacionesPorUsuario(String username) {
+        Optional<List<Publicacion>> publicaciones = publicacionRepository.findByUsername(username);
 
-        List<PublicacionResponseDTO> listaPublicacionDto = new ArrayList<>();
+        if (publicaciones.isPresent()) {
+            List<Publicacion> listaPublicacion = publicaciones.get();
 
-        for (Publicacion publicacion : publicaciones) {
-            PublicacionResponseDTO dto = new PublicacionResponseDTO(publicacion);
-            listaPublicacionDto.add(dto);
+            if (!listaPublicacion.isEmpty()) {
+                return listaPublicacion.stream()
+                        .map(PublicacionResponseDTO::new)
+                        .collect(Collectors.toList());
+            } else {
+                throw new EntityNotFoundException("El usuario no tiene publicaciones");
+            }
+
+        } else {
+            throw new UserNotExistException();
         }
-
-        return listaPublicacionDto;
     }
 
 
     @Override
+    @Transactional
     public PublicacionResponseDTO getPublicacionPorId(Long idPublicacion) {
         Publicacion publicacion = publicacionRepository.findById(idPublicacion)
                 .orElseThrow(() -> new EntityNotFoundException("No se encontró la publicación con ID: " + idPublicacion));
@@ -68,24 +73,24 @@ public class PublicacionServiceImpl implements PublicacionService {
     }
 
     @Override
-    public Publicacion crearPublicacion(PublicacionRequestDTO publicacionRequestDTO) {
-        Optional<Usuario> usuarioAutenticado = obtenerUsuarioAutenticado();
+    @Transactional
+    public PublicacionResponseDTO crearPublicacion(PublicacionRequestDTO publicacionRequestDTO, String username) {
 
-        if (usuarioAutenticado.isPresent()) {
-            Publicacion publicacion = new Publicacion();
-            publicacion.setUsuario(usuarioAutenticado.get());
-            publicacion.setMensaje(publicacionRequestDTO.mensaje());
-            publicacion.setFechaCreacion(LocalDate.now());
-            //publicacion.setImagen(publicacionRequestDTO.imagen());
+        //Usuario usuario = artistaService.getByUsername(username);
 
-            return publicacionRepository.save(publicacion);
-        }
-        else {
-            throw new UserNotExistException();
-        }
+        Publicacion publicacion = new Publicacion();
+        //publicacion.setUsuario(usuario);
+        publicacion.setMensaje(publicacionRequestDTO.mensaje());
+        publicacion.setFechaCreacion(LocalDate.now());
+        //publicacion.setImagen(publicacionRequestDTO.imagen());
+
+        publicacionRepository.save(publicacion);
+
+       return new PublicacionResponseDTO(publicacion);
     }
 
     @Override
+    @Transactional
     public Publicacion editarPublicacion(Long idPublicacion, PublicacionRequestDTO publicacionRequestDTO) {
 
 
@@ -105,6 +110,7 @@ public class PublicacionServiceImpl implements PublicacionService {
     }
 
     @Override
+    @Transactional
     public boolean eliminarPublicacion(Long idPublicacion) {
 
         Publicacion publicacion = publicacionRepository.findById(idPublicacion)
@@ -119,27 +125,5 @@ public class PublicacionServiceImpl implements PublicacionService {
         return true;
     }
 
-
-    private Usuario obtenerUsuarioPorId(Long idUsuario) {
-        return usuarioRepository.findById(idUsuario)
-                .orElseThrow(UserNotExistException::new);
-    }
-
-    // TODO: Ver si funciona
-    private Optional<Usuario> obtenerUsuarioAutenticado() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String nombreUsuario = authentication.getName();
-        return usuarioRepository.findByUsername(nombreUsuario);
-    }
-
-    /*
-    @Override
-    public void actualizarMeGusta(Publicacion publicacion) {
-        int cantidadMeGusta = publicacion.getReacciones().size();
-        publicacion.setMeGusta(cantidadMeGusta);
-
-        publicacionRepository.save(publicacion);
-    }
-     */
 }
 

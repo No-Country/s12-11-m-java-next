@@ -9,12 +9,10 @@ import java.util.List;
 public interface PublicacionService {
 
     List<PublicacionResponseDTO> getPublicaciones();
-    List<PublicacionResponseDTO> getPublicacionesPorUsuario(Long idUsuario);
+    List<PublicacionResponseDTO> getPublicacionesPorUsuario(String username);
     PublicacionResponseDTO getPublicacionPorId(Long idPublicacion);
-    Publicacion crearPublicacion(PublicacionRequestDTO publicacionRequestDTO);
+    PublicacionResponseDTO crearPublicacion(PublicacionRequestDTO publicacionRequestDTO, String username);
     Publicacion editarPublicacion(Long idPublicacion, PublicacionRequestDTO publicacionRequestDTO);
     boolean eliminarPublicacion(Long idPublicacion);
-
-    //void actualizarMeGusta(Publicacion publicacion);
 
 }
