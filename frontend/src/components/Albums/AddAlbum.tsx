@@ -6,7 +6,7 @@ import { genres } from "@/utils/genres"
 export const AddAlbum = () => {
   const years = [2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030]
 
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleModal = () => {
     if (isOpen) {
