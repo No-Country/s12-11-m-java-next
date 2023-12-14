@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .slider {
   -webkit-appearance: none;
   appearance: none;
@@ -67,4 +68,3 @@
   cursor: pointer;
   @apply drop-shadow-lg;
 }
-
