@@ -1,5 +1,6 @@
 'use client'
 import { LinkHeader } from '@/utils/Links'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -11,18 +12,18 @@ export const Header = () => {
     const pathname = usePathname()
 
     useEffect(() => {
-        localStorage.getItem('tKeyId') !== null ? setLog(`${ localStorage.getItem('tKeyId') }`) : setLog(log)
+        localStorage.getItem('tKeyId') !== null ? setLog(`${localStorage.getItem('tKeyId')}`) : setLog(log)
     }, [])
 
     return (
-        <header className={`py-3 px-4 flex items-center justify-between text-rosa bg-transparent ${ pathname !== '/' && 'shadow-md' }`}>
+        <header className={` px-4 flex items-center justify-between text-rosa bg-transparent ${pathname !== '/' && 'shadow-md'}`}>
             <div className='flex items-center gap-24'>
-                <div className='text-lg font-bold mx-10'>LOGO</div>
+                <Image src={'/logo.png'} alt='' width={150} height={150} className='text-lg font-bold mx-6' />
                 <div className='flex gap-11'>
                     {LinkHeader.map(res =>
                         <Link
                             className={
-                                pathname === `${ res.path }`
+                                pathname === `${res.path}`
                                     ? "font-semibold border-b-2 border-rosa"
                                     : ""
                             }

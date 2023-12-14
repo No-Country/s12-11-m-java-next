@@ -1,19 +1,13 @@
+import Image from "next/image"
+import { FaCirclePlay } from "react-icons/fa6"
+
 export const Song = () => {
   return (
     <div className="flex justify-between items-center gap-4">
       <div className="flex gap-4 py-2">
-        <button className="h-14 p-4 bg-negro rounded-md flex justify-center items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="36"
-            height="36"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="#fff"
-              d="m9.5 16.5l7-4.5l-7-4.5v9ZM12 22q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22Z"
-            />
-          </svg>
+        <button className="h-14 bg-negro flex rounded-md justify-center items-center">
+          <Image src='/home_bg.jpg' alt="" width={2000} height={2000} className="object-cover h-full w-full rounded-md" />
+          <FaCirclePlay className='h-10 w-10 absolute' />
         </button>
         <div className="grid">
           <h3 className="text-sm line-clamp-1">Title music</h3>

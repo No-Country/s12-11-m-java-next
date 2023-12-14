@@ -1,15 +1,22 @@
 import axios from 'axios'
 const URL = process.env.NEXT_PUBLIC_URL_API
-const getFeedEvents = async (setData: any) => {
-    await axios.get(
-        `${URL}eventos/`,
-    )
-        .then(function (response: any) {
-            setData(response.data);
-        })
-        .catch(function (err) {
-            console.log(err);
-        })
+async function getFeedEvents() {
+
+    await new Promise((resolve, reject) => {
+
+        const data = axios.get(
+            `${URL}eventos/`,
+        )
+        console.log(data);
+
+        if (!data) {
+            reject(new Error('No hay data'))
+        } else {
+
+            resolve(data);
+        }
+    })
 }
+
 
 export default getFeedEvents
