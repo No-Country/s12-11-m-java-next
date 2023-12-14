@@ -8,15 +8,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.nocountry.s12.Dto.Response.MusicResponseDto;
 import com.nocountry.s12.Exception.MiException;
+import org.springframework.security.core.userdetails.UserDetails;
 
 public interface IMusicService {
 
-	MusicResponseDto guardarMusica(MultipartFile audio, MultipartFile img, String titulo, String genero, String fechaSubida, String albunId)throws Exception;
+	//MusicResponseDto guardarMusica(MultipartFile audio, MultipartFile img, String titulo, String genero, String fechaSubida, String albunId)throws Exception;
 
 	ResponseEntity<Resource> obtenerCancionByName(String videoName) throws MiException;
 
-	List<MusicResponseDto> listarAlll();
+	//List<MusicResponseDto> listarAlll();
 
-	
+	List<MusicResponseDto> listarPorArtista(UserDetails userDetails) throws MiException ;
 
 }

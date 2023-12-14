@@ -24,117 +24,167 @@ import com.nocountry.s12.Repository.MusicRepository;
 import com.nocountry.s12.Service.IMusicService;
 import com.nocountry.s12.Service.ImagenService;
 import com.nocountry.s12.models.Album;
+import com.nocountry.s12.models.Artista;
 import com.nocountry.s12.models.Cancion;
 import com.nocountry.s12.models.Imagen;
+import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Service
 @RequiredArgsConstructor
 public class MusicServiceImpl implements IMusicService {
 
-	private final AlbumRepository albumRepository;
-	private final ImagenService imagenService;
-	private final MusicRepository musicRepository;
+    private final AlbumRepository albumRepository;
+    private final ImagenService imagenService;
+    private final MusicRepository musicRepository;
 
-	@Value("${url.cancion}")
-	private String urlCancion;
+    @Value("${url.cancion}")
+    private String urlCancion;
 
-	@Value("${music.dir}")
-	private String musicDir;
+    @Value("${music.dir}")
+    private String musicDir;
+/*
+    @Override
+    public MusicResponseDto guardarMusica(MultipartFile audio, MultipartFile img, String titulo, String genero,
+            String fechaSubida, String albunId) throws Exception {
 
-	@Override
-	public MusicResponseDto guardarMusica(MultipartFile audio, MultipartFile img, String titulo, String genero,
-			String fechaSubida, String albunId) throws Exception {
+        // signarle el nombre de la cancion a la url
+        urlCancion += audio.getOriginalFilename();
 
-		// signarle el nombre de la cancion a la url
-		urlCancion += audio.getOriginalFilename();
+        // buscar un album
+        Optional<Album> album = albumRepository.findById(Long.parseLong(albunId));
 
-		// buscar un album
-		Optional<Album> album = albumRepository.findById(Long.parseLong(albunId));
+        if (album.isEmpty()) {
+            throw new MiException("no existe album", HttpStatus.BAD_REQUEST);
+        }
 
-		if (album.isEmpty()) {
-			throw new MiException("no existe album", HttpStatus.BAD_REQUEST);
-		}
+        // guardar canción
+        if (!audio.isEmpty()) {
+            String fileName = audio.getOriginalFilename();
 
-		// guardar canción
+            // Crear el directorio si no existe
+            File uploadDirFile = new File(musicDir);
+            if (!uploadDirFile.exists()) {
+                uploadDirFile.mkdirs();
+            }
 
-		if (!audio.isEmpty()) {
-			String fileName = audio.getOriginalFilename();
+            // Guardar el archivo en el directorio
+            Path filePath = Paths.get(musicDir + fileName);
+            FileCopyUtils.copy(audio.getBytes(), filePath.toFile());
 
-			// Crear el directorio si no existe
-			File uploadDirFile = new File(musicDir);
-			if (!uploadDirFile.exists()) {
-				uploadDirFile.mkdirs();
-			}
+        } else {
+            throw new MiException("No ha cargado una canción", HttpStatus.BAD_REQUEST);
+        }
 
-			// Guardar el archivo en el directorio
-			Path filePath = Paths.get(musicDir + fileName);
-			FileCopyUtils.copy(audio.getBytes(), filePath.toFile());
+        // instancia de imagen asociada a la canción, guardo de img en claudinary
+        Imagen imgMusic = imagenService.save(img);
 
-		} else {
-			throw new MiException("No ha cargado una canción", HttpStatus.BAD_REQUEST);
-		}
+        // instancia de mi estidad cancion para persistir
+        Cancion musica = new Cancion(titulo, genero, fechaSubida, album.get(), imgMusic, urlCancion);
 
-		// instancia de imagen asociada a la canción, guardo de img en claudinary
-		Imagen imgMusic = imagenService.save(img);
+        // guardar cancion
+        musicRepository.save(musica);
 
-		// instancia de mi estidad cancion para persistir
-		Cancion musica = new Cancion(titulo, genero, fechaSubida, album.get(), imgMusic, urlCancion);
+        // devolver dto
+        MusicResponseDto musicResponse = new MusicResponseDto(musica.getId(), musica.getTitulo(), musica.getGenero(),
+                musica.getFechaSubida().toString(), musica.getImgMusic(),
+                musica.getUrlCancion(), musica.getAlbum().getId());
 
-		// guardar cancion
-		musicRepository.save(musica);
+        return musicResponse;
 
-		// devolver dto
-		MusicResponseDto musicResponse = new MusicResponseDto(musica.getId(), musica.getTitulo(), musica.getGenero(),
-															  musica.getFechaSubida().toString(), musica.getImgMusic(),
-															  musica.getUrlCancion(), musica.getAlbum().getId());
+    }
 
-		return musicResponse;
+    @Override
+    public ResponseEntity<Resource> obtenerCancionByName(String videoName) throws MiException {
+        try {
 
-	}
+            Path musicPath = Paths.get(musicDir, videoName);
 
-	
-	@Override
-	public ResponseEntity<Resource> obtenerCancionByName(String videoName) throws MiException {
-		try {
+            // Crea un recurso FileSystem para el archivo de video
+            Resource videoResource = new FileSystemResource(musicPath);
 
-			Path musicPath = Paths.get(musicDir, videoName);
+            // Configura las cabeceras de la respuesta
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+            headers.setContentLength(videoResource.contentLength());
+            headers.setContentDispositionFormData("attachment", videoName);
 
-			// Crea un recurso FileSystem para el archivo de video
-			Resource videoResource = new FileSystemResource(musicPath);
+            // Devuelve una respuesta con el recurso de video y las cabeceras configuradas
+            return ResponseEntity.ok().headers(headers).body(videoResource);
+        } catch (Exception e) {
+            throw new MiException("error en el nombre de la cancion", HttpStatus.BAD_REQUEST);
+        }
+    }
 
-			// Configura las cabeceras de la respuesta
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-			headers.setContentLength(videoResource.contentLength());
-			headers.setContentDispositionFormData("attachment", videoName);
+    @Override
+    public List<MusicResponseDto> listarAlll() {
+        List<MusicResponseDto> listaCanciones = musicRepository.findAll()
+                .stream()
+                .map(cancion -> new MusicResponseDto(
+                cancion.getId(),
+                cancion.getTitulo(),
+                cancion.getGenero(),
+                cancion.getFechaSubida().toString(),
+                cancion.getImgMusic(),
+                cancion.getUrlCancion(),
+                cancion.getAlbum().getId()
+        ))
+                .toList();
 
-			// Devuelve una respuesta con el recurso de video y las cabeceras configuradas
-			return ResponseEntity.ok().headers(headers).body(videoResource);
-		}
+        return listaCanciones;
+    }
 
-		catch (Exception e) {
-			throw new MiException("error en el nombre de la cancion", HttpStatus.BAD_REQUEST);
-		}
-	}
+    @Override
+    public List<MusicResponseDto> listarPorArtista(UserDetails userDetails) {
 
-	
-	@Override
-	public List<MusicResponseDto> listarAlll() {
-	    List<MusicResponseDto> listaCanciones = musicRepository.findAll()
-	            .stream()
-	            .map(cancion -> new MusicResponseDto(
-	                    cancion.getId(),
-	                    cancion.getTitulo(),
-	                    cancion.getGenero(),
-	                    cancion.getFechaSubida().toString(),
-	                    cancion.getImgMusic(),
-	                    cancion.getUrlCancion(),
-	                    cancion.getAlbum().getId()
-	            ))
-	            .toList();
+        if (userDetails instanceof Artista) {
+            Long userId = ((Artista) userDetails).getId();
 
-	    return listaCanciones;
-	}
+            List<Cancion> listaCanciones = albumRepository.findCancionesByArtistaId(userId);
+
+            List<MusicResponseDto> listaCancionDTO = listaCanciones.stream()
+                    .map(MusicResponseDto::new)
+                    .collect(Collectors.toList());
+
+            return listaCancionDTO;
+
+        }
+        return null;
+    }*/
+
+    public List<MusicResponseDto> listarPorArtista(UserDetails userDetails) throws MiException{
+        if (userDetails instanceof Artista) {
+            Long userId = ((Artista) userDetails).getId();
+        
+        Optional<List<Cancion>> optionalCanciones = albumRepository.findCancionesByArtistaId(userId);
+            System.out.println(optionalCanciones);
+        if (optionalCanciones.isPresent()) {
+            List<Cancion> listaCancion = optionalCanciones.get();
+
+            if (!listaCancion.isEmpty()) {
+                List<MusicResponseDto> listaCancionDTO = listaCancion.stream()
+                        .map(MusicResponseDto::new)
+                        .collect(Collectors.toList());
+
+                return listaCancionDTO;
+            } else {
+
+                throw new MiException("El artista no tiene canciones", HttpStatus.OK);
+            }
+        } else {
+            // Manejo si no se encuentra ningún álbum para el usuario.
+            throw new MiException("El artista no fue encontrado", HttpStatus.BAD_REQUEST);
+        }
+    }
+        return null;
+
+}
+
+    @Override
+    public ResponseEntity<Resource> obtenerCancionByName(String videoName) throws MiException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

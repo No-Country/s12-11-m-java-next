@@ -19,17 +19,14 @@ public record AlbumResponseDTO(Long id,
         String genero, 
         @JsonFormat(pattern = "yyyy-MM-dd")
         LocalDate fechaPublicacion, 
-        List<Cancion> canciones,
-        String mensaje
+        List<Cancion> canciones
         
         ) {
     
 
     public AlbumResponseDTO(Album album){
-        this(album.getId(), album.getTitulo(),album.getGenero(), album.getFechaPublicacion(), album.getCanciones(), null);
+        this(album.getId(), album.getTitulo(),album.getGenero(), album.getFechaPublicacion(), album.getCanciones());
     }
     
-    public AlbumResponseDTO(String mensaje) {
-        this(null, null, null, null, null, mensaje);
-    }
+
 }

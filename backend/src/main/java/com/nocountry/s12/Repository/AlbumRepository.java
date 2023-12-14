@@ -5,6 +5,7 @@
 package com.nocountry.s12.Repository;
 
 import com.nocountry.s12.models.Album;
+import com.nocountry.s12.models.Cancion;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,4 +23,8 @@ public interface AlbumRepository extends JpaRepository<Album, Long>{
     Optional<List<Album>> findByUsername(@Param("username") String username); 
     
     Album findByTitulo(@Param("titulo") String titulo);
+    
+    
+    @Query("SELECT c FROM Cancion c JOIN c.album a WHERE a.artista.id = :artistaId")
+    Optional<List<Cancion>> findCancionesByArtistaId(@Param("artistaId") Long artistaId);
 }
