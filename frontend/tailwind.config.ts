@@ -17,6 +17,7 @@ const config: Config = {
         whiteColor: "#F9F9F9",
         gray: "#DDDDDD",
         blackMd: "#626262",
+        border: "#F9F9F9",
       },
       boxShadow: {
         shadowInset: "inset 0px -20px 20px -15px #111",
