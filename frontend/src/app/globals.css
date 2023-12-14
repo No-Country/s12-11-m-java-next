@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  /* outline: 1px solid #646464; */
+}
+
+.stroke-text {
+  -webkit-text-stroke: 1px #F9F9F9;
+  color: transparent;
+}
 
 .slider {
   -webkit-appearance: none;
