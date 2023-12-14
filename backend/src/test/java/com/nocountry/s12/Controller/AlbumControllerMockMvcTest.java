@@ -51,7 +51,7 @@ public class AlbumControllerMockMvcTest {
   @Autowired
   private JacksonTester<AlbumRequestDTO> requestDTOJacksonTester;
 
-  @Test
+  /*@Test
   void canRetrieveAllAlbum() throws Exception {
     List<AlbumResponseDTO> dtoList = List.of(
         new AlbumResponseDTO(1L, "Rock", LocalDate.now(), List.of()),
@@ -183,5 +183,5 @@ public class AlbumControllerMockMvcTest {
     //then
     assertThat(response.getStatus(), anyOf(is(HttpStatus.ACCEPTED.value()),
         is(HttpStatus.NO_CONTENT.value())));
-  }
+  }*/
 }

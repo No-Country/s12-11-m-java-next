@@ -1,5 +1,6 @@
 package com.nocountry.s12.models;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,4 +26,6 @@ public class Imagen {
     
     @ManyToOne
     private Cancion cancion;
+    
+
 }

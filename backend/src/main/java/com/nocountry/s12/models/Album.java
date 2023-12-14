@@ -31,6 +31,7 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String titulo;
     private String genero;
     private LocalDate fechaPublicacion;
     private Boolean alta;
@@ -43,4 +44,5 @@ public class Album {
     private Artista artista;
     
     
+ 
 }

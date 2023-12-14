@@ -14,16 +14,22 @@ import java.util.List;
  *
  * @author Admin
  */
-public record AlbumResponseDTO(Long id, 
+public record AlbumResponseDTO(Long id,
+        String titulo,
         String genero, 
         @JsonFormat(pattern = "yyyy-MM-dd")
         LocalDate fechaPublicacion, 
-        List<Cancion> canciones
+        List<Cancion> canciones,
+        String mensaje
         
         ) {
     
 
     public AlbumResponseDTO(Album album){
-        this(album.getId(), album.getGenero(), album.getFechaPublicacion(), album.getCanciones());
+        this(album.getId(), album.getTitulo(),album.getGenero(), album.getFechaPublicacion(), album.getCanciones(), null);
+    }
+    
+    public AlbumResponseDTO(String mensaje) {
+        this(null, null, null, null, null, mensaje);
     }
 }

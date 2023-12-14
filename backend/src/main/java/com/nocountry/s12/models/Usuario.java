@@ -51,14 +51,6 @@ public class Usuario implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Roles rol;
-
-    @ManyToMany
-    @JoinTable(
-            name = "usuario_listaReproduccion",
-            joinColumns = @JoinColumn(name = "usuario_id"),
-            inverseJoinColumns = @JoinColumn(name = "lista_id")
-    )
-    private List<ListaReproduccion> listaReproduccion;
     
     @OneToOne
     private Imagen fotoPerfil;
@@ -92,7 +84,4 @@ public class Usuario implements UserDetails {
     }
 }
 
-//Se establece la relación bidireccional. Cada usuario puede tener varias listas
-// de reproducción, y cada lista de reproducción puede pertenecer a varios usuarios.
-// Además, cada lista de reproducción puede contener varias canciones, y una canción
-// puede estar en varias listas de reproducción.
+

@@ -4,11 +4,9 @@
  */
 package com.nocountry.s12.Dto.Request;
 
-import com.nocountry.s12.models.Cancion;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import java.util.List;
 
 /**
  *
@@ -23,12 +21,13 @@ public record AlbumRequestDTO(
         @NotBlank(message = "El campo fecha no debe estar vacio o null")
         String fechaPublicacion,
         
-        List<Cancion> canciones,
+        
+        @NotBlank(message = "El campo titulo no debe estar vacio o null")
+        @Size(max = 30, message = "El campo 'titulo' debe tener como máximo 30 caracteres")
+        @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+$", message = "Solamente se permite texto en el campo 'titulo'") 
+        String titulo
         
         
-        String nombreArtista
-        
-
         ) {
     
 

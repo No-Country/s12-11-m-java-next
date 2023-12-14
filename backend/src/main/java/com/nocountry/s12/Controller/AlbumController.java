@@ -9,6 +9,7 @@ import com.nocountry.s12.Dto.Response.AlbumResponseDTO;
 import com.nocountry.s12.Exception.MiException;
 import com.nocountry.s12.ServiceImpl.AlbumServiceImpl;
 import jakarta.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -36,7 +37,7 @@ public class AlbumController {
     
     private final AlbumServiceImpl albumService;
     
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity<?> listar() {
         List<AlbumResponseDTO> albumResponseDTO = albumService.listar();
         return new ResponseEntity<>(albumResponseDTO, HttpStatus.OK);
@@ -48,11 +49,19 @@ public class AlbumController {
         return new ResponseEntity<>(albumResponseDTO, HttpStatus.OK);
     }
     
-    @Secured("ARTISTA")
-    @PostMapping("")
-    public ResponseEntity<?> crear(@Valid @RequestBody AlbumRequestDTO albumRequestDTO, @AuthenticationPrincipal UserDetails userDetails) {
+    
+    @GetMapping("")
+    public ResponseEntity<?> buscarPorArtista(@AuthenticationPrincipal UserDetails userDetails) {
         String usernameArtista = userDetails.getUsername();
-                
+        List<AlbumResponseDTO> albumResponseDTO = albumService.listarPorArtista(usernameArtista);
+        return new ResponseEntity<>(albumResponseDTO, HttpStatus.OK);
+    }
+    
+    @Secured("ARTISTA")
+    @PostMapping()
+    public ResponseEntity<?> crear(@Valid @RequestBody AlbumRequestDTO albumRequestDTO, @AuthenticationPrincipal UserDetails userDetails) throws IOException {
+        String usernameArtista = userDetails.getUsername();
+    
         try {
             albumService.crear(albumRequestDTO, usernameArtista);
             return ResponseEntity.status(HttpStatus.CREATED).body("Album creado");
@@ -86,6 +95,5 @@ public class AlbumController {
         albumService.eliminar(id);
     }
     
-
     
 }

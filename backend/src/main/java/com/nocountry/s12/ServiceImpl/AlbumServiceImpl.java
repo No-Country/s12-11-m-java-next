@@ -10,11 +10,14 @@ import com.nocountry.s12.Exception.MiException;
 import com.nocountry.s12.Repository.AlbumRepository;
 import com.nocountry.s12.Service.AlbumService;
 import com.nocountry.s12.Service.ArtistaService;
+import com.nocountry.s12.Service.ImagenService;
 import com.nocountry.s12.models.Album;
 import com.nocountry.s12.models.Artista;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,7 +33,7 @@ public class AlbumServiceImpl implements AlbumService {
 
     private final AlbumRepository albumRepository;
     private final ArtistaService artistaService;
-
+    
     @Override
     public List<AlbumResponseDTO> listar() {
         List<Album> listaAlbum = albumRepository.findAll();
@@ -53,14 +56,16 @@ public class AlbumServiceImpl implements AlbumService {
         try {
             LocalDate fechaPublicacion = validarFecha(albumDTO.fechaPublicacion());
             Artista artista = artistaService.getByUsername(usernameArtista);
-
+            
             nuevoAlbum.setGenero(albumDTO.genero());
             nuevoAlbum.setFechaPublicacion(fechaPublicacion);
+            nuevoAlbum.setTitulo(albumDTO.titulo());
             nuevoAlbum.setAlta(true);
             nuevoAlbum.setArtista(artista);
 
             albumRepository.save(nuevoAlbum);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new MiException(e.getMessage());
         }
 
@@ -75,15 +80,6 @@ public class AlbumServiceImpl implements AlbumService {
         albumModificado.setGenero(albumDTO.genero());
         albumModificado.setFechaPublicacion(fechaPublicacion);
 
-        /*
-        List<Cancion> canciones = album.getCanciones();
-        if (canciones != null && !canciones.isEmpty()) {
-            for (Cancion cancion : canciones) {
-                cancion.setAlbum(album);
-                cancionRepository.save(cancion);
-            }
-        albumModificado.setCanciones(album.getCanciones());
-        }*/
         albumRepository.save(albumModificado);
         AlbumResponseDTO albumResponseDTO = new AlbumResponseDTO(albumModificado);
         return albumResponseDTO;
@@ -114,5 +110,29 @@ public class AlbumServiceImpl implements AlbumService {
             throw new MiException("El formato de fecha debe ser yyyy-MM-dd", HttpStatus.BAD_REQUEST);
         }
     }
+
+    @Override
+    public List<AlbumResponseDTO> listarPorArtista(String username) {
+        Optional<List<Album>> optionalAlbums = albumRepository.findByUsername(username);
+
+        if (optionalAlbums.isPresent()) {
+            List<Album> listaAlbum = optionalAlbums.get();
+
+            if (!listaAlbum.isEmpty()) {
+                List<AlbumResponseDTO> listaAlbumDTO = listaAlbum.stream()
+                        .map(AlbumResponseDTO::new)
+                        .collect(Collectors.toList());
+
+                return listaAlbumDTO;
+            } else {
+                // Manejo si el usuario no tiene álbumes.
+                return Collections.singletonList(new AlbumResponseDTO("El usuario no tiene álbumes."));
+            }
+        } else {
+            // Manejo si no se encuentra ningún álbum para el usuario.
+            return Collections.singletonList(new AlbumResponseDTO("Usuario no encontrado."));
+        }
+    }
+
 
 }
