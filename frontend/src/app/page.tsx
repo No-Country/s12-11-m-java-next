@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header/Header"
 import Link from "next/link"
+import portrait from "../../public/production-home.webp"
 import find from "../../public/find.webp"
 import singer from "../../public/singer.webp"
 import disco from "../../public/people-disco.webp"
@@ -10,35 +11,49 @@ import { SiExpertsexchange } from "react-icons/si"
 import { IoIosSearch } from "react-icons/io"
 export default function Home() {
   return (
-    <div className="max-w-[1440px] m-auto bg-gradient-to-b from-darkViolet to-lightViolet">
-      <header className="relative bg-home_bg bg-cover text-whiteColor min-h-[95vh]">
+    <div className="max-w-[1440px] m-auto">
+      <header className="relative flex flex-col text-whiteColor">
         <Header />
-        <section className="w-full absolute bottom-0 grid gap-6 p-12 bg-gradient-to-t from-purpleShadow">
-          <h2 className="grid gap-3 text-5xl font-semibold max-w-3xl">
-            <span>El lugar indicado para</span>
-            <span>compartir tu música y renovar</span>
-            <span>tu playlist.</span>
-          </h2>
-          <Link
-            href="/descubre"
-            className="w-fit px-4 py-2 bg-rosa text-negro text-sm font-bold rounded-full uppercase"
-          >
-            COMIENZA AHORA
-          </Link>
+        <picture>
+          <img
+            src={portrait.src}
+            alt="Portada del home"
+            width="100%"
+            height="auto"
+            className="max-h-[640px] min-h-[348px] object-cover brightness-75"
+          />
+        </picture>
+        <section className="absolute bottom-0 w-full grid items-end p-8 py-4 md:px-12 lg:py-10 bg-gradient-to-t from-purpleShadow">
+          <div className="grid gap-4 sm:gap-8">
+            <h2 className="md:hidden text-xl min-[390px]:text-2xl sm:text-3xl font-semibold max-w-xs sm:max-w-sm">
+              El lugar indicado para compartir tu música y renovar tu playlist.
+            </h2>
+            <h2 className="hidden md:grid gap-3 text-4xl lg:text-5xl font-semibold max-w-3xl">
+              <span>El lugar indicado para</span>
+              <span>compartir tu música y renovar</span>
+              <span>tu playlist.</span>
+            </h2>
+            <Link
+              href="/descubre"
+              className="w-fit px-4 py-2 bg-rosa text-negro text-xs sm:text-sm font-bold rounded-full uppercase hover:bg-whiteColor duration-300"
+            >
+              COMIENZA AHORA
+            </Link>
+          </div>
         </section>
       </header>
-      <main className="grid gap-16 bg-gradient-to-b from-purpleShadow to-darkViolet text-whiteColor py-28">
-        <section className="w-full max-w-6xl flex justify-between items-center gap-10 m-auto px-8">
+      <main className="grid gap-16 bg-gradient-to-b from-purpleShadow to-darkViolet text-whiteColor py-20 md:py-28">
+        <section className="w-full max-w-6xl flex flex-col md:flex-row md:justify-between items-center gap-10 m-auto px-8">
           <div className="relative">
-            <span className="w-48 absolute top-32 -right-10 px-3 py-2 flex items-center gap-4 text-sm font-light bg-purpleVanish rounded-md backdrop-blur-sm">
-              <IoIosSearch className="text-xl" />
+            <span className="w-28 min-[360px]:w-36 sm:w-44 absolute top-16 min-[360px]:top-20 -left-6 px-3 py-[6px] min-[360px]:py-2 flex items-center gap-2 sm:gap-4 text-xs min-[360px]:text-sm font-light bg-purpleVanish rounded-md backdrop-blur-sm">
+              <IoIosSearch className="text-lg sm:text-xl" />
               Pop|
             </span>
             <picture>
               <source srcSet={find.src} type="image/webp" />
               <img
                 src={find.src}
-                alt="Find singers"
+                alt="Encuentra Artistas"
                 width="380px"
                 height="auto"
               />
@@ -53,7 +68,7 @@ export default function Home() {
             </p>
           </div>
         </section>
-        <section className="relative w-full max-w-6xl flex justify-between items-center gap-10 m-auto px-8">
+        <section className="relative w-full max-w-6xl flex flex-col-reverse md:flex-row md:justify-between items-center gap-14 md:gap-10 m-auto px-8">
           <div className="max-w-xs grid gap-4">
             <span className="stroke-text text-4xl font-extrabold">02.</span>
             <h2 className="text-lg uppercase font-bold">Comparte</h2>
@@ -62,39 +77,40 @@ export default function Home() {
               llegar a un mayor público.
             </p>
           </div>
-          <div>
-            <picture className="absolute top-8 right-20 z-20">
+          <div className="relative ">
+            <picture className="absolute top-6 -left-6 z-10 px-3 sm:px-0">
               <source srcSet={singer.src} type="image/webp" />
               <img
                 src={singer.src}
-                alt="Girl singer"
+                alt="Cantante"
                 width="320px"
                 height="auto"
               />
             </picture>
-            <picture>
+            <picture className="relative">
               <source srcSet={disco.src} type="image/webp" />
               <img src={disco.src} alt="Disco" width="340px" height="auto" />
             </picture>
           </div>
         </section>
-        <section className="w-full max-w-6xl flex justify-between items-center gap-10 m-auto px-8">
+        <section className="w-full max-w-6xl flex flex-col md:flex-row md:justify-between items-center gap-10 m-auto px-8">
           <div className="relative">
             <picture>
               <source srcSet={dancing.src} type="image/webp" />
               <img
                 src={dancing.src}
-                alt="Connect with musicians"
+                alt="Conecta con artistas"
                 width="380px"
                 height="auto"
               />
             </picture>
-            <picture className="absolute -bottom-14 -right-14">
+            <picture className="absolute -bottom-11 -right-7 md:-bottom-14 md:-right-14">
               <img
                 src={phrase.src}
                 alt="phrase: Vive la experiencia con tus artistas favoritos"
                 width="110px"
                 height="auto"
+                className="w-24 sm:w-[110px]"
               />
             </picture>
           </div>
