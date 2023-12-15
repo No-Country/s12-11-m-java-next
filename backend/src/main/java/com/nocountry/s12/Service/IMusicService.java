@@ -12,12 +12,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public interface IMusicService {
 
-	//MusicResponseDto guardarMusica(MultipartFile audio, MultipartFile img, String titulo, String genero, String fechaSubida, String albunId)throws Exception;
+	MusicResponseDto guardarMusica(MultipartFile audio, MultipartFile img, String titulo, String genero, String fechaSubida, String albunId)throws Exception;
 
 	ResponseEntity<Resource> obtenerCancionByName(String videoName) throws MiException;
 
-	//List<MusicResponseDto> listarAlll();
+	List<MusicResponseDto> listarAll();
 
-	List<MusicResponseDto> listarPorArtista(UserDetails userDetails) throws MiException ;
+	List<MusicResponseDto> listarCancionesArtista(UserDetails userDetails) throws MiException ;
+	
+	
+
+
 
 }

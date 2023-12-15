@@ -25,8 +25,6 @@ public class Imagen {
     private String imagenUrl;
     private String cloudinaryId;
     
-    @ManyToOne
-    private Cancion cancion;
     
     @OneToOne
     private Album album;
