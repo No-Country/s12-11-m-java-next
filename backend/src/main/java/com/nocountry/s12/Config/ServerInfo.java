@@ -23,8 +23,7 @@ public class ServerInfo {
                 serverAddress = systemIp;
             }
 
-            // Imprimir la dirección IP y configurarla en las propiedades
-            System.out.println("Server IP: " + serverAddress);
+       
         } catch (Exception e) {
             e.printStackTrace();
         }
