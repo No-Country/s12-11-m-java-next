@@ -31,15 +31,4 @@ public class Publicacion {
     @JoinColumn(name="id_usuario")
     private Usuario usuario;
 
-
-    /*
-    @OneToMany(mappedBy = "publicacion", cascade = CascadeType.ALL)
-    private List<Reaccion> reacciones = new ArrayList<>();
-    */
-
-    /*
-    @Column(name = "me_gusta")
-    private Integer meGusta = 0;
-     */
-
 }
