@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.nocountry.s12.Config.ServerInfo;
 import com.nocountry.s12.Dto.Response.MusicResponseDto;
 import com.nocountry.s12.Exception.MiException;
 import com.nocountry.s12.Repository.AlbumRepository;
@@ -41,11 +40,13 @@ public class MusicServiceImpl implements IMusicService {
 	private final AlbumRepository albumRepository;
 	private final ImagenService imagenService;
 	private final MusicRepository musicRepository;
-	private final ServerInfo serverInfo;
 	
 
 	@Value("${music.dir}")
 	private String musicDir;
+
+	@Value("${ipServidor}")
+	private String serverAddress;
 
 	
 
@@ -53,7 +54,6 @@ public class MusicServiceImpl implements IMusicService {
 	public MusicResponseDto guardarMusica(MultipartFile audio, MultipartFile img, String titulo, String genero,
 			String fechaSubida, String albunId) throws Exception {
 		
-		String serverAddress= serverInfo.getServerAddress();
 		
 		// signarle el nombre de la cancion a la url
 		String urlCancion = serverAddress +  ":8080/music/" + audio.getOriginalFilename();
