@@ -9,15 +9,21 @@ import static org.mockito.BDDMockito.willDoNothing;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import com.nocountry.s12.Jwt.JwtService;
 import com.nocountry.s12.Service.CloudinaryService;
 import com.nocountry.s12.Service.ImagenService;
 import com.nocountry.s12.models.Cancion;
 import com.nocountry.s12.models.Imagen;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.nio.file.Files;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import javax.imageio.ImageIO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.AutoConfigureJsonTesters;
@@ -30,6 +36,7 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.util.ResourceUtils;
 
 @AutoConfigureJsonTesters
 @WebMvcTest(ImagenController.class)
@@ -86,11 +93,16 @@ class ImagenControllerMockMvcTest {
 
   @Test
   void canUploadImage() throws Exception {
-    MockMultipartFile mockMultipartFile = new MockMultipartFile("MyimageFile",
-        "image.png",
-        MediaType.IMAGE_PNG_VALUE, "MockImage".getBytes());
+    File imageFile = ResourceUtils.getFile("classpath:images/cat.bmp");
+    byte[] imageBytes = Files.readAllBytes(imageFile.toPath());
 
-    Imagen imagen = new Imagen(1L, mockMultipartFile.getName(), "Url",
+    //El nombre del atributo name del objeto de la clase MockMultipartFile debe coincidir
+    //con el nombre del parametro recibido en el controlador.
+    MockMultipartFile mockMultipartFile = new MockMultipartFile("imagen",
+        imageFile.getName(),
+        MediaType.MULTIPART_FORM_DATA_VALUE, imageBytes);
+
+    Imagen imagen = new Imagen(1L, "MyImageFile", "Url",
         "Cloudinary Id",
         new Cancion());
 
@@ -99,9 +111,11 @@ class ImagenControllerMockMvcTest {
 
     //when
     MockHttpServletResponse response = mockMvc.perform(
-            multipart("/imagen").file(mockMultipartFile)
-                .contentType(MediaType.IMAGE_PNG)
-                .accept(MediaType.APPLICATION_JSON)).andReturn()
+            multipart("/imagen")
+                .file(mockMultipartFile)
+                .contentType(MediaType.MULTIPART_FORM_DATA_VALUE)
+                .accept(MediaType.APPLICATION_JSON)
+        ).andReturn()
         .getResponse();
 
     //then
@@ -116,7 +130,8 @@ class ImagenControllerMockMvcTest {
         new Cancion());
 
     //given
-    given(cloudinaryService.delete(imagen.getCloudinaryId())).willReturn(Map.of());
+    given(cloudinaryService.delete(imagen.getCloudinaryId())).willReturn(
+        Map.of());
     willDoNothing().given(imagenService).delete(imagen.getId());
 
     //when
