@@ -17,6 +17,8 @@ public interface IMusicService {
 	ResponseEntity<Resource> obtenerCancionByName(String videoName) throws MiException;
 
 	List<MusicResponseDto> listarAll();
+	
+	List<MusicResponseDto> generoAll(String genero)  ;
 
 	List<MusicResponseDto> listarCancionesArtista(UserDetails userDetails) throws MiException ;
 	

@@ -160,4 +160,17 @@ public class MusicServiceImpl implements IMusicService {
 
 	}
 
+	@Override
+	public List<MusicResponseDto> generoAll(String genero) {
+		
+		
+		List<MusicResponseDto> listCancionesPorGenero = musicRepository.findByGenero(genero).stream()
+				.map(cancion -> new MusicResponseDto(cancion.getId(), cancion.getTitulo(), cancion.getGenero(),
+							cancion.getFechaSubida().toString(), cancion.getImagenes(), cancion.getUrlCancion(),
+							cancion.getAlbum().getId()))
+					.toList();
+		
+		return listCancionesPorGenero;
+	}
+
 }

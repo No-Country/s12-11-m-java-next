@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.nocountry.s12.Dto.Response.MusicResponseDto;
 import com.nocountry.s12.Exception.MiException;
 import com.nocountry.s12.Service.IMusicService;
-import com.nocountry.s12.models.Usuario;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -31,9 +30,11 @@ public class MusicController {
 	// registrar canción
 	@PostMapping
 	public ResponseEntity<?> saveCancion(@RequestParam("audio") MultipartFile audio,
-			@RequestParam("img") MultipartFile img, @RequestParam("titulo") String titulo,
-			@RequestParam("genero") String genero, @RequestParam("fechaSubida") String fechaSubida,
-			@RequestParam("albumId") String albumId) {
+										 @RequestParam("img") MultipartFile img, 
+										 @RequestParam("titulo") String titulo,
+										 @RequestParam("genero") String genero,
+										 @RequestParam("fechaSubida") String fechaSubida,
+										 @RequestParam("albumId") String albumId) {
 
 		try {
 
@@ -58,7 +59,7 @@ public class MusicController {
 	}
 
 	// listar por nombre de canción
-	@GetMapping("/{nombreCancion}")
+	@GetMapping("/artista/{nombreCancion}")
 	public ResponseEntity<?> getCancion(@PathVariable String nombreCancion) {
 
 		try {
@@ -69,7 +70,7 @@ public class MusicController {
 	}
 
 	// trae todos las caciones del artista
-	@GetMapping("/listArtista")
+	@GetMapping("/Artista")
 	public ResponseEntity<?> getAllcancionByArtista(@AuthenticationPrincipal UserDetails userDetails) {
 
 		try {
@@ -81,4 +82,12 @@ public class MusicController {
 		}
 
 	}
+	
+	
+	// trae todos las caciones por genero 
+		@GetMapping("/genero/{genero}")
+		public ResponseEntity<?> getAllcancionByGenero(@PathVariable String genero) {
+
+		return new ResponseEntity<>(musicService.generoAll(genero), HttpStatus.OK);
+		}
 }
