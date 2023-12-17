@@ -11,15 +11,14 @@ export const Header = () => {
 
   useEffect(() => {
     localStorage.getItem("tKeyId") !== null
-      ? setLog(`${localStorage.getItem("tKeyId")}`)
+      ? setLog(`${ localStorage.getItem("tKeyId") }`)
       : setLog(log)
   }, [])
 
   return (
     <header
-      className={`py-4 px-8 flex items-center justify-between text-whiteColor bg-gradient-to-b from-navShadow font-semibold ${
-        pathname !== "/" && "shadow-md"
-      }`}
+      className={`py-4 px-8 flex items-center justify-between text-whiteColor font-semibold ${ pathname !== "/" && "shadow-md"
+        }`}
     >
       <div className="flex items-center gap-24">
         <h3 className="flex flex-col uppercase text-xs">
@@ -30,7 +29,7 @@ export const Header = () => {
           {LinkHeader.map((res) => (
             <Link
               className={
-                pathname === `${res.path}`
+                pathname === `${ res.path }`
                   ? "font-medium border-b-2 border-whiteColor"
                   : ""
               }

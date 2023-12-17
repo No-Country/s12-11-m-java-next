@@ -1,16 +1,17 @@
 import { Header } from "@/components/Header/Header"
 import Link from "next/link"
-import find from "../../public/find.webp"
-import singer from "../../public/singer.webp"
-import disco from "../../public/people-disco.webp"
-import dancing from "../../public/dancing.webp"
-import phrase from "../../public/connect-phrase.png"
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa6"
-import { SiExpertsexchange } from "react-icons/si"
 import { IoIosSearch } from "react-icons/io"
-export default function Home() {
+import { SiExpertsexchange } from "react-icons/si"
+import phrase from "../../public/connect-phrase.png"
+import dancing from "../../public/dancing.webp"
+import find from "../../public/find.webp"
+import disco from "../../public/people-disco.webp"
+import singer from "../../public/singer.webp"
+
+export default function Home () {
   return (
-    <div className="max-w-[1440px] m-auto bg-gradient-to-b from-darkViolet to-lightViolet">
+    <div className="m-auto">
       <header className="relative bg-home_bg bg-cover text-whiteColor min-h-[95vh]">
         <Header />
         <section className="w-full absolute bottom-0 grid gap-6 p-12 bg-gradient-to-t from-purpleShadow">
