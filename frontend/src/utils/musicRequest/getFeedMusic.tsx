@@ -1,8 +1,9 @@
-import axios from 'axios'
+import axios from 'axios';
 const URL = process.env.NEXT_PUBLIC_URL_API
+
 const getFeedMusic = async (setData: any) => {
     await axios.get(
-        `${URL}musica/`,
+        `${ URL }/music`,
     )
         .then(function (response: any) {
             setData(response.data);
