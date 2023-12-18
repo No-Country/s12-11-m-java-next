@@ -67,7 +67,9 @@ _Como hacer un deploy_
 
 ## Construido con 🛠
 
-* [Spring framework](https://spring.io/)
+👉Stack Backend: Java - Spring - PostgreSql - JPA - JWT - Spring Security - Lombok - AWS - Cloudinary
+
+👉Stack Frontend: NextJS - ReactJS - TypeScript - Tailwind - Axios - Redux
 
 ## Autores ✒
 
