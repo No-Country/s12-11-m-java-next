@@ -10,6 +10,7 @@ import com.nocountry.s12.Exception.MiException;
 import com.nocountry.s12.Repository.AlbumRepository;
 import com.nocountry.s12.Service.AlbumService;
 import com.nocountry.s12.Service.ArtistaService;
+import com.nocountry.s12.Service.ImagenService;
 import com.nocountry.s12.models.Album;
 import com.nocountry.s12.models.Artista;
 import com.nocountry.s12.models.Imagen;
