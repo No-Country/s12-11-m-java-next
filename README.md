@@ -107,5 +107,5 @@ _Video demostración del proyecto._
 ## Agradecimientos
 
 <a href="https://www.nocountry.tech/" target="_blank">
-    <img style='background-color: MidnightBlue;' src="https://assets-global.website-files.com/62cc216ce23f79c10bc88169/63973e99052373b810cce94b_Branding%20NC-06-p-500.png" width="200" alt="No Country ">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsukYB3HL90LSwYv_RIR2O2OlCV8Sbkx2eNHv8nRvOu8L16FxLQ0nPzY02wQ_BJOfQZw&usqp=CAU" width="200" alt="No Country ">
 </a>
