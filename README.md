@@ -4,13 +4,13 @@
 _Descripción/resumen_
 
 # Contenido
-* [Comenzando con la api](#Comenzando-con-la-api)
-* [Comenzando con el cliente](#Comenzando-con-el-cliente)
-* [Ejecutando las pruebas](#Ejecutando-las-pruebas)
-* [Despliegue](#Despliegue)
-* [Construido con](#Construido-con)
-* [Autores](#Autores)
-* [Video demo](#Video demo)
+* [Comenzando con la api](#Comenzando-con-la-api-)
+* [Comenzando con el cliente](#Comenzando-con-el-cliente-)
+* [Ejecutando las pruebas](#Ejecutando-las-pruebas-)
+* [Despliegue](#Despliegue-)
+* [Construido con](#Construido-con-)
+* [Autores](#Autores-)
+* [Video demo](#Video-demo)
 * [Agradecimientos](#Agradecimientos)
 
 ## Comenzando con la api 🚀
@@ -107,5 +107,5 @@ _Video demostración del proyecto._
 ## Agradecimientos
 
 <a href="https://www.nocountry.tech/" target="_blank">
-    <img style='background-color: #030428;' src="https://assets-global.website-files.com/62cc216ce23f79c10bc88169/63973e99052373b810cce94b_Branding%20NC-06-p-500.png" width="200" alt="No Country ">
+    <img style='background-color: MidnightBlue;' src="https://assets-global.website-files.com/62cc216ce23f79c10bc88169/63973e99052373b810cce94b_Branding%20NC-06-p-500.png" width="200" alt="No Country ">
 </a>
