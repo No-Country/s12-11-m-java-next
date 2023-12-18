@@ -2,12 +2,7 @@ package com.nocountry.s12.models;
 
 import com.nocountry.s12.Enum.Roles;
 import jakarta.persistence.*;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
@@ -52,6 +47,9 @@ public class Usuario implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Roles rol;
     
+    // @OneToMany(mappedBy = "usuario")
+    // private List<Evento> eventos;
+
     @OneToOne
     private Imagen fotoPerfil;
     

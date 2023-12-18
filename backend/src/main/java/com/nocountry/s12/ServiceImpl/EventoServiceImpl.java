@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -12,10 +14,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.nocountry.s12.Dto.Request.EventoRequestDTO;
+import com.nocountry.s12.Dto.Response.ArtistaDTO;
+import com.nocountry.s12.Dto.Response.EventoArtistaResponseDto;
 import com.nocountry.s12.Dto.Response.EventoResponseDTO;
 import com.nocountry.s12.Exception.MiException;
 import com.nocountry.s12.Repository.EventoRepository;
+import com.nocountry.s12.Service.ArtistaService;
 import com.nocountry.s12.Service.EventoService;
+import com.nocountry.s12.models.Artista;
 import com.nocountry.s12.models.Evento;
 
 import jakarta.transaction.Transactional;
@@ -27,6 +33,8 @@ public class EventoServiceImpl implements EventoService{
 
     
     private final EventoRepository eventoRepository;
+    //private final ArtistaRepository artistaRepository;
+    private final ArtistaService artistaService;
    
 
     // public EventoServiceImpl(EventoRepository eventoRepository, ArtistaRepository artistaRepository) {
@@ -62,6 +70,56 @@ public class EventoServiceImpl implements EventoService{
         }
     }
 
+    @Override
+    public List<EventoResponseDTO> findEventoByArtist(String username) throws Exception {
+        
+        Optional <List<Evento>> optionalEventos = eventoRepository.findByUsername(username);
+        if (optionalEventos.isPresent()) {
+            List<Evento> listEventos = optionalEventos.get();
+
+            if (!listEventos.isEmpty()) {
+                List<EventoResponseDTO> listaEventoDTO = listEventos.stream()
+                        .map(EventoResponseDTO::new)
+                        .collect(Collectors.toList());
+
+                return listaEventoDTO;
+            } else {
+
+                throw new MiException("El artista no tiene eventos", HttpStatus.OK);
+            }
+        } else {
+            // Manejo si no se encuentra ningún álbum para el usuario.
+            throw new MiException("El artista no fue encontrado", HttpStatus.BAD_REQUEST);
+        }   
+        
+        
+    }
+
+    @Override
+    public List<EventoResponseDTO> findEventosByArtista(Long id) throws Exception {
+         ArtistaDTO artistaDTO = artistaService.verArtista(id);
+        Optional <List<Evento>> optionalEventos = eventoRepository.findByUsername(artistaDTO.getUsername());
+        if (optionalEventos.isPresent()) {
+            List<Evento> listEventos = optionalEventos.get();
+
+            if (!listEventos.isEmpty()) {
+                List<EventoResponseDTO> listaEventoDTO = listEventos.stream()
+                        .map(EventoResponseDTO::new)
+                        .collect(Collectors.toList());
+
+                return listaEventoDTO;
+            } else {
+
+                throw new MiException("El artista no tiene eventos", HttpStatus.OK);
+            }
+        } else {
+            // Manejo si no se encuentra ningún álbum para el usuario.
+            throw new MiException("El artista no fue encontrado", HttpStatus.BAD_REQUEST);
+        }   
+        
+        
+    }
+
     public boolean existsById (Long id) {
 		return eventoRepository.existsById(id);
 	}
@@ -93,6 +151,37 @@ public class EventoServiceImpl implements EventoService{
             
             EventoResponseDTO eventoCreado = new EventoResponseDTO(nuevoEvento);
             nuevoEvento.setId(eventoCreado.idEvento());
+            return eventoCreado;
+
+        }catch (Exception e) {
+            System.out.println("Service error:" +e.getMessage());
+            throw new Exception(e.getMessage());
+        }
+           // return null;
+        
+    }
+
+    @Override
+    //@Transactional
+    public EventoArtistaResponseDto saveEventoArtista(EventoRequestDTO eventoDto, String usernameArtista) throws Exception {
+        Evento nuevoEvento = new Evento();
+        Artista artista = artistaService.getByUsername(usernameArtista);
+        System.out.println("artista es service:" + artista.getNombreCompleto());
+        try{
+            LocalDate fechaEvento = validarFecha(eventoDto.fechaEvento());
+            nuevoEvento.setFechaEvento(fechaEvento);
+            nuevoEvento.setHora(eventoDto.hora());
+            nuevoEvento.setLugar(eventoDto.lugar());
+            nuevoEvento.setPrecio(eventoDto.precio());
+            nuevoEvento.setTitulo(eventoDto.titulo());
+            nuevoEvento.setDescripcion(eventoDto.descripcion());
+            nuevoEvento.setArtista(artista);
+            
+            eventoRepository.save(nuevoEvento);
+            EventoArtistaResponseDto eventoCreado = new EventoArtistaResponseDto(nuevoEvento);
+            nuevoEvento.setId(eventoCreado.idEvento());
+            
+            
             return eventoCreado;
 
         }catch (Exception e) {
@@ -160,5 +249,7 @@ public class EventoServiceImpl implements EventoService{
     }
         return null;
     }
+
+    
 
 }
