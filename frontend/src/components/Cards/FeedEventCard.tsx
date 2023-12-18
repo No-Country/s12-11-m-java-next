@@ -1,19 +1,20 @@
 'use client'
-import getEvents from "@/utils/eventsRequest/getFeedEvents"
+import getAllEvents from "@/utils/eventsRequest/getAllEvents"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 
-function FeedCard() {
-  const [data, setData] = useState([1, 2, 3, 4, 5, 6])
+function FeedEventCard() {
+  const [data, setData] = useState([])
   useEffect(() => {
-    data[0] ? {} : getEvents(setData)
+    data[0] ? {} : getAllEvents(setData)
   }, [data])
   return (
     <>
       <article className="flex flex-col w-full gap-10 py-5 items-center" >
         {data.map(res => (
           <div key={res.idEvento}
-            className="flex flex-col border p-6 border-black roun rounded-3xl w-full min-w-[280px] max-w-[800px] h-auto bg-white text-black gap-2">
+            className="flex flex-col border p-6 border-black  rounded-3xl w-full min-w-[280px] 
+            max-w-[800px] h-auto bg-white text-black gap-2">
             <div className="flex items-center gap-4">
               <Image src='/auth_bg.jpg' width='48' height='48' alt="" className="w-12 h-12 rounded-full" />
               <h3>{res.titulo}</h3>
@@ -36,4 +37,4 @@ function FeedCard() {
   )
 }
 
-export default FeedCard
+export default FeedEventCard
