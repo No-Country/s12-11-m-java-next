@@ -4,16 +4,16 @@
 _Descripción/resumen_
 
 # Contenido
-* [Comenzando](#Comenzando-)
-  * [Requisitos](#Requisitos-)
-  * [Instalación de la api](#Instalación-de-la-api-)
-  * [Instalación del cliente](#Instalación-del-cliente-)
-* [Ejecutando las pruebas](#Ejecutando-las-pruebas-)
-* [Despliegue](#Despliegue-)
-* [Construido con](#construido-con-)
-* [Autores](#Autores-)
-* [Video demo](#Video-demo)
-* [Agradecimientos](#Agradecimientos)
+* [Comenzando 🚀](#Comenzando-)
+  * [Requisitos 📋](#Requisitos-)
+  * [Instalación de la api 🔧](#Instalación-de-la-api-)
+  * [Instalación del cliente 🔨](#Instalación-del-cliente-)
+* [Ejecutando las pruebas ⚙️](#Ejecutando-las-pruebas-)
+* [Despliegue 📦](#Despliegue-)
+* [Construido con 🛠](#construido-con-)
+* [Autores ✒](#Autores-)
+* [Video demo 🎥](#Video-demo-)
+* [Agradecimientos 💝](#Agradecimientos-)
 
 ## Comenzando 🚀
 
@@ -47,7 +47,7 @@ _Para detener la ejecución_ (Ctrl + c)
 $ ./mvnw spring-boot:stop
 ```
 
-### Instalación del cliente 🔧
+### Instalación del cliente 🔨
 
 ## Ejecutando las pruebas ⚙️
 
@@ -100,11 +100,11 @@ _Como hacer un deploy_
 
 * **Carolina Saggio** - [GitHub]() - [Linkedin]()
 
-## Video demo
+## Video demo 🎥
 
 _Video demostración del proyecto._
 
-## Agradecimientos
+## Agradecimientos 💝
 
 <a href="https://www.nocountry.tech/" target="_blank">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsukYB3HL90LSwYv_RIR2O2OlCV8Sbkx2eNHv8nRvOu8L16FxLQ0nPzY02wQ_BJOfQZw&usqp=CAU" width="200" alt="No Country ">
