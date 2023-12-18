@@ -4,8 +4,10 @@
 _Descripción/resumen_
 
 # Contenido
-* [Comenzando con la api](#Comenzando-con-la-api-)
-* [Comenzando con el cliente](#Comenzando-con-el-cliente-)
+* [Comenzando](#Comenzando-)
+  * [Requisitos](#Requisitos-)
+  * [Instalación de la api](#Instalación-de-la-api-)
+  * [Instalación del cliente](#Instalación-del-cliente-)
 * [Ejecutando las pruebas](#Ejecutando-las-pruebas-)
 * [Despliegue](#Despliegue-)
 * [Construido con](#Construido-con-)
@@ -13,17 +15,19 @@ _Descripción/resumen_
 * [Video demo](#Video-demo)
 * [Agradecimientos](#Agradecimientos)
 
-## Comenzando con la api 🚀
-
-```
-$ git clone https://github.com/No-Country/s12-11-m-java-next.git
-```
+## Comenzando 🚀
 
 ### Requisitos 📋
 
 - Java JDK 17
 
-### Instalación 🔧
+_Obteniendo una copia del proyecto_
+
+```
+$ git clone https://github.com/No-Country/s12-11-m-java-next.git
+```
+
+### Instalación de la api 🔧
 
 _Ingresamos a la carpeta backend dentro del proyecto_
 
@@ -43,11 +47,7 @@ _Para detener la ejecución_ (Ctrl + c)
 $ ./mvnw spring-boot:stop
 ```
 
-## Comenzando con el cliente 🚀
-
-### Requisitos 📋
-
-### Instalación 🔧
+### Instalación del cliente 🔧
 
 ## Ejecutando las pruebas ⚙️
 
