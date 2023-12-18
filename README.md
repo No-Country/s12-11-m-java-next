@@ -102,7 +102,7 @@ _Como hacer un deploy_
 <a href='https://postimg.cc/wyZj7fLn' target='_blank'><img src='https://i.postimg.cc/wyZj7fLn/alejandro.jpg' border='0' alt='alejandro'/></a>
         <h4 style="margin-top: 1rem;">Alejandro Mattias</h4>
         <h4 style="margin-top: 1rem;">Backend Developer</h4>
-          <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
+          <a href="https://github.com/AJMattias" target="_blank">
             <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
           </a>
           <a href="https://www.linkedin.com/in/alejandro-mattias/" target="_blank">
