@@ -7,12 +7,17 @@ on:
       - backend/**
 jobs:
   deploy:
+    defaults:
+      run:
+        working-directory: backend
     name: Stereos app
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions@1.4
-      - run: flyctl deploy
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Deploy
+        run: flyctl deploy
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-        working-directory: ./backend
