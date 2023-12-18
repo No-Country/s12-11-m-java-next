@@ -75,7 +75,7 @@ _Como hacer un deploy_
 	<tbody align="center">
 		<tr>
    <td style="border: 1px #000000 solid">
-        <a href='https://postimg.cc/bdWhCz98' target='_blank'><img src='https://i.postimg.cc/bdWhCz98/image.jpg' border='0' alt='image'/></a>
+<a href='https://postimg.cc/Hj8LfmCm' target='_blank'><img src='https://i.postimg.cc/Hj8LfmCm/favio.jpg' border='0' alt='favio'/></a>
         <h4 style="margin-top: 1rem;">Favio Fernandez</h4>
         <h4 style="margin-top: 1rem;">Backend Developer</h4>
           <a href="https://github.com/faviofz" target="_blank">
@@ -86,7 +86,7 @@ _Como hacer un deploy_
           </a>
       </td>
    <td style="border: 1px #000000 solid">
-        <a href='https://postimg.cc/bdWhCz98' target='_blank'><img src='https://i.postimg.cc/bdWhCz98/image.jpg' border='0' alt='image'/></a>
+<a href='https://postimg.cc/Tpr33cwH' target='_blank'><img src='https://i.postimg.cc/Tpr33cwH/tatiana.jpg' border='0' alt='tatiana'/></a>
         <h4 style="margin-top: 1rem;">Tatiana Gutiérrez</h4>
         <h4 style="margin-top: 1rem;">Backend Developer</h4>
           <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
@@ -97,7 +97,7 @@ _Como hacer un deploy_
           </a>
       </td>
       <td style="border: 1px #000000 solid">
-        <a href='https://postimg.cc/bdWhCz98' target='_blank'><img src='https://i.postimg.cc/bdWhCz98/image.jpg' border='0' alt='image'/></a>
+<a href='https://postimg.cc/wyZj7fLn' target='_blank'><img src='https://i.postimg.cc/wyZj7fLn/alejandro.jpg' border='0' alt='alejandro'/></a>
         <h4 style="margin-top: 1rem;">Alejandro Mattias</h4>
         <h4 style="margin-top: 1rem;">Backend Developer</h4>
           <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
@@ -167,7 +167,7 @@ _Como hacer un deploy_
       </td>
 
 <td style="border: 1px #000000 solid">
-        <a href='https://postimg.cc/bdWhCz98' target='_blank'><img src='https://i.postimg.cc/bdWhCz98/image.jpg' border='0' alt='image'/></a>
+<a href='https://postimg.cc/FYNsdJkF' target='_blank'><img src='https://i.postimg.cc/FYNsdJkF/fernando.jpg' border='0' alt='fernando'/></a>
         <h4 style="margin-top: 1rem;">Fernando Malan</h4>
         <h4 style="margin-top: 1rem;">Frontend Developer</h4>
           <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
@@ -178,7 +178,7 @@ _Como hacer un deploy_
           </a>
       </td>
             <td style="border: 1px #000000 solid">
-        <a href='https://postimg.cc/bdWhCz98' target='_blank'><img src='https://i.postimg.cc/bdWhCz98/image.jpg' border='0' alt='image'/></a>
+<a href='https://postimg.cc/qzf7rFk3' target='_blank'><img src='https://i.postimg.cc/qzf7rFk3/joq-bianchi.jpg' border='0' alt='joq-bianchi'/></a>
         <h4 style="margin-top: 1rem;">Joaquín Bianchi</h4>
         <h4 style="margin-top: 1rem;">Frontend Developer</h4>
           <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
@@ -189,7 +189,7 @@ _Como hacer un deploy_
           </a>
       </td>
             <td style="border: 1px #000000 solid">
-        <a href='https://postimg.cc/bdWhCz98' target='_blank'><img src='https://i.postimg.cc/bdWhCz98/image.jpg' border='0' alt='image'/></a>
+<a href='https://postimg.cc/874khPLR' target='_blank'><img src='https://i.postimg.cc/874khPLR/nahuel-vill.jpg' border='0' alt='nahuel-vill'/></a>
         <h4 style="margin-top: 1rem;">Nahuel Villegas</h4>
         <h4 style="margin-top: 1rem;">Frontend Developer</h4>
           <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
@@ -202,7 +202,7 @@ _Como hacer un deploy_
          		</tr>
 		<tr>   
       <td style="border: 1px #000000 solid">
-       <a href='https://postimg.cc/JyvQZkm9' target='_blank'><img src='https://i.postimg.cc/JyvQZkm9/image.jpg' border='0' alt='image'/></a>
+<a href='https://postimg.cc/6229Jrgc' target='_blank'><img src='https://i.postimg.cc/6229Jrgc/ignacio-mor.png' border='0' alt='ignacio-mor'/></a>
         <h4 style="margin-top: 1rem;">Ignacio Morales</h4>
         <h4 style="margin-top: 1rem;">UX / UI</h4>
           <a href="https://github.com/nzaeta" target="_blank">
@@ -213,7 +213,7 @@ _Como hacer un deploy_
           </a>
       </td>
 <td style="border: 1px #000000 solid">
-       <a href='https://postimg.cc/JyvQZkm9' target='_blank'><img src='https://i.postimg.cc/JyvQZkm9/image.jpg' border='0' alt='image'/></a>
+<a href='https://postimg.cc/tn6CP3zJ' target='_blank'><img src='https://i.postimg.cc/tn6CP3zJ/kim.jpg' border='0' alt='kim'/></a>
         <h4 style="margin-top: 1rem;">Kimberly Pinto</h4>
         <h4 style="margin-top: 1rem;">QA tester</h4>
           <a href="https://github.com/nzaeta" target="_blank">
@@ -224,7 +224,7 @@ _Como hacer un deploy_
           </a>
       </td>
    <td style="border: 1px #000000 solid">
-       <a href='https://postimg.cc/JyvQZkm9' target='_blank'><img src='https://i.postimg.cc/JyvQZkm9/image.jpg' border='0' alt='image'/></a>
+<a href='https://postimg.cc/3yw895ZP' target='_blank'><img src='https://i.postimg.cc/3yw895ZP/melina.jpg' border='0' alt='melina'/></a>
         <h4 style="margin-top: 1rem;">Melina Valdez</h4>
         <h4 style="margin-top: 1rem;">QA tester</h4>
           <a href="https://github.com/nzaeta" target="_blank">
@@ -235,7 +235,7 @@ _Como hacer un deploy_
           </a>
       </td>
             <td style="border: 1px #000000 solid">
-       <a href='https://postimg.cc/JyvQZkm9' target='_blank'><img src='https://i.postimg.cc/JyvQZkm9/image.jpg' border='0' alt='image'/></a>
+<a href='https://postimg.cc/GBSc5779' target='_blank'><img src='https://i.postimg.cc/GBSc5779/caro.png' border='0' alt='caro'/></a>
         <h4 style="margin-top: 1rem;">Carolina Saggio</h4>
         <h4 style="margin-top: 1rem;">Project Manager</h4>
           <a href="https://github.com/csaggio74" target="_blank">
