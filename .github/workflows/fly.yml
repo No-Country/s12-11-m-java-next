@@ -7,9 +7,6 @@ on:
       - backend/**
 env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-  FLY_REGION: eze
-  FLY_ORG: personal
-  FLY_APP_NAME: stereos-api
 
 jobs:
   deploy:
@@ -17,6 +14,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only
-        working-directory: ./backend
+      - name: PR Review Apps on fly.io
+        uses: superfly/fly-pr-review-apps@1.2.0
