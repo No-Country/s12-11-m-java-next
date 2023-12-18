@@ -24,7 +24,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -53,22 +55,30 @@ public class AlbumController {
     @GetMapping("")
     public ResponseEntity<?> buscarPorArtista(@AuthenticationPrincipal UserDetails userDetails) {
         String usernameArtista = userDetails.getUsername();
-        List<AlbumResponseDTO> albumResponseDTO = albumService.listarPorArtista(usernameArtista);
+        List<AlbumResponseDTO> albumResponseDTO = null;
+        try {
+            albumResponseDTO = albumService.listarPorArtista(usernameArtista);
+        } catch (MiException ex) {
+            return new ResponseEntity<String>(ex.getMensaje(), ex.getStatus());
+        }
         return new ResponseEntity<>(albumResponseDTO, HttpStatus.OK);
     }
     
     @Secured("ARTISTA")
     @PostMapping()
-    public ResponseEntity<?> crear(@Valid @RequestBody AlbumRequestDTO albumRequestDTO, @AuthenticationPrincipal UserDetails userDetails) throws IOException {
+    public ResponseEntity<?> crear(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("img") MultipartFile img, @RequestParam("titulo") String titulo, @RequestParam("genero") String genero, @RequestParam("fechaPublicacion") String fechaPublicacion) throws IOException {
+
         String usernameArtista = userDetails.getUsername();
-    
+        
         try {
-            albumService.crear(albumRequestDTO, usernameArtista);
+            
+            albumService.crear(usernameArtista, img, titulo, genero, fechaPublicacion);
             return ResponseEntity.status(HttpStatus.CREATED).body("Album creado");
         } catch (MiException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+        
     
     @PutMapping("/{id}")
     public ResponseEntity<?> modificar(@PathVariable("id") Long id, @Valid @RequestBody AlbumRequestDTO albumRequestDTO) {
@@ -95,5 +105,6 @@ public class AlbumController {
         albumService.eliminar(id);
     }
     
+        
     
-}
+    }

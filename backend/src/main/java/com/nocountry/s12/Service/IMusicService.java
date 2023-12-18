@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.nocountry.s12.Dto.Response.MusicResponseDto;
 import com.nocountry.s12.Exception.MiException;
+import org.springframework.security.core.userdetails.UserDetails;
 
 public interface IMusicService {
 
@@ -15,8 +16,14 @@ public interface IMusicService {
 
 	ResponseEntity<Resource> obtenerCancionByName(String videoName) throws MiException;
 
-	List<MusicResponseDto> listarAlll();
-
+	List<MusicResponseDto> listarAll();
 	
+	List<MusicResponseDto> generoAll(String genero)  ;
+
+	List<MusicResponseDto> listarCancionesArtista(UserDetails userDetails) throws MiException ;
+	
+	
+
+
 
 }

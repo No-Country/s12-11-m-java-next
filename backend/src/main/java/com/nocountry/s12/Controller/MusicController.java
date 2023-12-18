@@ -17,6 +17,8 @@ import com.nocountry.s12.Exception.MiException;
 import com.nocountry.s12.Service.IMusicService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @RestController
 @RequestMapping("/music")
@@ -25,12 +27,14 @@ public class MusicController {
 
 	private final IMusicService musicService;
 
-	//registrar canción
+	// registrar canción
 	@PostMapping
 	public ResponseEntity<?> saveCancion(@RequestParam("audio") MultipartFile audio,
-			@RequestParam("img") MultipartFile img, @RequestParam("titulo") String titulo,
-			@RequestParam("genero") String genero, @RequestParam("fechaSubida") String fechaSubida,
-			@RequestParam("albumId") String albumId) {
+										 @RequestParam("img") MultipartFile img, 
+										 @RequestParam("titulo") String titulo,
+										 @RequestParam("genero") String genero,
+										 @RequestParam("fechaSubida") String fechaSubida,
+										 @RequestParam("albumId") String albumId) {
 
 		try {
 
@@ -46,23 +50,44 @@ public class MusicController {
 		}
 
 	}
-	
-	//listar todo
+
+	// listar todo
 	@GetMapping
 	public ResponseEntity<List<MusicResponseDto>> getAllCancion() {
 
-		return ResponseEntity.ok( musicService.listarAlll());
+		return ResponseEntity.ok(musicService.listarAll());
 	}
 
-	//listar por nombre de canción
-	@GetMapping("/{videoName}")
-	public ResponseEntity<?> getCancion(@PathVariable String videoName) {
+	// listar por nombre de canción
+	@GetMapping("/artista/{nombreCancion}")
+	public ResponseEntity<?> getCancion(@PathVariable String nombreCancion) {
 
 		try {
-			return musicService.obtenerCancionByName(videoName);
+			return musicService.obtenerCancionByName(nombreCancion);
 		} catch (MiException e) {
 			return ResponseEntity.badRequest().body(e.getMensaje());
 		}
 	}
 
+	// trae todos las caciones del artista
+	@GetMapping("/Artista")
+	public ResponseEntity<?> getAllcancionByArtista(@AuthenticationPrincipal UserDetails userDetails) {
+
+		try {
+
+			return new ResponseEntity<>(musicService.listarCancionesArtista(userDetails), HttpStatus.OK);
+
+		} catch (MiException e) {
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+
+	}
+	
+	
+	// trae todos las caciones por genero 
+		@GetMapping("/genero/{genero}")
+		public ResponseEntity<?> getAllcancionByGenero(@PathVariable String genero) {
+
+		return new ResponseEntity<>(musicService.generoAll(genero), HttpStatus.OK);
+		}
 }

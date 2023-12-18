@@ -12,15 +12,16 @@ import com.nocountry.s12.Service.AlbumService;
 import com.nocountry.s12.Service.ArtistaService;
 import com.nocountry.s12.models.Album;
 import com.nocountry.s12.models.Artista;
+import com.nocountry.s12.models.Imagen;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -32,6 +33,7 @@ public class AlbumServiceImpl implements AlbumService {
 
     private final AlbumRepository albumRepository;
     private final ArtistaService artistaService;
+    private final ImagenService imagenService;
     
     @Override
     public List<AlbumResponseDTO> listar() {
@@ -49,18 +51,21 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public AlbumResponseDTO crear(AlbumRequestDTO albumDTO, String usernameArtista) throws MiException {
+    public AlbumResponseDTO crear(String usernameArtista, MultipartFile img ,String titulo, String genero, String fechaPublicacion) throws MiException {
         Album nuevoAlbum = new Album();
 
         try {
-            LocalDate fechaPublicacion = validarFecha(albumDTO.fechaPublicacion());
+            LocalDate fechaPubli = validarFecha(fechaPublicacion);
             Artista artista = artistaService.getByUsername(usernameArtista);
             
-            nuevoAlbum.setGenero(albumDTO.genero());
-            nuevoAlbum.setFechaPublicacion(fechaPublicacion);
-            nuevoAlbum.setTitulo(albumDTO.titulo());
+            Imagen imgAlbum = imagenService.save(img);
+            
+            nuevoAlbum.setGenero(genero);
+            nuevoAlbum.setFechaPublicacion(fechaPubli);
+            nuevoAlbum.setTitulo(titulo);
             nuevoAlbum.setAlta(true);
             nuevoAlbum.setArtista(artista);
+            nuevoAlbum.setImgAlbum(imgAlbum);
 
             albumRepository.save(nuevoAlbum);
         } catch (Exception e) {
@@ -71,7 +76,7 @@ public class AlbumServiceImpl implements AlbumService {
         AlbumResponseDTO albumResponseDTO = new AlbumResponseDTO(nuevoAlbum);
         return albumResponseDTO;
     }
-
+    
     @Override
     public AlbumResponseDTO modificar(Long id, AlbumRequestDTO albumDTO) throws MiException {
         Album albumModificado = albumRepository.findById(id).get();
@@ -111,7 +116,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public List<AlbumResponseDTO> listarPorArtista(String username) {
+    public List<AlbumResponseDTO> listarPorArtista(String username) throws MiException{
         Optional<List<Album>> optionalAlbums = albumRepository.findByUsername(username);
 
         if (optionalAlbums.isPresent()) {
@@ -124,12 +129,12 @@ public class AlbumServiceImpl implements AlbumService {
 
                 return listaAlbumDTO;
             } else {
-                // Manejo si el usuario no tiene álbumes.
-                return Collections.singletonList(new AlbumResponseDTO("El usuario no tiene álbumes."));
+               
+                throw new MiException("El artista no tiene album", HttpStatus.OK);
             }
         } else {
             // Manejo si no se encuentra ningún álbum para el usuario.
-            return Collections.singletonList(new AlbumResponseDTO("Usuario no encontrado."));
+            throw new MiException("El artista no fue encontrado", HttpStatus.BAD_REQUEST);
         }
     }
 
