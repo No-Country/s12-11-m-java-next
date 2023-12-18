@@ -71,34 +71,185 @@ _Como hacer un deploy_
 
 ## Autores ✒
 
-### Backend developers
-* **Alejandro Mattias** - [GitHub]() - [Linkedin]()
-* **Favio Fernandez** - [GitHub](https://github.com/faviofz) - [Linkedin](https://www.linkedin.com/in/faviofernandez/)
-* **Ignacio Varela** - [GitHub]() - [Linkedin]()
-* **Leonardo Vargas** - [GitHub]() - [Linkedin]()
-* **Nicolás Zaeta** - [GitHub]() - [Linkedin]()
-* **Tatiana Gutierrez** - [GitHub]() - [Linkedin]()
+<table align="center" style="border: 1px #000000 solid">
+	<tbody align="center">
+		<tr>
+   <td style="border: 1px #000000 solid">
+        <a href='https://postimg.cc/bdWhCz98' target='_blank'><img src='https://i.postimg.cc/bdWhCz98/image.jpg' border='0' alt='image'/></a>
+        <h4 style="margin-top: 1rem;">Favio Fernandez</h4>
+        <h4 style="margin-top: 1rem;">Backend Developer</h4>
+          <a href="https://github.com/faviofz" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+          <a href="https://www.linkedin.com/in/faviofernandez/" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          </a>
+      </td>
+   <td style="border: 1px #000000 solid">
+        <a href='https://postimg.cc/bdWhCz98' target='_blank'><img src='https://i.postimg.cc/bdWhCz98/image.jpg' border='0' alt='image'/></a>
+        <h4 style="margin-top: 1rem;">Tatiana Gutiérrez</h4>
+        <h4 style="margin-top: 1rem;">Backend Developer</h4>
+          <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+          <a href="https://www.linkedin.com/in/gutierrez-tatiana/ target="_blank">
+            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          </a>
+      </td>
+      <td style="border: 1px #000000 solid">
+        <a href='https://postimg.cc/bdWhCz98' target='_blank'><img src='https://i.postimg.cc/bdWhCz98/image.jpg' border='0' alt='image'/></a>
+        <h4 style="margin-top: 1rem;">Alejandro Mattias</h4>
+        <h4 style="margin-top: 1rem;">Backend Developer</h4>
+          <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+          <a href="https://www.linkedin.com/in/alejandro-mattias/" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          </a>
+      </td>
+   <td style="border: 1px #000000 solid">
+        <a href='https://postimg.cc/YjRBfrGd' target='_blank'><img src='https://i.postimg.cc/YjRBfrGd/image.jpg' border='0' alt='image'/></a>
+        <h4 style="margin-top: 1rem;">Ignacio Varela</h4>
+        <h4 style="margin-top: 1rem;">Backend Developer</h4>
+          <a href="https://github.com/nachova1" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+          <a href="https://www.linkedin.com/in/ignaciovarela98/" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          </a>
+      </td>
+      <td style="border: 1px #000000 solid">
+       <a href='https://postimg.cc/PPYHpgs4' target='_blank'><img src='https://i.postimg.cc/PPYHpgs4/image.png' border='0' alt='image'/></a>
+        <h4 style="margin-top: 1rem;">Leonardo Vargas</h4>
+        <h4 style="margin-top: 1rem;">Backend Developer</h4>
+          <a href="https://github.com/leonardofvp" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+          <a href="https://www.linkedin.com/in/leonardo-vargas1/" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          </a>
+      </td>   
+      <td style="border: 1px #000000 solid">
+       <a href='https://postimg.cc/JyvQZkm9' target='_blank'><img src='https://i.postimg.cc/JyvQZkm9/image.jpg' border='0' alt='image'/></a>
+        <h4 style="margin-top: 1rem;">Nicolas Zaeta</h4>
+        <h4 style="margin-top: 1rem;">Backend Developer</h4>
+          <a href="https://github.com/nzaeta" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+          <a href="https://www.linkedin.com/in/zaetanicolas/" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          </a>
+      </td>
+	</tr>
+		<tr>     
+      <td style="border: 1px #000000 solid">
+        <a href='https://postimg.cc/bdWhCz98' target='_blank'><img src='https://i.postimg.cc/bdWhCz98/image.jpg' border='0' alt='image'/></a>
+        <h4 style="margin-top: 1rem;">Joaquin Pedraza</h4>
+        <h4 style="margin-top: 1rem;">Frontend Developer</h4>
+          <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+          <a href="https://www.linkedin.com/in/joaquinpedraza962/" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          </a>
+      </td>
 
-### Frontend developers
+   <td style="border: 1px #000000 solid">
+        <a href='https://postimg.cc/2V8Jmgjy' target='_blank'><img src='https://i.postimg.cc/2V8Jmgjy/image.jpg' border='0' alt='image'/></a>
+        <h4 style="margin-top: 1rem;">Daniel Ramos</h4>
+        <h4 style="margin-top: 1rem;">Frontend Developer</h4>
+          <a href="https://github.com/danielghost20" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+          <a href="https://www.linkedin.com/in/daniel-ramos21/" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          </a>
+      </td>
 
-* **Daniel Ramos** - [GitHub]() - [Linkedin]()
-* **Fernando Malan** - [GitHub]() - [Linkedin]()
-* **Joaquín Bianchi** - [GitHub]() - [Linkedin]()
-* **Joaquín Pedraza** - [GitHub]() - [Linkedin]()
-* **Nahuel Villegas** - [GitHub]() - [Linkedin]()
-
-### UX designer
-
-* **Ignacio Morales** - [GitHub]() - [Linkedin]()
-
-### QA testers
-
-* **Kimberly Pinto** - [GitHub]() - [Linkedin]()
-* **Melina Valdez** - [GitHub]() - [Linkedin]()
-
-### Project Manager
-
-* **Carolina Saggio** - [GitHub]() - [Linkedin]()
+<td style="border: 1px #000000 solid">
+        <a href='https://postimg.cc/bdWhCz98' target='_blank'><img src='https://i.postimg.cc/bdWhCz98/image.jpg' border='0' alt='image'/></a>
+        <h4 style="margin-top: 1rem;">Fernando Malan</h4>
+        <h4 style="margin-top: 1rem;">Frontend Developer</h4>
+          <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+          <a href="https://www.linkedin.com/in/fernando-david-malan-perugachi-b48b6321a/" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          </a>
+      </td>
+            <td style="border: 1px #000000 solid">
+        <a href='https://postimg.cc/bdWhCz98' target='_blank'><img src='https://i.postimg.cc/bdWhCz98/image.jpg' border='0' alt='image'/></a>
+        <h4 style="margin-top: 1rem;">Joaquín Bianchi</h4>
+        <h4 style="margin-top: 1rem;">Frontend Developer</h4>
+          <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+          <a href="https://www.linkedin.com/in/joaquin-bianchi-dev/" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          </a>
+      </td>
+            <td style="border: 1px #000000 solid">
+        <a href='https://postimg.cc/bdWhCz98' target='_blank'><img src='https://i.postimg.cc/bdWhCz98/image.jpg' border='0' alt='image'/></a>
+        <h4 style="margin-top: 1rem;">Nahuel Villegas</h4>
+        <h4 style="margin-top: 1rem;">Frontend Developer</h4>
+          <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+          <a href="https://www.linkedin.com/in/villegasnahuel/" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          </a>
+      </td>
+         		</tr>
+		<tr>   
+      <td style="border: 1px #000000 solid">
+       <a href='https://postimg.cc/JyvQZkm9' target='_blank'><img src='https://i.postimg.cc/JyvQZkm9/image.jpg' border='0' alt='image'/></a>
+        <h4 style="margin-top: 1rem;">Ignacio Morales</h4>
+        <h4 style="margin-top: 1rem;">UX / UI</h4>
+          <a href="https://github.com/nzaeta" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+          <a href="https://www.linkedin.com/in/ignacio-jos%C3%A9-morales-817889248/" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          </a>
+      </td>
+<td style="border: 1px #000000 solid">
+       <a href='https://postimg.cc/JyvQZkm9' target='_blank'><img src='https://i.postimg.cc/JyvQZkm9/image.jpg' border='0' alt='image'/></a>
+        <h4 style="margin-top: 1rem;">Kimberly Pinto</h4>
+        <h4 style="margin-top: 1rem;">QA tester</h4>
+          <a href="https://github.com/nzaeta" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+          <a href="https://www.linkedin.com/in/kimberly-pinto-perales/" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          </a>
+      </td>
+   <td style="border: 1px #000000 solid">
+       <a href='https://postimg.cc/JyvQZkm9' target='_blank'><img src='https://i.postimg.cc/JyvQZkm9/image.jpg' border='0' alt='image'/></a>
+        <h4 style="margin-top: 1rem;">Melina Valdez</h4>
+        <h4 style="margin-top: 1rem;">QA tester</h4>
+          <a href="https://github.com/nzaeta" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+          <a href="https://www.linkedin.com/in/kimberly-pinto-perales/" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          </a>
+      </td>
+            <td style="border: 1px #000000 solid">
+       <a href='https://postimg.cc/JyvQZkm9' target='_blank'><img src='https://i.postimg.cc/JyvQZkm9/image.jpg' border='0' alt='image'/></a>
+        <h4 style="margin-top: 1rem;">Carolina Saggio</h4>
+        <h4 style="margin-top: 1rem;">Project Manager</h4>
+          <a href="https://github.com/csaggio74" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+          <a href="https://www.linkedin.com/in/carolina-saggio-78338923/" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          </a>
+      </td>
+		</tr>
+    <div>
+	</tbody>
+</table>
+     
 
 ## Video demo 🎥
 
