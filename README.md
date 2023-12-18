@@ -10,7 +10,7 @@ _Descripción/resumen_
   * [Instalación del cliente](#Instalación-del-cliente-)
 * [Ejecutando las pruebas](#Ejecutando-las-pruebas-)
 * [Despliegue](#Despliegue-)
-* [Construido con](#Construido-con-)
+* [Construido con](#construido-con-)
 * [Autores](#Autores-)
 * [Video demo](#Video-demo)
 * [Agradecimientos](#Agradecimientos)
@@ -65,11 +65,11 @@ $ ./mvnw test
 
 _Como hacer un deploy_
 
-## Construido con 🛠️
+## Construido con 🛠
 
 * [Spring framework](https://spring.io/)
 
-## Autores ✒️
+## Autores ✒
 
 ### Backend developers
 * **Alejandro Mattias** - [GitHub]() - [Linkedin]()
