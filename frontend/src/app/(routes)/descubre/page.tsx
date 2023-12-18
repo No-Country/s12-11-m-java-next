@@ -1,14 +1,14 @@
-import Artist from "@/components/Discover/Artist"
+// import Artist from "@/components/Discover/Artist"
 import AudioPlayer from '@/components/Discover/Audioplayer'
 import { Genres } from "@/components/Discover/Genres"
-import { Song } from '@/components/Discover/Song'
+import Music from '@/components/Discover/Music'
 import { FaSearch } from "react-icons/fa"
 
 const pageDescubre = () => {
     const data = [1, 3, 4, 5, 6, 7, 8, 9, 0]
 
     return (
-        <main className="w-full relative  mb-20">
+        <main className="w-full relative mb-20">
             <div className="flex items-center border-2 border-rosa mt-10 rounded-xl gap-3 p-2 max-w-sm  w-full m-auto">
                 <FaSearch className='text-rosa' />
                 <input className="w-full bg-transparent outline-none" />
@@ -29,15 +29,8 @@ const pageDescubre = () => {
                     <Genres />
                 </div>
             </section>
-            <section className="full p-4">
-                <h1 className="text-2xl font-semibold">Musica</h1>
-                <div className="flex flex-col gap-3 w-full">
-                    {
-                        data.map(item => (
-                            <Song key={item} />
-                        ))
-                    }
-                </div>
+            <section className="full p-6">
+                <Music />
             </section>
             <div className="fixed bottom-0 left-0 h-14 w-full bg-rosa text-negro">
                 <AudioPlayer />

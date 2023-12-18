@@ -6,7 +6,7 @@ export const Song = () => {
     <div className="flex justify-between items-center gap-4">
       <div className="flex gap-4 py-2">
         <button className="h-14 bg-negro flex rounded-md justify-center items-center">
-          <Image src='/home_bg.jpg' alt="" width={2000} height={2000} className="object-cover h-full w-full rounded-md" />
+          <Image src='/production-home.webp' alt="" width={2000} height={2000} className="object-cover h-full w-full rounded-md" />
           <FaCirclePlay className='h-10 w-10 absolute' />
         </button>
         <div className="grid">

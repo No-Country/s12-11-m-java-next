@@ -1,7 +1,7 @@
-import { RedirectNoLogin } from "@/components/RedirectNoLogin/RedirectNoLogin"
-import AccountNavBar from "@/components/Account/AccountNavBar"
-import React from "react"
 import Account from "@/components/Account/Account"
+import AccountNavBar from "@/components/Account/AccountNavBar"
+import { RedirectNoLogin } from '@/components/RedirectNoLogin/RedirectNoLogin'
+import React from "react"
 
 const pagePerfil = ({ children }: { children: React.ReactNode }) => {
   return (
