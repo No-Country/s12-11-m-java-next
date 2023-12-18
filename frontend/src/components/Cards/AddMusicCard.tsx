@@ -1,13 +1,14 @@
 'use client'
 import { genres } from '@/utils/genres';
 import postMusica from '@/utils/musicRequest/postMusica';
-import React, { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react';
 import { FaPlus } from 'react-icons/fa6';
 
 const AddMusicCard = () => {
     const date = new Date
-    const [fecha, setFecha] = useState(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`)
+    const [fechaSubida, setFechaSubida] = useState(`${ date.getFullYear() }-${ date.getMonth() + 1 }-${ date.getDate() }`)
     const modalMusica = useRef<HTMLDialogElement>(null);
+
     const openModal = () => {
         modalMusica.current != null ? modalMusica.current.showModal() : {}
     };
@@ -15,6 +16,7 @@ const AddMusicCard = () => {
     const closeModal = () => {
         modalMusica.current != null ? modalMusica.current.close() : {};
     };
+
     return (
 
         <div className='flex items-center px-4 text-white self-start border-b-2 w-full cursor-pointer'>
@@ -57,8 +59,8 @@ const AddMusicCard = () => {
                         </select>
                     </label>
                     <label htmlFor="">
-                        <input name='fecha' type="text" defaultValue={fecha} hidden />
-                        {/* <input name='albumId' type="number" defaultValue={1} hidden /> */}
+                        <input name='fechaSubida' type="text" defaultValue={fechaSubida} hidden />
+                        <input name='albumId' type="text" defaultValue={1} hidden />
                     </label>
                     <label className='flex w-full justify-between'>
                         <input type='submit' className='px-4 py-2 bg-negro text-white rounded-full cursor-pointer'
