@@ -1,12 +1,13 @@
-# fly.toml app configuration file generated for stereos-api on 2023-12-18T18:21:40-03:00
+# fly.toml app configuration file generated for stereos on 2023-12-18T19:10:28-03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "stereos-api"
+app = "stereos"
 primary_region = "eze"
 
 [build]
+  image = "stereos_api:latest"
 
 [http_service]
   internal_port = 8080
