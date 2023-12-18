@@ -2,7 +2,7 @@ import axios from 'axios';
 const URL = process.env.NEXT_PUBLIC_URL_API
 
 async function getFeedEvents(setData: any, token: any) {
-    await axios.get(`${URL}/eventos/getMyEvents`, {
+    await axios.get(`https://95db-201-231-218-234.ngrok-free.app/eventos/all`, {
         headers:
             { Authorization: `Bearer ${token}` }
     })

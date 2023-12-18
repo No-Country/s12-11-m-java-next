@@ -1,4 +1,5 @@
 import { AddAlbum } from '@/components/Albums/AddAlbum'
+import AddPostCard from '@/components/Cards/AddPostCard'
 import React from 'react'
 
 const pagePost = () => {
@@ -6,7 +7,7 @@ const pagePost = () => {
     return (
         <section className='flex flex-wrap gap-5'>
             <div className='h-[200px] w-[200px]' >
-                <AddAlbum />
+                <AddPostCard />
             </div>
 
             {data.map(res =>
