@@ -5,6 +5,11 @@ on:
       - deploy
     paths:
       - backend/**
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  FLY_REGION: eze
+  FLY_ORG: personal
+  FLY_APP_NAME: stereos-api
 
 jobs:
   deploy:
@@ -15,5 +20,3 @@ jobs:
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --local-only
         working-directory: ./backend
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
