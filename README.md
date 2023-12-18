@@ -1,1 +1,1 @@
-stereos
+stereos en la nube
