@@ -1,14 +1,16 @@
-# Utiliza la imagen oficial de OpenJDK 17
-FROM openjdk:17-jdk-alpine
+FROM eclipse-temurin:17-jdk-alpine as build
+WORKDIR /workspace/app
 
-# Establece el directorio de trabajo en la imagen
-WORKDIR /app
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
 
-# Copia solo el archivo JAR construido de tu aplicación en la imagen
-COPY target/s12-0.0.1-SNAPSHOT.jar /app/
+RUN chmod +x mvnw
+RUN ./mvnw install -DskipTests
 
-# Exponer el puerto en el que se ejecutará la aplicación
+FROM eclipse-temurin:17-jdk-alpine
+VOLUME /tmp
 EXPOSE 8080
-
-# Comando para ejecutar la aplicación cuando el contenedor se inicie
-CMD ["java", "-Xms256m", "-Xmx512m", "-jar", "s12-0.0.1-SNAPSHOT.jar"]
+COPY --from=build /workspace/app/target/*.jar /app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar" ]

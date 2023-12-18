@@ -56,12 +56,10 @@ public class AppConfig {
             @Override
             public void addCorsMappings(@NotNull CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3000")
+                    .allowedOriginPatterns("*")
                         .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE","OPTIONS")
                         .allowCredentials(true);
             }
         };
     }
-    
-   
 }
