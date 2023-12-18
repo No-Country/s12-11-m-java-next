@@ -1,12 +1,11 @@
 import axios from 'axios'
 const URL = process.env.NEXT_PUBLIC_URL_API
 
-const postEvents = async (eventData: any, closeModal: any, token: any) => {
+const postEvents = async (eventData: any, closeModal: any, token: any, setErr: any) => {
     await axios.post(
         `${URL}/eventos`,
         eventData
         ,
-        ///mvnw spring-boot:run
         {
             headers:
                 { Authorization: `Bearer ${token}` }
@@ -19,6 +18,8 @@ const postEvents = async (eventData: any, closeModal: any, token: any) => {
         })
         .catch(function (err) {
             console.log(err);
+
+            setErr('Hubo un error, intente mas tarde');
         })
 
 }

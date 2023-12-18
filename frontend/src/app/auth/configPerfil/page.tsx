@@ -1,9 +1,17 @@
 "use client"
-import Switch from "@/components/sing-up/Switch"
+import getUserMe from "@/utils/userRequest/getUserMe"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 import { FaArrowLeft } from "react-icons/fa"
 
 const pageConfigPerfil = () => {
+  const [data, setData] = useState()
+  const [rol, setRol] = useState()
+  useEffect(() => {
+    const token = localStorage.getItem("tKeyId")
+    data ? {} : getUserMe(token, setData)
+  }, [data])
+
   return (
     // componetizar  elementos como el input , el switch o el form
     <section className="h-full w-full flex flex-col items-center bg-gradient-to-t from-lightViolet to-darkViolet">
@@ -55,6 +63,7 @@ const pageConfigPerfil = () => {
               <input
                 type="text"
                 id="name"
+                defaultValue={data ? data.nombreCompleto : ''}
                 placeholder="Nombre"
                 className="rounded-lg py-2 px-3 border-2 bg-transparent border-zinc-500 placeholder:text-zinc-500 "
               />
@@ -62,6 +71,7 @@ const pageConfigPerfil = () => {
             <div className="flex flex-col justify-center  w-1/2 ">
               <label htmlFor="lastname"> Apellido</label>
               <input
+                defaultValue={data ? data.apellidoCompleto : ''}
                 type="text"
                 id="lastname"
                 placeholder="Apellido"
@@ -72,20 +82,24 @@ const pageConfigPerfil = () => {
           <div className="flex flex-col mt-8 justify-center w-full">
             <label htmlFor="username"> Nombre de Usuario</label>
             <input
+              defaultValue={data ? data.username : ''}
               type="text"
               id="username"
               placeholder="Nombre de usuario"
               className="rounded-lg py-2 px-3 border-2  bg-transparent border-zinc-500 placeholder:text-zinc-500 "
             />
           </div>
-          <div className="flex flex-col mt-8 self-start">
-            <h3 className="text-lg">¿Eres Artista?</h3>
-            {/* SWICTCH PARA SI O NO */}
-            <div className="flex items-center gap-2">
-              <span> No</span>
-              <Switch></Switch>
-              <span> Si</span>
-            </div>
+          <div className="self-start mt-8">
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox" defaultValue={data ? data.rol : ''} className="sr-only peer"
+                onChange={(e) => {
+                  setRol(data.rol === 'OYENTE' ? 'ARTISTA' : 'OYENTE'
+                  )
+                }} />
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+              <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">{rol ? rol : data ? data.rol : ''}</span>
+            </label>
           </div>
           <div className="flex gap-10 mt-8 w-full ">
             <div className="flex flex-col justify-center   w-full ">

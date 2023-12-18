@@ -1,114 +1,80 @@
-"use client"
-
-import { useState } from "react"
-import { genres } from "@/utils/genres"
+'use client'
+import postPosts from "@/utils/postRequest/postPosts"
+import Image from "next/image"
+import { useRef, useState } from "react"
 
 const AddPostCard = () => {
-    const years = [2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030]
-
-    const [isOpen, setIsOpen] = useState(false)
-
-    const toggleModal = () => {
-        if (isOpen) {
-            setIsOpen(false)
-        } else {
-            setIsOpen(true)
-        }
-    }
+    const [img, setImg] = useState('')
+    const [err, setErr] = useState('')
+    const modalPost = useRef<HTMLDialogElement>(null);
+    const openModal = () => {
+        modalPost.current !== null ? modalPost.current.showModal() : {};
+    };
+    const closeModal = () => {
+        modalPost.current !== null ? modalPost.current.close() : {};
+        setImg('')
+        setErr('')
+    };
 
     return (
         <>
             <div className="w-full h-auto aspect-square flex flex-col gap-2 justify-center">
                 <button
                     className="flex flex-col w-full h-full bg-white rounded-lg overflow-hidden items-center justify-center"
-                    onClick={toggleModal}
+                    onClick={openModal}
                 >
                     <span className="text-4xl text-darkViolet">+</span>
                     <span className=" text-darkViolet">Agregar post</span>
                 </button>
             </div>
             <dialog
-                open={isOpen}
-                onClose={toggleModal}
-                className="fixed top-1/4 rounded-md"
+                ref={modalPost}
+                className="fixed rounded-md"
             >
                 <form
                     action=""
                     encType="multipart/form-data"
-                    onReset={toggleModal}
-                    // onSubmit={(e) => {
-                    //   e.preventDefault()
-                    //   const token = localStorage.getItem("tKeyId")
-                    //   const formDataMusic = Object.fromEntries(
-                    //     new FormData(e.currentTarget),
-                    //   )
-                    //   console.log(formDataMusic)
-                    //   postMusica(closeModal, formDataMusic, token)
-                    // }}
+                    onReset={closeModal}
+                    onSubmit={(e) => {
+                        e.preventDefault()
+                        const token = localStorage.getItem("tKeyId")
+                        const formDataMusic = Object.fromEntries(
+                            new FormData(e.currentTarget),
+                        )
+                        console.log(formDataMusic)
+                        postPosts(formDataMusic, closeModal, token, setErr)
+                    }}
                     className="w-fit bg-white text-negro flex flex-col gap-8 justify-center p-6 rounded-md shadow-2xl"
                 >
                     <fieldset className="flex flex-col gap-4">
                         <label
                             htmlFor="portrait"
-                            className="outline-1 outline-dashed outline-negro p-2 rounded-md text-center cursor-pointer"
+                            className={` flex flex-col items-center outline-1 outline-dashed outline-negro p-2 rounded-md text-center cursor-pointer`}
                         >
-                            <span className="opacity-50">
-                                <span className="text-xl">+</span> Agregar portada
-                            </span>
+
+                            <img src={img} width={200} height={200} alt="" hidden={!img.length > 0} />
                             <input
+
                                 required
-                                name="img"
-                                type="file"
-                                placeholder="+ Agregar portada"
-                                hidden
+                                name="image"
+                                type="text"
+                                placeholder="+ Agregar url de imagen"
                                 id="portrait"
+                                className={`outline-none text-center ${img.length > 0 ? ' border-b-2' : ''} w-full`}
+                                onChange={(e) => { setImg(e.target.value) }}
                             />
                         </label>
                         <label htmlFor="title" className="grid gap-2">
-                            <p className="font-medium">Título de álbum</p>
-                            <input
-                                id="title"
+                            <p className="font-medium">Descripción</p>
+                            <textarea
+                                id="mensaje"
                                 required
                                 name="title"
-                                type="text"
-                                placeholder="Título de álbum"
-                                className="w-full outline outline-1 px-4 py-2 outline-blackMd rounded-md"
-                            />
+                                placeholder="Descripción"
+                                className="w-[300px] h-[100px] outline outline-1 px-4 py-2 outline-blackMd rounded-md "
+                            ></textarea>
                         </label>
-                        <fieldset className="flex flex-wrap gap-4">
-                            <label htmlFor="genre" className="grid gap-2">
-                                <p className="font-medium">Género musical</p>
-                                <select
-                                    name="genre"
-                                    id="genre"
-                                    placeholder="Seleccionar"
-                                    className="w-full outline outline-1 px-3 py-2 outline-blackMd rounded-md text-blackMd"
-                                >
-                                    <option value="">Seleccionar</option>
-                                    {genres.map((res) => (
-                                        <option value={res.title} key={res.id}>
-                                            {res.title}
-                                        </option>
-                                    ))}
-                                </select>
-                            </label>
-                            <label htmlFor="year" className="grid gap-2">
-                                <p className="font-medium">Año de lanzamiento</p>
-                                <select
-                                    name="year"
-                                    id="year"
-                                    placeholder="Seleccionar"
-                                    className="w-full outline outline-1 p-2 outline-blackMd rounded-md text-blackMd"
-                                >
-                                    <option value="">Seleccionar</option>
-                                    {years.map((year) => (
-                                        <option value={year} key={year}>
-                                            {year}
-                                        </option>
-                                    ))}
-                                </select>
-                            </label>
-                        </fieldset>
+
                     </fieldset>
                     <div className="flex w-full justify-between">
                         <input
@@ -122,6 +88,7 @@ const AddPostCard = () => {
                             value="Cancelar"
                         />
                     </div>
+                    <small className="text-red-500 self-center">{err}</small>
                 </form>
             </dialog>
         </>

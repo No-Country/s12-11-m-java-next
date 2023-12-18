@@ -1,13 +1,18 @@
-import React from 'react'
-
-
 import axios from 'axios';
 const URL = process.env.NEXT_PUBLIC_URL_API
 
 const getAllEvents = async (setData: any) => {
-    await axios.get(`http://localhost:8080/eventos/all`)
+    await axios.get(`${URL}/eventos/all`,
+        //  {
+        //     headers:
+        //         { Authorization: `Bearer ${token}` }
+        // }
+    )
         .then(function (res) {
-            setData(res.data)
+            setData(res.data);
+
+
+
         })
         .catch(function (res) {
             console.log(res);

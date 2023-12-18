@@ -15,9 +15,9 @@ const pageEventos = () => {
         <div className={`flex gap-[2.4rem] flex-wrap max-w-[1500px] w-full self-center ${data[0] ? data.length >= 2 ? 'justify-center' : 'justify-start' : 'justify start'}`} >
             <AddEventCard />
 
-            {/* {data[0] ? data.map(res => (
+            {data[0] ? data.map(res => (
                 <EventCard key={res.idEvento} data={res} />
-            )) : <></>} */}
+            )) : <></>}
         </div>
     )
 }
