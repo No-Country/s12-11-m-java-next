@@ -5,7 +5,7 @@ import axios from 'axios';
 const URL = process.env.NEXT_PUBLIC_URL_API
 
 const getAllEvents = async (setData: any) => {
-    await axios.get(`${URL}/eventos`)
+    await axios.get(`http://localhost:8080/eventos/all`)
         .then(function (res) {
             setData(res.data)
         })
