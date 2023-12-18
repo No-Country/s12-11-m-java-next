@@ -12,6 +12,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +28,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="eventos")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,5 +43,8 @@ public class Evento {
     @ManyToOne
     @JoinColumn(name="id_artista")
     private Artista artista;
+    // @ManyToOne
+    // @JoinColumn(name="id_usuario")
+    // private Usuario usuario;
     
 }

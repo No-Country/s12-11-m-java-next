@@ -59,4 +59,8 @@ public class AuthService {
 
 	}
 
+	public Optional<Artista> getByEmail(String email) {
+		return artistaRepository.findByUsername(email);
+	}
+
 }

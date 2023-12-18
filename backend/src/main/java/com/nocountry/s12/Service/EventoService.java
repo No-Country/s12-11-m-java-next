@@ -7,6 +7,7 @@ package com.nocountry.s12.Service;
 import java.util.List;
 
 import com.nocountry.s12.Dto.Request.EventoRequestDTO;
+import com.nocountry.s12.Dto.Response.EventoArtistaResponseDto;
 import com.nocountry.s12.Dto.Response.EventoResponseDTO;
 
 
@@ -20,8 +21,11 @@ public interface EventoService {
     
     public List<EventoResponseDTO> findAll() throws Exception;
     public EventoResponseDTO findById(Long id) throws Exception;
+    public List<EventoResponseDTO> findEventoByArtist(String username) throws Exception;
+     public List<EventoResponseDTO> findEventosByArtista(Long id) throws Exception;
     public EventoResponseDTO save(EventoRequestDTO evento) throws Exception;
     public EventoResponseDTO update(Long id, EventoRequestDTO evento) throws Exception;
     public boolean delete(Long id) throws Exception;
+    public EventoArtistaResponseDto saveEventoArtista(EventoRequestDTO eventoDto, String usernameArtista) throws Exception;
 
 }

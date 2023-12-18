@@ -88,6 +88,7 @@ public class ArtistaService {
 		artistaRepository.save(artista);
 	}
 
+
         public Artista getByUsername(String username){
 		Optional<Artista> artistaOp = artistaRepository.findByUsername(username);
                 Artista artista = artistaOp.get();

@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +30,8 @@ public class EventoController {
 	@Autowired
 	private EventoServiceImpl eventoService;
 
-	@GetMapping
+
+	@GetMapping("/all")
 	public ResponseEntity<?> getAll() {
 		try {
 			List<EventoResponseDTO> eventosDto = eventoService.findAll();
@@ -47,6 +51,29 @@ public class EventoController {
 					.body("{\"error\":\"Error: Por favor intente mas tarde.\"");
 		}
 	}
+
+	@GetMapping("/getMyEvents")
+    public ResponseEntity<?> buscarPorArtista(@AuthenticationPrincipal UserDetails userDetails) {
+        String usernameArtista = userDetails.getUsername();
+        try{
+		List<EventoResponseDTO> eventoResponseDTO = eventoService.findEventoByArtist(usernameArtista);
+        return new ResponseEntity<>(eventoResponseDTO, HttpStatus.OK);
+		}catch(Exception e){
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+					.body("{\"error\":\"Error: Por favor intente mas tarde.\"}");
+		}
+    }
+
+	@GetMapping("/getArtsitaEventos/{id}")
+    public ResponseEntity<?> buscarEventosPorArtista(@PathVariable Long id) {
+        try{
+		List<EventoResponseDTO> eventoResponseDTO = eventoService.findEventosByArtista(id);
+        return new ResponseEntity<>(eventoResponseDTO, HttpStatus.OK);
+		}catch(Exception e){
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+					.body("{\"error\":\"Error: Por favor intente mas tarde.\"}");
+		}
+    }
 
 	@PostMapping
 	public ResponseEntity<?> save(@RequestBody EventoRequestDTO evento) {
@@ -86,6 +113,23 @@ public class EventoController {
 					.body("{\"error\":\"Error: Por favor intente mas tarde.\"");
 		}
 	}
+
+		@PostMapping("/eventoArtista")
+		@Secured("ARTISTA")
+		public ResponseEntity<?> saveEventoArtista(@RequestBody EventoRequestDTO evento, @AuthenticationPrincipal UserDetails userDetails) {
+			//Buscar usuario logueado
+			
+			String usernameArtista = userDetails.getUsername();
+			//buscar Artista por username.email
+			//Usuario usuario = artistaService.buscarPorEmail(userDetail.getUsername()).get();
+			try {
+				return ResponseEntity.status(HttpStatus.OK).body(eventoService.saveEventoArtista(evento, usernameArtista));
+			} catch (Exception e) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND)
+						.body("{\"error\":\"Error: Por favor intente mas tarde.\"");
+			}
+		}
+
 
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@PathVariable Long id, @RequestBody EventoRequestDTO evento) {
