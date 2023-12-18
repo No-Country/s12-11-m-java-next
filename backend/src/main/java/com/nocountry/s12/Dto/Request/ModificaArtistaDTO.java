@@ -24,18 +24,11 @@ public class ModificaArtistaDTO {
     @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?{|}~^.-]+@[a-zA-Z0-9.-]+$",
             message = "Debe ingresar una dirección de correo válida.")
     String email;
-    String rol;        
-    @NotBlank (message = "Campo obligatorio.")
-    @Size(min = 2, max = 30, message = "El nombre artístico debe contener entre 2 y 30 caracteres.")
-    String nombreArtistico;
+    String rol;  
+    String generoMusical;
     @NotBlank (message = "Campo obligatorio.")
     @Size(min = 10, max = 100, message = "La descripción debe contener entre 10 y 100 caracteres.")
     String descripcion; 
-   
-    String campoArtistico;
-    String generoMusical;
-
     
-    
-    
+  
 }

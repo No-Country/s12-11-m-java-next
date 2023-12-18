@@ -66,10 +66,9 @@ public class ArtistaService {
 		artistaModificado.setApellidoCompleto(modificaArtistaDTO.getApellido());
 		artistaModificado.setUsername(modificaArtistaDTO.getEmail());
 		artistaModificado.setRol(Roles.valueOf(modificaArtistaDTO.getRol()));
-		artistaModificado.setNombreArtistico(modificaArtistaDTO.getNombreArtistico());
-		artistaModificado.setDescripcion(modificaArtistaDTO.getDescripcion());
-		artistaModificado.setCampoArtistico(modificaArtistaDTO.getCampoArtistico());
 		artistaModificado.setGeneroMusical(modificaArtistaDTO.getGeneroMusical());
+		artistaModificado.setDescripcion(modificaArtistaDTO.getDescripcion());
+
 		
 		Artista artistaGuardado = artistaRepository.save(artistaModificado);
         ArtistaDTO artistaModificadoDTO = artistaMapper.ArtistaToArtistaDTO(artistaGuardado);
