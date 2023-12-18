@@ -1,5 +1,7 @@
 "use client"
+import { genres } from "@/utils/genres"
 import getUserMe from "@/utils/userRequest/getUserMe"
+import putUserMe from "@/utils/userRequest/putUserMe"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { FaArrowLeft } from "react-icons/fa"
@@ -10,20 +12,31 @@ const pageConfigPerfil = () => {
   useEffect(() => {
     const token = localStorage.getItem("tKeyId")
     data ? {} : getUserMe(token, setData)
+    setRol(data ? data.rol : '')
   }, [data])
+  const updateUser = (e: any) => {
+    e.preventDefault()
+    const formDatauser = Object.fromEntries(
+      new FormData(e.currentTarget)
+    );
+    const token = localStorage.getItem("tKeyId")
+    const Id = data ? data.id : ''
 
+    putUserMe(formDatauser, token, Id)
+  }
   return (
     // componetizar  elementos como el input , el switch o el form
     <section className="h-full w-full flex flex-col items-center bg-gradient-to-t from-lightViolet to-darkViolet">
       <div className="h-full w-full flex text-white items-center  pt-10 pl-5">
         <FaArrowLeft />
-        <Link href="/" className="pl-1 self-start">
+        <Link href="/perfil/musica" className="pl-1 self-start">
           Volver
         </Link>
       </div>
       <button
         onClick={() => {
           localStorage.clear()
+          window.location.replace('/')
         }}
         className="relative bottom-8 self-end text-white mr-5 px-4 py-2 border-2 border-white rounded-full"
       >
@@ -32,7 +45,7 @@ const pageConfigPerfil = () => {
       <div className="flex flex-col items-center p-10 text-white justify-center w-[600px]">
         <h1 className="text-xl mb-9">EDITAR PERFIL</h1>
 
-        <form action="" className=" flex flex-col  items-center ">
+        <form action="" className=" flex flex-col  items-center " onSubmit={updateUser}>
           {/*  input file */}
           <div className="rounded-md border border-dashed border-gray-500 bg-transparent p-4 shadow-md w-full">
             <label
@@ -62,8 +75,8 @@ const pageConfigPerfil = () => {
               <label htmlFor="name"> Nombre</label>
               <input
                 type="text"
-                id="name"
-                defaultValue={data ? data.nombreCompleto : ''}
+                name="nombre"
+                defaultValue={data?.nombreCompleto}
                 placeholder="Nombre"
                 className="rounded-lg py-2 px-3 border-2 bg-transparent border-zinc-500 placeholder:text-zinc-500 "
               />
@@ -71,7 +84,8 @@ const pageConfigPerfil = () => {
             <div className="flex flex-col justify-center  w-1/2 ">
               <label htmlFor="lastname"> Apellido</label>
               <input
-                defaultValue={data ? data.apellidoCompleto : ''}
+                name="apellido"
+                defaultValue={data?.apellidoCompleto}
                 type="text"
                 id="lastname"
                 placeholder="Apellido"
@@ -82,9 +96,9 @@ const pageConfigPerfil = () => {
           <div className="flex flex-col mt-8 justify-center w-full">
             <label htmlFor="username"> Nombre de Usuario</label>
             <input
-              defaultValue={data ? data.username : ''}
+              defaultValue={data?.username}
               type="text"
-              id="username"
+              name="email"
               placeholder="Nombre de usuario"
               className="rounded-lg py-2 px-3 border-2  bg-transparent border-zinc-500 placeholder:text-zinc-500 "
             />
@@ -92,13 +106,16 @@ const pageConfigPerfil = () => {
           <div className="self-start mt-8">
             <label className="relative inline-flex items-center cursor-pointer">
               <input
-                type="checkbox" defaultValue={data ? data.rol : ''} className="sr-only peer"
-                onChange={(e) => {
-                  setRol(data.rol === 'OYENTE' ? 'ARTISTA' : 'OYENTE'
+
+                type="checkbox" className="sr-only peer"
+                onChange={() => {
+                  setRol(rol === 'OYENTE' ? 'ARTISTA' : 'OYENTE'
                   )
                 }} />
+              <input hidden type="text" name='rol'
+                defaultValue={rol || data?.rol} />
               <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-              <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">{rol ? rol : data ? data.rol : ''}</span>
+              <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">{rol}</span>
             </label>
           </div>
           <div className="flex gap-10 mt-8 w-full ">
@@ -107,30 +124,36 @@ const pageConfigPerfil = () => {
                 Genero Musical
               </label>
               <select
-                id="ambiente"
-                name="ambiente"
-                required
+                defaultValue={data?.generoMusical}
+                name='generoMusical'
                 placeholder="Seleccione"
                 className="px-3 py-2 border-2 rounded-lg text-zinc-500  bg-transparent border-zinc-500 placeholder:text-zinc-500   focus:outline-none"
               >
-                <option className="" value={1}>
-                  {" "}
-                  lorem
-                </option>
-                <option value={2}> lorem </option>
-                <option value={3}> lorem </option>
+                {data?.generoMusical ? <></> : <option value="">Elija su genero</option>}
+                {genres.map((genre) => (
+                  <option
+                    value={genre.title}
+                    key={genre.id}
+                  >
+                    {genre.title}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
           <div className="flex flex-col mt-8 justify-center w-full">
             <label htmlFor="artisticName"> Biografia</label>
             <textarea
+              defaultValue={data?.descripcion}
+              name='descripcion'
               id="artisticName"
-              placeholder="Nombre"
+              placeholder="Biografia"
               className="rounded-lg py-5 px-3 border-2  bg-transparent border-zinc-500 placeholder:text-zinc-500 "
             />
           </div>
-          <button className="px-6 py-2 bg-purple-200 mt-8 text-black  rounded-[30px] shadow justify-center items-center gap-2.5">
+          <button
+            // disabled={userData.nombre && userData.aperllido && userData.email && userData.rol}
+            className="px-6 py-2 bg-purple-200 mt-8 text-black  rounded-[30px] shadow justify-center items-center gap-2.5">
             Guardar
           </button>
         </form>

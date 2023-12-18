@@ -5,6 +5,7 @@ const getPost = async (setData: any) => {
         .then(function (res) {
             setData(res)
 
+
         })
         .catch(function (res) {
             console.log(res);

@@ -7,7 +7,9 @@ const pagePost = () => {
     const [data, setData] = useState([])
     useEffect(() => {
         const token = localStorage.getItem('tKeyId')
-        getPost(setData, token)
+        data ? {} : getPost(setData, token)
+
+
     }, [data])
     return (
         <section className='flex flex-wrap gap-5'>

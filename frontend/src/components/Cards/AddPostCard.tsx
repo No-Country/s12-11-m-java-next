@@ -50,15 +50,15 @@ const AddPostCard = () => {
                         <label
                             htmlFor="portrait"
                             className={` flex flex-col items-center outline-1 outline-dashed outline-negro p-2 rounded-md text-center cursor-pointer`}
-                        >
+                        ><span>+ Agregar imagen</span>
 
                             <img src={img} width={200} height={200} alt="" hidden={!img.length > 0} />
                             <input
-
+                                hidden
                                 required
-                                name="image"
-                                type="text"
-                                placeholder="+ Agregar url de imagen"
+                                name="imagen"
+                                type="file"
+                                placeholder="+ Agregar imagen"
                                 id="portrait"
                                 className={`outline-none text-center ${img.length > 0 ? ' border-b-2' : ''} w-full`}
                                 onChange={(e) => { setImg(e.target.value) }}
