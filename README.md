@@ -94,7 +94,7 @@ _Como hacer un deploy_
           <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
             <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
           </a>
-          <a href="https://www.linkedin.com/in/gutierrez-tatiana/ target="_blank">
+          <a href="https://www.linkedin.com/in/gutierrez-tatiana/" target="_blank">
             <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
           </a>
       </td>
