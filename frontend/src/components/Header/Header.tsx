@@ -11,14 +11,15 @@ export const Header = () => {
 
   useEffect(() => {
     localStorage.getItem("tKeyId") !== null
-      ? setLog(`${ localStorage.getItem("tKeyId") }`)
+      ? setLog(`${localStorage.getItem("tKeyId")}`)
       : setLog(log)
   }, [])
 
   return (
     <header
-      className={`py-4 px-8 flex items-center justify-between text-whiteColor font-semibold ${ pathname !== "/" && "shadow-md"
-        }`}
+      className={`absolute w-full top-0 z-10 py-4 px-8 flex items-center justify-between text-whiteColor bg-gradient-to-b from-navShadow font-semibold ${
+        pathname !== "/" && "bg-none relative"
+      }`}
     >
       <div className="flex items-center gap-24">
         <h3 className="flex flex-col uppercase text-xs">
@@ -29,7 +30,7 @@ export const Header = () => {
           {LinkHeader.map((res) => (
             <Link
               className={
-                pathname === `${ res.path }`
+                pathname === `${res.path}`
                   ? "font-medium border-b-2 border-whiteColor"
                   : ""
               }
@@ -45,13 +46,13 @@ export const Header = () => {
         {log === "false" ? (
           <>
             <Link
-              className="px-5 py-2 outline outline-1 outline-rosa rounded-full"
+              className="px-5 py-2 outline outline-1 outline-rosa rounded-full hover:bg-rosa hover:text-negro duration-300"
               href="/auth/register"
             >
               Registrarse
             </Link>
             <Link
-              className="px-5 py-2 bg-rosa text-negro rounded-full"
+              className="px-5 py-2 bg-rosa text-negro rounded-full hover:bg-whiteColor duration-300"
               href="/auth/login"
             >
               Iniciar sesión
@@ -60,9 +61,9 @@ export const Header = () => {
         ) : (
           <Link
             href={"/perfil/musica"}
-            className="ml-2 w-12 h-12 rounded-full bg-rosa text-white flex justify-center items-center"
+            className="w-8 h-8 rounded-full bg-whiteColor flex justify-center items-center"
           >
-            <IoPerson className="text-lightViolet h-6 w-6" />
+            <IoPerson className="text-purpleShadow text-lg" />
           </Link>
         )}
       </div>
