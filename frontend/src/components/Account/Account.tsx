@@ -10,7 +10,7 @@ import React, { useEffect, useState } from 'react'
 const Account = () => {
     const [Id, setId] = useState()
     const [i, setI] = useState()
-    const [img, setImg] = useState('')
+    const [img, setImg] = useState()
     const [data, setData] = useState()
     const [fileName, setFileName] = useState()
     useEffect(() => {
@@ -34,8 +34,8 @@ const Account = () => {
     }
     return (
         <label className={`w-full h-[350px] flex flex-col justify-end shadow-shadowInset cursor-pointer`} htmlFor="portada">
-            {data ? <img src={img} alt="" hidden={!img.length > 0} className="object-cover  h-full w-full " /> : <></>}
-            {data ? !img.length > 0 ?
+            {img ? <img src={img} alt="" className="object-cover  h-full w-full " /> : <></>}
+            {!img ?
                 <span className="flex flex-col items-center gap-2 cursor-pointer h-full justify-center">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@ const Account = () => {
                     </svg>
                     <span className="text-white font-medium">Agregar Foto</span>
                 </span>
-                : <></> : <></>}
+                : <></>}
             <input hidden type="file" name="imagen" id="portada"
                 onChange={(e) => {
                     e.target.files[0] ? setImg(URL.createObjectURL(e.target.files[0])) : ''
