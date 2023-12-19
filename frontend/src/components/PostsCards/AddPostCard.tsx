@@ -1,5 +1,5 @@
 'use client'
-import postPosts from "@/utils/postRequest/postPosts"
+import postPosts from "../../utils/postRequest/postPosts"
 import { useRef, useState } from "react"
 
 const AddPostCard = () => {

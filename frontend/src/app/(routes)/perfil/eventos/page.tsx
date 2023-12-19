@@ -1,6 +1,6 @@
 'use client'
-import AddEventCard from '@/components/Cards/AddEventCard'
-import EventCard from '@/components/Cards/EventCard'
+import AddEventCard from '@/components/EventsCards/AddEventCard'
+import EventCard from '@/components/EventsCards/EventCard'
 import getUserEvents from '@/utils/eventsRequest/getUserEvents'
 import React, { useEffect, useState } from 'react'
 

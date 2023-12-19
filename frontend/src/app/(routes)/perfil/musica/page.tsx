@@ -1,6 +1,6 @@
 import { Albums } from "@/components/Albums/Albums"
-import AddMusicCard from "@/components/Cards/AddMusicCard"
-import MusicFeedCard from "@/components/Cards/MusicFeedCard"
+import AddMusicCard from "@/components/MusicCards/AddMusicCard"
+import MusicFeedCard from "@/components/MusicCards/MusicFeedCard"
 
 const pageMusica = () => {
   return (

@@ -35,7 +35,7 @@ const Account = () => {
     return (
         <label className={`w-full h-[350px] flex flex-col justify-end shadow-shadowInset cursor-pointer`} htmlFor="portada">
             <img src={img} alt="" hidden={!img.length > 0} className="object-cover  h-full w-full " />
-            {!img.length > 0 ?
+            {data && !img.length > 0 ?
                 <span className="flex flex-col items-center gap-2 cursor-pointer h-full justify-center">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

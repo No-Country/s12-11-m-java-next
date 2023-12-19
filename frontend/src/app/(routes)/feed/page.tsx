@@ -1,4 +1,4 @@
-import FeedEventCard from "@/components/Cards/FeedEventCard"
+import FeedEventCard from "@/components/EventsCards/FeedEventCard"
 import SuggestionCard from "@/components/Cards/SuggestionCard"
 import Sidebar from "@/components/Sidebar/Sidebar"
 import React from "react"

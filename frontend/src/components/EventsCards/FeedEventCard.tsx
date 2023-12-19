@@ -1,5 +1,5 @@
 'use client'
-import getAllEvents from "@/utils/eventsRequest/getAllEvents"
+import getAllEvents from "../../utils/eventsRequest/getAllEvents"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 

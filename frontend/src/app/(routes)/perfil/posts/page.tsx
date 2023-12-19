@@ -1,8 +1,7 @@
 'use client'
-import AddPostCard from '@/components/Cards/AddPostCard'
-import deletePost from '@/utils/postRequest/deletePost'
-import getPost from '@/utils/postRequest/getPost'
-import getUserPost from '@/utils/postRequest/getUserPosts'
+import AddPostCard from '../../../../components/PostsCards/AddPostCard'
+import deletePost from '../../../../utils/postRequest/deletePost'
+import getUserPost from '../../../../utils/postRequest/getUserPosts'
 import React, { useEffect, useState } from 'react'
 
 const pagePost = () => {
