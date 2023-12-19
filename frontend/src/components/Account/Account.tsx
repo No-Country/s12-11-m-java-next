@@ -16,7 +16,8 @@ const Account = () => {
     useEffect(() => {
         const token = localStorage.getItem("tKeyId")
         data ? {} : getUserMe(token, setData)
-        data ? (setId(data.id), setImg(data.fotoPerfil)) : setId();
+        data ? (setId(data.id), setImg(data.fotoPerfil.imagenUrl)) : setId();
+        console.log(data);
 
     }, [data])
     useEffect(() => {
