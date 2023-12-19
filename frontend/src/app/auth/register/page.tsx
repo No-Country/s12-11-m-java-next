@@ -17,8 +17,8 @@ export default function SingUpPage () {
     })
 
     return (
-        <section className='text-white flex w-full h-screen'>
-            <article className='text-white w-1/2 flex flex-col p-8'>
+        <section className='text-white h-screen grid grid-cols-1 md:grid-cols-2'>
+            <article className='text-white flex flex-col p-8'>
                 <Link href='/' className='flex items-center gap-4 pl-3'>
                     <FaArrowLeft />
                     <p>Volver</p>
@@ -96,8 +96,10 @@ export default function SingUpPage () {
                     <Link href='/auth/login' className='mt-5'>Iniciar sesión</Link>
                 </div>
             </article>
-            <Image priority src='/auth_bg.jpg' width={50000} height={500000} alt='Background image'
-                className='object-cover left-30 h-screen w-1/2' />
+            <div className='md:flex fixed h-screen left-2/4 w-full hidden'>
+                <Image priority src='/auth_bg.jpg' width={50000} height={500000} alt='Background image'
+                    className='object-cover' />
+            </div>
         </section>
     )
 }
