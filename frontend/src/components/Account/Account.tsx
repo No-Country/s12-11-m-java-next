@@ -1,10 +1,19 @@
 'use client'
 import getUserMe from '@/utils/userRequest/getUserMe'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+
+interface dataType {
+    nombreCompleto: string,
+    albums: string,
+    eventos: string,
+    publicaciones: string,
+    generoMusical: string,
+    descripcion: string,
+}
 
 const Account = () => {
-    const [data, setData] = useState()
+    const [data, setData] = useState<dataType>()
     useEffect(() => {
         const token = localStorage.getItem("tKeyId")
         data ? {} : getUserMe(token, setData)

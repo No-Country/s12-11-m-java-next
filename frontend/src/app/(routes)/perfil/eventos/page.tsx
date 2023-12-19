@@ -4,21 +4,25 @@ import EventCard from '@/components/Cards/EventCard'
 import getFeedEvents from '@/utils/eventsRequest/getFeedEvents'
 import { useEffect, useState } from 'react'
 
+interface dataType {
+    idEvento: string
+}
+
 const pageEventos = () => {
-    const [data, setData] = useState([])
+    const [data, setData] = useState<dataType[]>([])
 
     useEffect(() => {
         const token = localStorage.getItem('tKeyId')
-        getFeedEvents(setData, token)
+        getFeedEvents(setData)
     }, [data])
 
     return (
         <div className={`flex gap-[2.4rem] flex-wrap max-w-[1500px] w-full self-center ${ data[0] ? data.length >= 2 ? 'justify-center' : 'justify-start' : 'justify start' }`} >
             <AddEventCard />
 
-            {data[0] ? data.map(res => (
+            {data.length !== 0 && data.map(res => (
                 <EventCard key={res.idEvento} data={res} />
-            )) : <></>}
+            ))}
         </div>
     )
 }

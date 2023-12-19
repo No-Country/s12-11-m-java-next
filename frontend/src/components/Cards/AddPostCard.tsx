@@ -7,11 +7,12 @@ const AddPostCard = () => {
     const [img, setImg] = useState('')
     const [err, setErr] = useState('')
     const modalPost = useRef<HTMLDialogElement>(null);
+
     const openModal = () => {
-        modalPost.current !== null ? modalPost.current.showModal() : {};
+        modalPost.current != null && modalPost.current.showModal()
     };
     const closeModal = () => {
-        modalPost.current !== null ? modalPost.current.close() : {};
+        modalPost.current != null && modalPost.current.close()
         setImg('')
         setErr('')
     };
@@ -52,7 +53,7 @@ const AddPostCard = () => {
                             className={` flex flex-col items-center outline-1 outline-dashed outline-negro p-2 rounded-md text-center cursor-pointer`}
                         ><span>+ Agregar imagen</span>
 
-                            <img src={img} width={200} height={200} alt="" hidden={!img.length > 0} />
+                            <Image src={img} width={200} height={200} alt="" hidden={img.length === 0} />
                             <input
                                 hidden
                                 required
@@ -60,7 +61,7 @@ const AddPostCard = () => {
                                 type="file"
                                 placeholder="+ Agregar imagen"
                                 id="portrait"
-                                className={`outline-none text-center ${img.length > 0 ? ' border-b-2' : ''} w-full`}
+                                className={`outline-none text-center ${ img.length > 0 ? ' border-b-2' : '' } w-full`}
                                 onChange={(e) => { setImg(e.target.value) }}
                             />
                         </label>
