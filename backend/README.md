@@ -1,1 +1,1 @@
-stereos end la apisd
+stereos end la apisda
