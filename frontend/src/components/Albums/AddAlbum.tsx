@@ -1,19 +1,29 @@
 "use client"
 
-import { useState } from "react"
+import { type FormEvent, useRef } from "react"
 import { genres } from "@/utils/genres"
+import { postAlbum } from "@/utils/albumsRequest/postAlbum"
 
 export const AddAlbum = () => {
   const years = [2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030]
 
-  const [isOpen, setIsOpen] = useState(false)
+  const album = useRef<HTMLDialogElement>(null)
 
-  const toggleModal = () => {
-    if (isOpen) {
-      setIsOpen(false)
-    } else {
-      setIsOpen(true)
-    }
+  const openModal = () => {
+    album.current?.showModal()
+  }
+  const closeModal = () => {
+    album.current?.close()
+  }
+
+  const submitAlbum = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const token = localStorage.getItem("tKeyId")
+    const albumData = Object.fromEntries(new FormData(e.currentTarget))
+    // console.log(albumData)
+    const response = await postAlbum(closeModal, albumData, token)
+    // console.log(response)
+    return response
   }
 
   return (
@@ -21,34 +31,22 @@ export const AddAlbum = () => {
       <div className="w-full h-auto aspect-square flex flex-col gap-2 justify-center">
         <button
           className="w-full h-full bg-white rounded-lg overflow-hidden"
-          onClick={toggleModal}
+          onClick={openModal}
         >
           <span className="text-4xl text-darkViolet">+</span>
         </button>
         <p>Agregar album</p>
       </div>
-      <dialog
-        open={isOpen}
-        onClose={toggleModal}
-        className="fixed top-1/4 rounded-md"
-      >
+      <dialog ref={album} className="fixed bottom-1/4 rounded-md">
         <form
           action=""
           encType="multipart/form-data"
-          onReset={toggleModal}
-          // onSubmit={(e) => {
-          //   e.preventDefault()
-          //   const token = localStorage.getItem("tKeyId")
-          //   const formDataMusic = Object.fromEntries(
-          //     new FormData(e.currentTarget),
-          //   )
-          //   console.log(formDataMusic)
-          //   postMusica(closeModal, formDataMusic, token)
-          // }}
+          onReset={closeModal}
+          onSubmit={() => submitAlbum}
           className="w-fit bg-white text-negro flex flex-col gap-8 justify-center p-6 rounded-md shadow-2xl"
         >
           <fieldset className="flex flex-col gap-4">
-            <label
+            {/* <label
               htmlFor="portrait"
               className="outline-1 outline-dashed outline-negro p-2 rounded-md text-center cursor-pointer"
             >
@@ -56,14 +54,13 @@ export const AddAlbum = () => {
                 <span className="text-xl">+</span> Agregar portada
               </span>
               <input
-                required
                 name="img"
                 type="file"
                 placeholder="+ Agregar portada"
                 hidden
                 id="portrait"
               />
-            </label>
+            </label> */}
             <label htmlFor="title" className="grid gap-2">
               <p className="font-medium">Título de álbum</p>
               <input

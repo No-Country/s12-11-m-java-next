@@ -1,7 +1,8 @@
 import axios from "axios"
+const URL = process.env.NEXT_PUBLIC_URL_API
 const registerPost = async (userData: any, router: any) => {
   await axios
-    .post(`http://3.145.112.182:8080/auth/registro`, userData)
+    .post(`${URL}registro`, userData)
     .then(function (response: any) {
       console.log("se registro pa")
       router.push("/auth/login")
