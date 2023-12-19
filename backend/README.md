@@ -1,1 +1,1 @@
-stereos en la nuasdasdasasdasdasdbe apis
+stereos en la apis
