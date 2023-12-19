@@ -1,7 +1,9 @@
 
 # Stereos en la nube
 
-_Descripción/resumen_
+_Nuestra web, 'Estereos en la nube', ofrece a músicos independientes una plataforma integral para promocionar su música y eventos, abordando  la creciente necesidad de conectar los nuevos talentos y que puedan llegar directamente a una  audiencia más global, destacar sus últimas canciones,  lanzamientos  como así también promover sus eventos. 
+La web conlleva a una comunidad de seguidores donde puedes informarte sobre sus actividades, músicas, post que realicen fomentando una comunidad donde poder conectarse directamente con tus músicos favoritos. 
+Nuestra web impulsa la creación de una comunidad que celebra la diversidad musical, promueve la conexión directa entre músicos y  seguidores,  impulsando la visibilidad y oportunidades de colaboración entre los músicos independientes brindando la posibilidad de conectarse con otros artistas._
 
 # Contenido
 * [Comenzando 🚀](#Comenzando-)
