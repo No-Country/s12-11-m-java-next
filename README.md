@@ -219,9 +219,6 @@ _Como hacer un deploy_
 <a href='https://postimg.cc/tn6CP3zJ' target='_blank'><img src='https://i.postimg.cc/tn6CP3zJ/kim.jpg' border='0' alt='kim'/></a>
         <h4 style="margin-top: 1rem;">Kimberly Pinto</h4>
         <h4 style="margin-top: 1rem;">QA tester</h4>
-          <a href="https://github.com/nzaeta" target="_blank">
-            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
-          </a>
           <a href="https://www.linkedin.com/in/kimberly-pinto-perales/" target="_blank">
             <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
           </a>
