@@ -56,32 +56,32 @@ const AddMusicCard = () => {
                         + Agregar musica
                         <input required name='audio' type="file" hidden id='fileMusic' />
                     </label>
-                    <label htmlFor="fileMusicImg" className='border-2 p-2 border-negro border-dotted rounded-md w-full h-[43px] text-center cursor-pointer'>
+                    {/* <label htmlFor="fileMusicImg" className='border-2 p-2 border-negro border-dotted rounded-md w-full h-[43px] text-center cursor-pointer'>
                         + Agregar imagen
                         <input required name='img' type="file" hidden id='fileMusicImg' />
-                    </label>
+                    </label> */}
                     <label htmlFor="">
-                        <input required name='titulo' type="text" placeholder='Titulo' className='border-2 p-2 border-negro rounded-md w-full' />
+                        <input required name='titulo' id='titulo' type="text" placeholder='Titulo' className='border-2 p-2 border-negro rounded-md w-full' />
                     </label>
                     <label htmlFor="" className='flex flex-col'>
                         <small>Elija un genero</small>
-                        <select name="genero" id="" placeholder='Genero' defaultValue={''} className='outline-none border-2 p-2 border-negro rounded-md w-full'>
+                        <select name="genero" id="genero" placeholder='Genero' defaultValue={''} className='outline-none border-2 p-2 border-negro rounded-md w-full'>
                             {genres.map(res =>
                                 <option value={res.title} key={res.id}>{res.title}</option>
                             )}
                         </select>
                     </label>
-                    <label htmlFor="" className='flex flex-col'>
+                    {/* <label htmlFor="" className='flex flex-col'>
                         <small>Selecciona un album</small>
                         <select name="album" id="" placeholder='album' defaultValue={''} className='outline-none border-2 p-2 border-negro rounded-md w-full'>
                             {albums.map(res =>
                                 <option value={res.id} key={res.id}>{res.title}</option>
                             )}
                         </select>
-                    </label>
+                    </label> */}
                     <label htmlFor="">
                         <input name='fechaSubida' type="text" defaultValue={fechaSubida} hidden />
-                        <input name='albumId' type="text" defaultValue={1} hidden />
+                        <input name='albumId' type="text" id='albumId' defaultValue={1} hidden />
                     </label>
                     <label className='flex w-full justify-between'>
                         <input type='submit' className='px-4 py-2 bg-negro text-white rounded-full cursor-pointer'
