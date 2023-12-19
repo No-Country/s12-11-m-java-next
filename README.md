@@ -183,7 +183,7 @@ _Como hacer un deploy_
 <a href='https://postimg.cc/qzf7rFk3' target='_blank'><img src='https://i.postimg.cc/qzf7rFk3/joq-bianchi.jpg' border='0' alt='joq-bianchi'/></a>
         <h4 style="margin-top: 1rem;">Joaquín Bianchi</h4>
         <h4 style="margin-top: 1rem;">Frontend Developer</h4>
-          <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
+          <a href="https://github.com/Joaquin-Bianchi/" target="_blank">
             <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
           </a>
           <a href="https://www.linkedin.com/in/joaquin-bianchi-dev/" target="_blank">
