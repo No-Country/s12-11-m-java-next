@@ -1,21 +1,22 @@
 import axios from 'axios'
 
-const URL = process.env.NEXT_PUBLIC_URL_API
-const postPosts = async (eventData: any, closeModal: any, token: any, setErr: any) => {
-    await axios.post(`${URL}/publicacion`, eventData
-        ,
+const URL = process.env.NEXT_PUBLIC_NEWURL
+const postPosts = async (formData: any, token: any, closeModal: any, setErr: any) => {
+    await axios.post(`${URL}/publicacion`,
+        formData,
         {
             headers:
-                { Authorization: `Bearer ${token}` }
+            {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "multipart/form-data",
+                Accept: 'application/json'
+            }
         })
         .then(function (res) {
-            console.log(res);
             closeModal()
 
         }).catch(function (res) {
-            console.log(res);
-
-            setErr('Hubo un error, intente mas tarde');
+            setErr(res.response.data);
 
         })
 }

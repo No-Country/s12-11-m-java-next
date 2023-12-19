@@ -3,7 +3,7 @@ const URL = process.env.NEXT_PUBLIC_URL_API
 
 const postEvents = async (eventData: any, closeModal: any, token: any, setErr: any) => {
     await axios.post(
-        `${URL}/eventos`,
+        `${URL}/eventos/eventoArtista`,
         eventData
         ,
         {

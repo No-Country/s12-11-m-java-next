@@ -6,10 +6,8 @@ const getUserMe = async (token: any, setData: any) => {
             { Authorization: `Bearer ${token}` }
     }).then(function (res) {
         setData(res.data)
-
     }).catch(function (err) {
         console.log(err);
-
     })
 }
 

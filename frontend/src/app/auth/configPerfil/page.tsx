@@ -7,12 +7,14 @@ import { useEffect, useState } from "react"
 import { FaArrowLeft } from "react-icons/fa"
 
 const pageConfigPerfil = () => {
+  const [img, setImg] = useState('')
   const [data, setData] = useState()
   const [rol, setRol] = useState()
   useEffect(() => {
     const token = localStorage.getItem("tKeyId")
     data ? {} : getUserMe(token, setData)
     setRol(data ? data.rol : '')
+    setImg(data?.fotoPerfil)
   }, [data])
   const updateUser = (e: any) => {
     e.preventDefault()
@@ -52,22 +54,28 @@ const pageConfigPerfil = () => {
               htmlFor="upload"
               className="flex flex-col items-center gap-2 cursor-pointer"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-10 w-10 fill-white stroke-gray-800"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
-              <span className="text-white font-medium">Agregar Foto</span>
+              {!img ?
+                <span className="flex flex-col items-center gap-2 cursor-pointer">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-10 w-10 fill-white stroke-gray-800"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  <span className="text-white font-medium">Agregar Foto</span>
+                </span>
+                : <img src={img} alt="" hidden={!img.length > 0} className="object-cover  h-[200px] w-full rounded-md" />}
+
+              <input id="upload" type="file" hidden className="h-full  w-full"
+                onChange={(e) => { setImg(URL.createObjectURL(e.target.files[0])) }} />
             </label>
-            <input id="upload" type="file" className="hidden" />
           </div>
           {/* inputfile/ */}
           <div className="flex gap-10 mt-8 w-full ">

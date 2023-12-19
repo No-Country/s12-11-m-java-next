@@ -9,10 +9,6 @@ const pageFeed = () => {
       <Sidebar />
       <FeedEventCard />
       <aside className="flex flex-col p-5 gap-10 ">
-        {/* y aca los sugeridos */}
-        <SuggestionCard></SuggestionCard>
-        <SuggestionCard></SuggestionCard>
-        <SuggestionCard></SuggestionCard>
       </aside>
     </section>
   )
