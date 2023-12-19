@@ -4,6 +4,7 @@ import { FaPlus } from "react-icons/fa6";
 const AddEventCard = () => {
     const [eventData, setEventData] = useState({
     })
+    const [err, setErr] = useState('')
     const modalEventos = useRef<HTMLDialogElement>(null);
     const openModal = () => {
         modalEventos.current !== null ? modalEventos.current.showModal() : {};
@@ -24,7 +25,7 @@ const AddEventCard = () => {
                     onSubmit={(e) => {
                         e.preventDefault();
                         const token = localStorage.getItem('tKeyId')
-                        postEvents(eventData, closeModal, token)
+                        postEvents(eventData, closeModal, token, setErr)
                     }}
                     className='flex flex-col gap-5 justify-center p-10'
                 >
@@ -89,6 +90,7 @@ const AddEventCard = () => {
                         <input type='submit' className='px-4 py-2 bg-negro text-white rounded-full cursor-pointer' value='Crear evento' />
                         <input type='reset' className='px-4 py-2 bg-negro text-white rounded-full' value='Cancelar' />
                     </label>
+                    <small className='text-red-500'>{err}</small>
                 </form>
             </dialog>
         </div>

@@ -2,12 +2,16 @@ import axios from 'axios';
 const URL = process.env.NEXT_PUBLIC_URL_API
 
 async function getFeedEvents(setData: any, token: any) {
-    await axios.get(`${URL}/eventos/getMyEvents`, {
-        headers:
-            { Authorization: `Bearer ${token}` }
-    })
+    await axios.get(`${URL}/eventos/all`,
+        //  {
+        //     headers:
+        //         { Authorization: `Bearer ${token}` }
+        // }
+    )
         .then(function (res) {
-            console.log(res);
+            setData(res.data);
+
+
 
         })
         .catch(function (res) {
