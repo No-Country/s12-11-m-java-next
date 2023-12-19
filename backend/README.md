@@ -1,1 +1,1 @@
-stereos en la apisd
+stereos end la apisd
