@@ -5,6 +5,7 @@
 package com.nocountry.s12.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -40,7 +41,7 @@ public class Evento {
     private LocalDate fechaEvento;
     private String descripcion;
     
-    @ManyToOne
+    @ManyToOne (fetch =FetchType.LAZY)
     @JoinColumn(name="id_artista")
     private Artista artista;
     // @ManyToOne

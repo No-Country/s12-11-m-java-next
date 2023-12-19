@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.nocountry.s12.Dto.Request.LoginDto;
 import com.nocountry.s12.Dto.Request.RegistroDto;
+import com.nocountry.s12.Dto.Response.ArtistaDTO;
 import com.nocountry.s12.Dto.Response.AuthResponse;
 import com.nocountry.s12.Enum.Roles;
 import com.nocountry.s12.Jwt.JwtService;
@@ -59,8 +60,13 @@ public class AuthService {
 
 	}
 
-	public Optional<Artista> getByEmail(String email) {
-		return artistaRepository.findByUsername(email);
+	public ArtistaDTO getByEmail(String email) {
+		
+		Artista artista = artistaRepository.findByUsername(email).get();
+		
+		ArtistaDTO artistaDto = new ArtistaDTO(artista);
+		
+		return artistaDto ;
 	}
 
 }

@@ -5,6 +5,7 @@
 package com.nocountry.s12.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -32,10 +33,10 @@ public class Artista extends Usuario{
 	private String nombreArtistico;
     private String descripcion;
 	
-    @OneToMany(mappedBy = "artista")
+    @OneToMany(mappedBy = "artista" , fetch =FetchType.EAGER)
     private List<Album> albums;
     
-    @OneToMany(mappedBy = "artista")
+    @OneToMany(mappedBy = "artista" , fetch =FetchType.EAGER)
     private List<Evento> eventos;
     
     private String campoArtistico;
