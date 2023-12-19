@@ -21,7 +21,7 @@ export const AddAlbum = () => {
     const token = localStorage.getItem("tKeyId")
     const albumData = Object.fromEntries(new FormData(e.currentTarget))
     // console.log(albumData)
-    const response = await postAlbum(closeModal, albumData, token)
+    const response = await postAlbum(albumData, token, closeModal)
     // console.log(response)
     return response
   }
@@ -42,7 +42,7 @@ export const AddAlbum = () => {
           action=""
           encType="multipart/form-data"
           onReset={closeModal}
-          onSubmit={() => submitAlbum}
+          onSubmit={submitAlbum}
           className="w-fit bg-white text-negro flex flex-col gap-8 justify-center p-6 rounded-md shadow-2xl"
         >
           <fieldset className="flex flex-col gap-4">
