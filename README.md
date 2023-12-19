@@ -91,7 +91,7 @@ _Como hacer un deploy_
 <a href='https://postimg.cc/Tpr33cwH' target='_blank'><img src='https://i.postimg.cc/Tpr33cwH/tatiana.jpg' border='0' alt='tatiana'/></a>
         <h4 style="margin-top: 1rem;">Tatiana Gutiérrez</h4>
         <h4 style="margin-top: 1rem;">Backend Developer</h4>
-          <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
+          <a href="https://github.com/tatianagutierrez" target="_blank">
             <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
           </a>
           <a href="https://www.linkedin.com/in/gutierrez-tatiana/" target="_blank">
@@ -172,7 +172,7 @@ _Como hacer un deploy_
 <a href='https://postimg.cc/FYNsdJkF' target='_blank'><img src='https://i.postimg.cc/FYNsdJkF/fernando.jpg' border='0' alt='fernando'/></a>
         <h4 style="margin-top: 1rem;">Fernando Malan</h4>
         <h4 style="margin-top: 1rem;">Frontend Developer</h4>
-          <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
+          <a href="https://github.com/MalanFernando" target="_blank">
             <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
           </a>
           <a href="https://www.linkedin.com/in/fernando-david-malan-perugachi-b48b6321a/" target="_blank">
@@ -194,7 +194,7 @@ _Como hacer un deploy_
 <a href='https://postimg.cc/874khPLR' target='_blank'><img src='https://i.postimg.cc/874khPLR/nahuel-vill.jpg' border='0' alt='nahuel-vill'/></a>
         <h4 style="margin-top: 1rem;">Nahuel Villegas</h4>
         <h4 style="margin-top: 1rem;">Frontend Developer</h4>
-          <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
+          <a href="https://github.com/Nahu258" target="_blank">
             <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
           </a>
           <a href="https://www.linkedin.com/in/villegasnahuel/" target="_blank">
@@ -207,8 +207,8 @@ _Como hacer un deploy_
 <a href='https://postimg.cc/6229Jrgc' target='_blank'><img src='https://i.postimg.cc/6229Jrgc/ignacio-mor.png' border='0' alt='ignacio-mor'/></a>
         <h4 style="margin-top: 1rem;">Ignacio Morales</h4>
         <h4 style="margin-top: 1rem;">UX / UI</h4>
-          <a href="https://github.com/nzaeta" target="_blank">
-            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          <a href="https://www.behance.net/ignaciojosemorales" target="_blank">
+            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=Behance&color=1769FF&logo=behance&logoColor=FFFFFF&label="/>
           </a>
           <a href="https://www.linkedin.com/in/ignacio-jos%C3%A9-morales-817889248/" target="_blank">
             <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
@@ -229,7 +229,7 @@ _Como hacer un deploy_
 <a href='https://postimg.cc/3yw895ZP' target='_blank'><img src='https://i.postimg.cc/3yw895ZP/melina.jpg' border='0' alt='melina'/></a>
         <h4 style="margin-top: 1rem;">Melina Valdez</h4>
         <h4 style="margin-top: 1rem;">QA tester</h4>
-          <a href="https://github.com/nzaeta" target="_blank">
+          <a href="https://github.com/Melina1599" target="_blank">
             <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
           </a>
           <a href="https://www.linkedin.com/in/melina-delosangeles-valdez/" target="_blank">
