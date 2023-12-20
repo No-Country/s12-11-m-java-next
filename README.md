@@ -68,9 +68,13 @@ _Como hacer un deploy_
 
 ## Construido con 🛠
 
-👉Stack Backend: Java - Spring - PostgreSql - JPA - JWT - Spring Security - Lombok - AWS - Cloudinary
+👉Backend: Java - Spring - PostgreSql - JPA - JWT - Spring Security - Lombok - AWS - Cloudinary
 
-👉Stack Frontend: NextJS - ReactJS - TypeScript - Tailwind - Axios - Redux
+👉Frontend: NextJS - ReactJS - TypeScript - Tailwind - Axios - Redux
+
+👉QA: Trello, Google Docs, Google Sheets
+
+👉UX / UI: Figma
 
 ## Autores ✒
 
