@@ -18,7 +18,6 @@ interface MusicProps {
 }
 
 const Music = ({ selectedGenre }: MusicProps) => {
-  // const [selectedGenre, setselectedGenre] = useState(null)
   const [data, setData] = useState<dataType[]>([])
 
   useEffect(() => {
@@ -27,7 +26,7 @@ const Music = ({ selectedGenre }: MusicProps) => {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold">{selectedGenre !== null ? selectedGenre : 'Musica'}</h1>
+      <h1 className="text-2xl font-semibold text-center">{selectedGenre !== null ? selectedGenre : 'Musica'}</h1>
       <div className="flex flex-col gap-3 w-full">
         {data.map(item => (
           <Song key={item.id} title={item.titulo} image={item.imagenes[0]} music={item.audioUrl} genre={item.genero} />
