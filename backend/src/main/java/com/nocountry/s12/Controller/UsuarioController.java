@@ -50,6 +50,28 @@ public class UsuarioController {
     } 
 	
 	
+    
+    @PostMapping("/fotoPortada/{id}")
+    public ResponseEntity<?> fotoPortada(@PathVariable("id") Long id, @RequestParam("imagen") MultipartFile multipartFile)  throws IOException {
+    	try {
+        	Usuario usuario = usuarioRepository.findById(id).orElseThrow();
+        	
+    		BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
+    		if (bi == null) {
+    			return new ResponseEntity<String>("imagen no válida", HttpStatus.BAD_REQUEST);
+    		}
+    		
+    		Imagen imagen = imagenService.save(multipartFile);
+        	usuario.setFotoPortada(imagen);
+        	usuarioRepository.save(usuario);
+        	
+    		return new ResponseEntity<Imagen>(imagen, HttpStatus.OK);   
+        } catch (Exception e) {
+        	return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }     
+    
+    
 	
 
 }

@@ -5,6 +5,7 @@
 package com.nocountry.s12.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -37,11 +38,11 @@ public class Album {
     private LocalDate fechaPublicacion;
     private Boolean alta;
     
-    @OneToMany(mappedBy = "album")
+    @OneToMany(mappedBy = "album" , fetch =FetchType.EAGER)
     private List<Cancion> canciones;
     
-    @ManyToOne
-    @JoinColumn(name="id_artista")
+    @ManyToOne(fetch =FetchType.LAZY)
+    @JoinColumn(name="id_artista" )
     private Artista artista;
     
     @OneToOne

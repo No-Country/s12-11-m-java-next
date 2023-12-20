@@ -52,9 +52,8 @@ public class PublicacionController {
 
     @PostMapping
     public ResponseEntity<?> crearPublicacion(
-            // TODO: ver si va RequestParam
-            @RequestPart(value = "imagen", required = false) MultipartFile imagen,
-            @RequestPart("mensaje") String mensaje,
+            @RequestParam(value = "imagen", required = false) MultipartFile imagen,
+            @RequestParam("mensaje") String mensaje,
             @AuthenticationPrincipal UserDetails userDetails)
     {
         try {

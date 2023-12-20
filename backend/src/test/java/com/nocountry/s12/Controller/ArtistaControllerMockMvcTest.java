@@ -38,6 +38,7 @@ class ArtistaControllerMockMvcTest {
   @Autowired
   private JacksonTester<List<ArtistaDTO>> artistaListJacksonTester;
 
+  
   @Test
   void canRetrieveAllArtistas() throws Exception {
     List<ArtistaDTO> artistaDTOS = List.of(new ArtistaDTO(), new ArtistaDTO());

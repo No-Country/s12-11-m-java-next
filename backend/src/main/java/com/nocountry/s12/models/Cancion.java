@@ -5,6 +5,7 @@
 package com.nocountry.s12.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -41,7 +42,7 @@ public class Cancion {
     
     private List<String> imagenes;
     
-    @ManyToOne
+    @ManyToOne(fetch =FetchType.LAZY)
     @JoinColumn(name="id_album")
     @JsonIgnore
     private Album album;
