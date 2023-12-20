@@ -56,7 +56,7 @@ public class MusicServiceImpl implements IMusicService {
 		
 		
 		// signarle el nombre de la cancion a la url
-		String urlCancion = "http://" + serverAddress +  ":8080/music/artista" + audio.getOriginalFilename();
+		String urlCancion = "http://" + serverAddress +  ":8080/music/artista/" + audio.getOriginalFilename();
 
 		// buscar un album
 		Optional<Album> album = albumRepository.findById(Long.parseLong(albunId));
