@@ -1,12 +1,10 @@
 "use client"
 
-import { type FormEvent, useRef } from "react"
+import { useRef } from "react"
 import { genres } from "@/utils/genres"
 import { postAlbum } from "@/utils/albumsRequest/postAlbum"
 
 export const AddAlbum = () => {
-  const years = [2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030]
-
   const album = useRef<HTMLDialogElement>(null)
 
   const openModal = () => {
@@ -14,16 +12,6 @@ export const AddAlbum = () => {
   }
   const closeModal = () => {
     album.current?.close()
-  }
-
-  const submitAlbum = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const token = localStorage.getItem("tKeyId")
-    const albumData = Object.fromEntries(new FormData(e.currentTarget))
-    // console.log(albumData)
-    const response = await postAlbum(albumData, token, closeModal)
-    // console.log(response)
-    return response
   }
 
   return (
@@ -42,11 +30,24 @@ export const AddAlbum = () => {
           action=""
           encType="multipart/form-data"
           onReset={closeModal}
-          onSubmit={submitAlbum}
+          onSubmit={(event) => {
+            const token = localStorage.getItem("tKeyId")
+            event.preventDefault()
+            const albumData = Object.fromEntries(
+              new FormData(event.currentTarget),
+            )
+            const data = new FormData()
+            data.append("img", albumData.img)
+            data.append("titulo", albumData.titulo)
+            data.append("genero", albumData.genero)
+            data.append("fechaPublicacion", albumData.fechaPublicacion)
+            console.log(albumData)
+            void postAlbum(data, token, closeModal).catch(console.error)
+          }}
           className="w-fit bg-white text-negro flex flex-col gap-8 justify-center p-6 rounded-md shadow-2xl"
         >
           <fieldset className="flex flex-col gap-4">
-            {/* <label
+            <label
               htmlFor="portrait"
               className="outline-1 outline-dashed outline-negro p-2 rounded-md text-center cursor-pointer"
             >
@@ -60,13 +61,13 @@ export const AddAlbum = () => {
                 hidden
                 id="portrait"
               />
-            </label> */}
+            </label>
             <label htmlFor="title" className="grid gap-2">
               <p className="font-medium">Título de álbum</p>
               <input
                 id="title"
                 required
-                name="title"
+                name="titulo"
                 type="text"
                 placeholder="Título de álbum"
                 className="w-full outline outline-1 px-4 py-2 outline-blackMd rounded-md"
@@ -76,7 +77,7 @@ export const AddAlbum = () => {
               <label htmlFor="genre" className="grid gap-2">
                 <p className="font-medium">Género musical</p>
                 <select
-                  name="genre"
+                  name="genero"
                   id="genre"
                   placeholder="Seleccionar"
                   className="w-full outline outline-1 px-3 py-2 outline-blackMd rounded-md text-blackMd"
@@ -91,8 +92,8 @@ export const AddAlbum = () => {
               </label>
               <label htmlFor="year" className="grid gap-2">
                 <p className="font-medium">Año de lanzamiento</p>
-                <select
-                  name="year"
+                {/* <select
+                  name="fechaPublicacion"
                   id="year"
                   placeholder="Seleccionar"
                   className="w-full outline outline-1 p-2 outline-blackMd rounded-md text-blackMd"
@@ -103,7 +104,8 @@ export const AddAlbum = () => {
                       {year}
                     </option>
                   ))}
-                </select>
+                </select> */}
+                <input type="date" name="fechaPublicacion" />
               </label>
             </fieldset>
           </fieldset>
