@@ -70,11 +70,11 @@ $ ./mvnw test
 _Como hacer un deploy_
 
 
-# Link Deploy 🚀:
+## Link Deploy 🚀:
 
 _Falta Link del Deploy_
 
-# Link Figma 🎨:
+## Link Figma 🎨:
 
 https://www.figma.com/file/LbEOujnv7akiZmAQ0vArWS/Stereos-en-la-nube
 
