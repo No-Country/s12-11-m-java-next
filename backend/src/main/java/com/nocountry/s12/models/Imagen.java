@@ -28,4 +28,7 @@ public class Imagen {
     
     @OneToOne
     private Album album;
+
+    @OneToOne
+    private Evento evento;
 }

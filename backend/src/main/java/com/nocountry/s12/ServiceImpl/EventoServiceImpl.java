@@ -12,6 +12,7 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.nocountry.s12.Dto.Request.EventoRequestDTO;
 import com.nocountry.s12.Dto.Response.ArtistaDTO;
@@ -23,6 +24,8 @@ import com.nocountry.s12.Service.ArtistaService;
 import com.nocountry.s12.Service.EventoService;
 import com.nocountry.s12.models.Artista;
 import com.nocountry.s12.models.Evento;
+import com.nocountry.s12.models.Imagen;
+import com.nocountry.s12.Service.ImagenService;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -33,9 +36,8 @@ public class EventoServiceImpl implements EventoService{
 
     
     private final EventoRepository eventoRepository;
-    //private final ArtistaRepository artistaRepository;
     private final ArtistaService artistaService;
-   
+    private final ImagenService imagenService;
 
     // public EventoServiceImpl(EventoRepository eventoRepository, ArtistaRepository artistaRepository) {
     //     this.eventoRepository = eventoRepository;
@@ -124,58 +126,106 @@ public class EventoServiceImpl implements EventoService{
 		return eventoRepository.existsById(id);
 	}
 
-    @Override
-    @Transactional
-    public EventoResponseDTO save(EventoRequestDTO eventoDto) throws Exception {
-        Evento nuevoEvento = new Evento();
+    // @Override
+    // @Transactional
+    // public EventoResponseDTO save(EventoRequestDTO eventoDto) throws Exception {
+    //     Evento nuevoEvento = new Evento();
         
-        // Buscar usuario loguado por token
-        // String userName = jwtService.getUsernameFromToken(null)
-        // String username = getArtistaFromToken();
-        // System.out.println("username loged:" + username);
-        // Artista artista = new Artista();
-        // artista = artistaRepository.findByUsername(username).get();
-        // System.out.println("artista id: " + artista.getId());
+    //     // Buscar usuario loguado por token
+    //     // String userName = jwtService.getUsernameFromToken(null)
+    //     // String username = getArtistaFromToken();
+    //     // System.out.println("username loged:" + username);
+    //     // Artista artista = new Artista();
+    //     // artista = artistaRepository.findByUsername(username).get();
+    //     // System.out.println("artista id: " + artista.getId());
 
-        try{
-            LocalDate fechaEvento = validarFecha(eventoDto.fechaEvento());
-            nuevoEvento.setFechaEvento(fechaEvento);
-            nuevoEvento.setHora(eventoDto.hora());
-            nuevoEvento.setLugar(eventoDto.lugar());
-            nuevoEvento.setPrecio(eventoDto.precio());
-            nuevoEvento.setTitulo(eventoDto.titulo());
-            nuevoEvento.setDescripcion(eventoDto.descripcion());
-            //nuevoEvento.setArtista(artista);
+    //     try{
+    //         LocalDate fechaEvento = validarFecha(eventoDto.fechaEvento());
+    //         nuevoEvento.setFechaEvento(fechaEvento);
+    //         nuevoEvento.setHora(eventoDto.hora());
+    //         nuevoEvento.setLugar(eventoDto.lugar());
+    //         nuevoEvento.setPrecio(eventoDto.precio());
+    //         nuevoEvento.setTitulo(eventoDto.titulo());
+    //         nuevoEvento.setDescripcion(eventoDto.descripcion());
+    //         //nuevoEvento.setArtista(artista);
             
-             eventoRepository.save(nuevoEvento);
+    //          eventoRepository.save(nuevoEvento);
             
-            EventoResponseDTO eventoCreado = new EventoResponseDTO(nuevoEvento);
-            nuevoEvento.setId(eventoCreado.idEvento());
-            return eventoCreado;
+    //         EventoResponseDTO eventoCreado = new EventoResponseDTO(nuevoEvento);
+    //         nuevoEvento.setId(eventoCreado.idEvento());
+    //         return eventoCreado;
 
-        }catch (Exception e) {
-            System.out.println("Service error:" +e.getMessage());
-            throw new Exception(e.getMessage());
-        }
-           // return null;
+    //     }catch (Exception e) {
+    //         System.out.println("Service error:" +e.getMessage());
+    //         throw new Exception(e.getMessage());
+    //     }
+    //        // return null;
         
-    }
+    // }
 
+    //Funcionando save sin imagen
+    // @Override
+    // //@Transactional
+    // public EventoArtistaResponseDto saveEventoArtista(EventoRequestDTO eventoDto, String usernameArtista,
+    //                 MultipartFile img) throws Exception {
+
+    //     Evento nuevoEvento = new Evento();
+    //     Artista artista = artistaService.getByUsername(usernameArtista);
+    //     System.out.println("artista es service:" + artista.getNombreCompleto());
+    //     Imagen imgEvento = imagenService.save(img);
+    //     try{
+    //         LocalDate fechaEvento = validarFecha(eventoDto.fechaEvento());
+    //         nuevoEvento.setFechaEvento(fechaEvento);
+    //         nuevoEvento.setHora(eventoDto.hora());
+    //         nuevoEvento.setLugar(eventoDto.lugar());
+    //         nuevoEvento.setPrecio(eventoDto.precio());
+    //         nuevoEvento.setTitulo(eventoDto.titulo());
+    //         nuevoEvento.setDescripcion(eventoDto.descripcion());
+    //         nuevoEvento.setArtista(artista);
+    //         nuevoEvento.setImgEvento(imgEvento);
+            
+    //         eventoRepository.save(nuevoEvento);
+    //         EventoArtistaResponseDto eventoCreado = new EventoArtistaResponseDto(nuevoEvento);
+    //         nuevoEvento.setId(eventoCreado.idEvento());
+            
+            
+    //         return eventoCreado;
+
+    //     }catch (Exception e) {
+    //         System.out.println("Service error:" +e.getMessage());
+    //         throw new Exception(e.getMessage());
+    //     }
+    //        // return null;
+        
+    // }
+
+    //save evento con imagen
     @Override
     //@Transactional
-    public EventoArtistaResponseDto saveEventoArtista(EventoRequestDTO eventoDto, String usernameArtista) throws Exception {
+    public EventoArtistaResponseDto saveEventoArtista(String usernameArtista,
+                    MultipartFile img,
+                    String titulo,
+				    String lugar,
+		            String hora,
+					double precio,
+					String fechaEvento,
+					String descripcion
+                    ) throws Exception {
+
         Evento nuevoEvento = new Evento();
         Artista artista = artistaService.getByUsername(usernameArtista);
         System.out.println("artista es service:" + artista.getNombreCompleto());
+        Imagen imgEvento = imagenService.save(img);
         try{
-            LocalDate fechaEvento = validarFecha(eventoDto.fechaEvento());
-            nuevoEvento.setFechaEvento(fechaEvento);
-            nuevoEvento.setHora(eventoDto.hora());
-            nuevoEvento.setLugar(eventoDto.lugar());
-            nuevoEvento.setPrecio(eventoDto.precio());
-            nuevoEvento.setTitulo(eventoDto.titulo());
-            nuevoEvento.setDescripcion(eventoDto.descripcion());
+            LocalDate fechaEvent = validarFecha(fechaEvento);
+            nuevoEvento.setFechaEvento(fechaEvent);
+            nuevoEvento.setHora(hora);
+            nuevoEvento.setLugar(lugar);
+            nuevoEvento.setPrecio(precio);
+            nuevoEvento.setTitulo(titulo);
+            nuevoEvento.setDescripcion(descripcion);
             nuevoEvento.setArtista(artista);
+            nuevoEvento.setImgEvento(imgEvento);
             
             eventoRepository.save(nuevoEvento);
             EventoArtistaResponseDto eventoCreado = new EventoArtistaResponseDto(nuevoEvento);
