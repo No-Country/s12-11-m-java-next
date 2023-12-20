@@ -5,16 +5,18 @@ La web conlleva a una comunidad de seguidores donde puedes informarte sobre sus 
 Nuestra web impulsa la creación de una comunidad que celebra la diversidad musical, promueve la conexión directa entre músicos y  seguidores,  impulsando la visibilidad y oportunidades de colaboración entre los músicos independientes brindando la posibilidad de conectarse con otros artistas._
 
 # Contenido
-* [Comenzando 🚀](#Comenzando-)
-  * [Requisitos 📋](#Requisitos-)
-  * [Instalación de la api 🔧](#Instalación-de-la-api-)
-  * [Instalación del cliente 🔨](#Instalación-del-cliente-)
-* [Ejecutando las pruebas ⚙️](#Ejecutando-las-pruebas-)
-* [Despliegue 📦](#Despliegue-)
+* [Comenzando 🚀](#comenzando-)
+  * [Requisitos 📋](#requisitos-)
+  * [Instalación de la api 🔧](#instalación-de-la-api-)
+  * [Instalación del cliente 🔨](#instalación-del-cliente-)
+* [Ejecutando las pruebas ⚙️](#ejecutando-las-pruebas-)
+* [Despliegue 📦](#despliegue-)
+* [Link Deploy 🚀](#link-deploy-)
+* [Link Figma 🎨](#link-figma-)
 * [Construido con 🛠](#construido-con-)
-* [Autores ✒](#Autores-)
-* [Video demo 🎥](#Video-demo-)
-* [Agradecimientos 💝](#Agradecimientos-)
+* [Autores ✒](#autores-)
+* [Video demo 🎥](#video-demo-)
+* [Agradecimientos 💝](#agradecimientos-)
 
 ## Comenzando 🚀
 
@@ -65,6 +67,15 @@ $ ./mvnw test
 ## Despliegue 📦
 
 _Como hacer un deploy_
+
+
+# Link Deploy 🚀:
+
+_Falta Link del Deploy_
+
+# Link Figma 🎨:
+
+https://www.figma.com/file/LbEOujnv7akiZmAQ0vArWS/Stereos-en-la-nube
 
 ## Construido con 🛠
 
