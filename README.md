@@ -16,6 +16,7 @@ Nuestra web impulsa la creación de una comunidad que celebra la diversidad musi
 * [Construido con 🛠](#construido-con-)
 * [Autores ✒](#autores-)
 * [Video demo 🎥](#video-demo-)
+* [Capturas de la aplicación 📸](#capturas-de-la-aplicación)
 * [Agradecimientos 💝](#agradecimientos-)
 
 ## Comenzando 🚀
@@ -269,6 +270,10 @@ https://www.figma.com/file/LbEOujnv7akiZmAQ0vArWS/Stereos-en-la-nube
      
 
 ## Video demo 🎥
+
+_Video demostración del proyecto._
+
+## Capturas de la aplicación 📸
 
 _Video demostración del proyecto._
 
