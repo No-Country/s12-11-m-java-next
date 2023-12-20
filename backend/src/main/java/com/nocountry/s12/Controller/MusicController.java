@@ -70,7 +70,7 @@ public class MusicController {
 	}
 
 	// trae todos las caciones del artista
-	@GetMapping("/Artista")
+	@GetMapping("/artista")
 	public ResponseEntity<?> getAllcancionByArtista(@AuthenticationPrincipal UserDetails userDetails) {
 
 		try {

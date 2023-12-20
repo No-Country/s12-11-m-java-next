@@ -27,7 +27,7 @@ public class Publicacion {
     @JoinColumn(name = "id_imagen")
     private Imagen imagen;
 
-    @ManyToOne
+    @ManyToOne(fetch =FetchType.LAZY)
     @JoinColumn(name="id_usuario")
     private Usuario usuario;
 
