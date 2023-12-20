@@ -12,7 +12,7 @@ const getAlbum = async (token: any, setAlbums: any) => {
     )
         .then(function (response: any) {
             setAlbums(response.data);
-            console.log(response);
+            // console.log(response);
 
         })
         .catch(function (err) {

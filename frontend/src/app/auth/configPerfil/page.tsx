@@ -1,5 +1,6 @@
 "use client"
 import { genres } from "@/utils/genres"
+import postImgPerfil from "@/utils/imagesRequest/postImgPerfil"
 import getUserMe from "@/utils/userRequest/getUserMe"
 import putUserMe from "@/utils/userRequest/putUserMe"
 import Link from "next/link"
@@ -14,17 +15,23 @@ interface dataType {
   username: string,
   generoMusical: string,
   descripcion: string,
+  fotoPerfil: string
 }
 
 const pageConfigPerfil = () => {
+  const [Id, setId] = useState('')
+  const [i, setI] = useState('')
   const [img, setImg] = useState('')
   const [data, setData] = useState<dataType>()
   const [rol, setRol] = useState<string>()
 
   useEffect(() => {
     const token = localStorage.getItem("tKeyId")
-    data ? {} : getUserMe(token, setData)
-    setRol(data ? data.rol : '')
+    getUserMe(token, setData).catch((e: Error) => {
+      console.error(e)
+    })
+    setRol(data?.rol)
+    setId(data?.id)
     setImg(data?.fotoPerfil)
   }, [data])
 
@@ -34,10 +41,24 @@ const pageConfigPerfil = () => {
       new FormData(e.currentTarget)
     );
     const token = localStorage.getItem("tKeyId")
-    const Id = data ? data.id : ''
-    putUserMe(formDatauser, token, Id)
+    putUserMe(formDatauser, token, Id).catch((e: Error) => {
+      console.error(e)
+    })
   }
+  useEffect(() => {
+    setId(i)
+    subirImagen()
+  }, [i])
+  const subirImagen = () => {
+    const token = localStorage.getItem("tKeyId")
+    const formdata = new FormData()
+    formdata.append('imagen', i)
+    postImgPerfil(Id, formdata, token).catch((e: Error) => {
+      console.error(e)
+    })
 
+
+  }
   return (
     // componetizar  elementos como el input , el switch o el form
     <section className="h-full w-full flex flex-col items-center bg-gradient-to-t from-lightViolet to-darkViolet">
@@ -86,7 +107,10 @@ const pageConfigPerfil = () => {
                 : <img src={img} alt="" hidden={!img.length > 0} className="object-cover  h-[200px] w-full rounded-md" />}
 
               <input id="upload" type="file" hidden className="h-full  w-full"
-                onChange={(e) => { setImg(URL.createObjectURL(e.target.files[0])) }} />
+                onChange={(e) => {
+                  setImg(URL.createObjectURL(e.target.files[0]))
+                  setI(e.target.files[0])
+                }} />
             </label>
           </div>
           {/* inputfile/ */}

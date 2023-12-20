@@ -1,10 +1,10 @@
 import axios from 'axios'
 const URL = process.env.NEXT_PUBLIC_URL_API
 
-const postEvents = async (eventData: any, closeModal: any, token: any, setErr: any) => {
+const postEvents = async (formData: any, token: any, closeModal: any, setErr: any) => {
     await axios.post(
         `${URL}/eventos/eventoArtista`,
-        eventData
+        formData
         ,
         {
             headers:

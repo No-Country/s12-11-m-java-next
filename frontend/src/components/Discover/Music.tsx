@@ -21,7 +21,11 @@ const Music = ({ selectedGenre }: MusicProps) => {
   const [data, setData] = useState<dataType[]>([])
 
   useEffect(() => {
-    getMusic(setData)
+    getMusic(setData).catch((e: Error) => {
+      console.error(e)
+    })
+    console.log(data);
+
   }, [])
 
   return (

@@ -8,7 +8,9 @@ const MusicFeedCard = () => {
   const [data, setData] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
 
   useEffect(() => {
-    data[0] ? {} : getFeedMusic(setData)
+    getFeedMusic(setData).catch((e: Error) => {
+      console.error(e)
+    })
   }, [data])
 
   return (

@@ -21,9 +21,7 @@ const Account = () => {
     useEffect(() => {
         const token = localStorage.getItem("tKeyId")
         data ? {} : getUserMe(token, setData)
-        data ? (setId(data.id), setImg(data.fotoPerfil)) : setId();
-        // console.log(data);
-
+        data ? (setId(data.id), setImg(data.fotoPortada)) : setId();
     }, [data])
     useEffect(() => {
         setI(i)
@@ -61,7 +59,7 @@ const Account = () => {
                 : <></>}
             <input hidden type="file" name="imagen" id="portada"
                 onChange={(e) => {
-                    e.target.files[0] ? setImg(URL.createObjectURL(e.target.files[0])) : ''
+                    setImg(URL.createObjectURL(e.target.files[0]))
                     setI(e.target.files[0])
                 }} />
             <div className='absolute px-5 shadow-shadowInset w-full' >
@@ -71,7 +69,7 @@ const Account = () => {
                     <span className='w-96'>{data?.descripcion}</span>
                 </span>
                 <span className='flex gap-5 items-center mb-5'>
-                    {/* <span>{data?.canciones?.length} Canciones</span> */}
+                    <span>{data?.canciones?.length} Canciones</span>
                     <span onClick={subirImagen}>{data?.albums?.length} Albums</span>
                     <span>{data?.eventos?.length} Eventos</span>
                     <span>{data?.publicaciones?.length} Posts</span>

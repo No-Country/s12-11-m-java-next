@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { FaArrowLeft } from "react-icons/fa"
 
-export default function SingUpPage () {
+export default function SingUpPage() {
     const router = useRouter()
     const [userData, setUserData] = useState({
         nombreCompleto: "",
@@ -53,7 +53,7 @@ export default function SingUpPage () {
                                 })
                             }}
                                 className='p-3 bg-transparent border-2 rounded-xl border-gray-rosa outline-none' type="text"
-                                placeholder='Contraseña' />
+                                placeholder='Apellido completo' />
                         </div>
                         <div className='flex flex-col gap-2'>
                             <label>Email</label>
