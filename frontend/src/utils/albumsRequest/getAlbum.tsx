@@ -1,9 +1,8 @@
 import axios from "axios";
 
 const URL = process.env.NEXT_PUBLIC_URL_API
-const token = localStorage.getItem('tKeyId')
 
-const getAlbum = async (setAlbums: any) => {
+const getAlbum = async (token: string, setAlbums: any) => {
     await axios.get(`${ URL }/album`,
         {
             headers:
