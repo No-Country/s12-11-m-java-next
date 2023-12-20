@@ -2,11 +2,11 @@ import { type Playlist } from './types';
 
 const playlist: Playlist = [
   {
-    audioSrc: '/panic_show.mp3',
+    audioSrc: '',
     metadata: {
-      title: 'Guitar I',
-      artist: 'John Doe',
-      coverArtSrc: '/auth_bg.jpg',
+      title: '',
+      artist: '',
+      coverArtSrc: '',
     },
   },
 ];

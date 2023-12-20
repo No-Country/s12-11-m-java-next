@@ -7,7 +7,7 @@ import {
   type TrackMetadata,
 } from './types';
 
-export function createAudioplayer (
+export function createAudioplayer(
   playlist: Playlist,
   onStateChange: (state: PlayerState) => void,
 ): Controls {
@@ -19,12 +19,12 @@ export function createAudioplayer (
 
   /* === PlayerState === */
   // #region
-  function emitCurrentPlayerState () {
+  function emitCurrentPlayerState() {
     const state = computeCurrentPlayerState();
     onStateChange(state);
   }
 
-  function computeCurrentPlayerState (): PlayerState {
+  function computeCurrentPlayerState(): PlayerState {
     return {
       currentTrackMetadata: getCurrentTrackMetadata(),
       currentTrackDuration: getCurrentTrackDuration(),
@@ -36,7 +36,7 @@ export function createAudioplayer (
     };
   }
 
-  function getCurrentTrackMetadata (): TrackMetadata | null {
+  function getCurrentTrackMetadata(): TrackMetadata | null {
     if (currentTrackIndex < playlist.length) {
       return playlist[currentTrackIndex].metadata;
     } else {
@@ -44,25 +44,25 @@ export function createAudioplayer (
     }
   }
 
-  function getCurrentTrackDuration (): number | null {
+  function getCurrentTrackDuration(): number | null {
     return isNaN(audioElement.duration) ? null : audioElement.duration;
   }
-  function getCurrentTrackVolume (): number {
+  function getCurrentTrackVolume(): number {
     return isNaN(audioElement.volume) ? 0 : audioElement.volume;
   }
 
-  function getCurrentTrackPlaybackPosition (): number | null {
+  function getCurrentTrackPlaybackPosition(): number | null {
     return isNaN(audioElement.currentTime) ? null : audioElement.currentTime;
   }
 
-  function getPlaybackState (): PlaybackState {
+  function getPlaybackState(): PlaybackState {
     return audioElement.paused ? 'PAUSED' : 'PLAYING';
   }
   // #endregion
 
   /* === Event Listener === */
   // #region
-  function setupAudioElementListeners () {
+  function setupAudioElementListeners() {
     audioElement.addEventListener('playing', emitCurrentPlayerState);
     audioElement.addEventListener('pause', emitCurrentPlayerState);
     audioElement.addEventListener('ended', onCurrentTrackEnded);
@@ -70,7 +70,7 @@ export function createAudioplayer (
     audioElement.addEventListener('loadeddata', emitCurrentPlayerState);
   }
 
-  function removeAudioElementListeners () {
+  function removeAudioElementListeners() {
     audioElement.removeEventListener('playing', emitCurrentPlayerState);
     audioElement.removeEventListener('pause', emitCurrentPlayerState);
     audioElement.removeEventListener('ended', onCurrentTrackEnded);
@@ -78,7 +78,7 @@ export function createAudioplayer (
     audioElement.removeEventListener('loadeddata', emitCurrentPlayerState);
   }
 
-  function onCurrentTrackEnded () {
+  function onCurrentTrackEnded() {
     if (repeat) {
       replayCurrentTrack();
     } else {
@@ -90,26 +90,26 @@ export function createAudioplayer (
 
   /* === Track handling === */
   // #region
-  function replayCurrentTrack () {
+  function replayCurrentTrack() {
     audioElement.currentTime = 0;
     audioElement.play();
   }
 
-  function loadTrack (index: number) {
+  function loadTrack(index: number) {
     audioElement.src = playlist[index].audioSrc;
     audioElement.load();
     currentTrackIndex = index;
   }
 
-  function computeNextTrackIndex (): number {
+  function computeNextTrackIndex(): number {
     return shuffle ? computeRandomTrackIndex() : computeSubsequentTrackIndex();
   }
 
-  function computeSubsequentTrackIndex (): number {
+  function computeSubsequentTrackIndex(): number {
     return (currentTrackIndex + 1) % playlist.length;
   }
 
-  function computeRandomTrackIndex (): number {
+  function computeRandomTrackIndex(): number {
     if (playlist.length === 1) return 0;
     const index = Math.floor(Math.random() * (playlist.length - 1));
     return index < currentTrackIndex ? index : index + 1;
@@ -118,12 +118,12 @@ export function createAudioplayer (
 
   /* === Init & Cleanup === */
   // #region
-  function init () {
+  function init() {
     setupAudioElementListeners();
     loadTrack(0);
   }
 
-  function cleanup () {
+  function cleanup() {
     removeAudioElementListeners();
     audioElement.pause();
   }
@@ -131,33 +131,33 @@ export function createAudioplayer (
 
   /* === Controls === */
   // #region
-  function setPlaybackPosition (position: number) {
+  function setPlaybackPosition(position: number) {
     if (isNaN(position)) return;
     audioElement.currentTime = position;
   }
 
-  function setVolumePosition (position: number) {
+  function setVolumePosition(position: number) {
     audioElement.volume = position;
   }
 
-  function toggleShuffle () {
+  function toggleShuffle() {
     shuffle = !shuffle;
     emitCurrentPlayerState();
   }
 
-  function toggleRepeat () {
+  function toggleRepeat() {
     repeat = !repeat;
     emitCurrentPlayerState();
   }
 
-  function playNextTrack () {
+  function playNextTrack() {
     playbackHistory.push(currentTrackIndex);
     const nextTrackIndex = computeNextTrackIndex();
     loadTrack(nextTrackIndex);
     audioElement.play();
   }
 
-  function playPreviousTrack () {
+  function playPreviousTrack() {
     if (playbackHistory.length === 0 || audioElement.currentTime > 5) {
       replayCurrentTrack();
     } else {
@@ -168,7 +168,7 @@ export function createAudioplayer (
     }
   }
 
-  function togglePlayPause () {
+  function togglePlayPause() {
     if (audioElement.paused) {
       audioElement.play();
     } else {

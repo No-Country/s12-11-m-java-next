@@ -30,13 +30,13 @@ const AudioPlayer = () => {
     currentTrackMetadata,
   } = playerState;
 
-  function setProgress (value: number) {
+  function setProgress(value: number) {
     if (currentTrackDuration !== null) {
       setPlaybackPosition((value / 100) * currentTrackDuration);
     }
   }
 
-  function computeProgress (): number {
+  function computeProgress(): number {
     const noProgress =
       currentTrackDuration === null ||
       currentTrackPlaybackPosition === null ||
@@ -48,19 +48,19 @@ const AudioPlayer = () => {
     }
   }
 
-  function setVolume (value: number) {
+  function setVolume(value: number) {
     if (volume !== null) {
       setVolumePosition(value);
     }
   }
 
-  function formatTime (timeInSeconds: number | null): string {
+  function formatTime(timeInSeconds: number | null): string {
     if (timeInSeconds === null) return '';
     const numberOfMinutes = Math.floor(timeInSeconds / 60);
     const numberOfSeconds = Math.floor(timeInSeconds - numberOfMinutes * 60);
-    const minutes = `${ numberOfMinutes }`.padStart(2, '0');
-    const seconds = `${ numberOfSeconds }`.padStart(2, '0');
-    return `${ minutes }:${ seconds }`;
+    const minutes = `${numberOfMinutes}`.padStart(2, '0');
+    const seconds = `${numberOfSeconds}`.padStart(2, '0');
+    return `${minutes}:${seconds}`;
   }
 
   const handleMuted = () => {
