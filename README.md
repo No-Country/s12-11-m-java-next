@@ -76,6 +76,8 @@ _Como hacer un deploy_
 
 👉UX / UI: Figma
 
+👉PM: Trello, Project , Google Sheets
+
 ## Autores ✒
 
 <table align="center" style="border: 1px #000000 solid">
