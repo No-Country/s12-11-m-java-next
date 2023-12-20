@@ -35,7 +35,7 @@ public class AlbumServiceImpl implements AlbumService {
     private final AlbumRepository albumRepository;
     private final ArtistaService artistaService;
     private final ImagenService imagenService;
-    
+
     @Override
     public List<AlbumResponseDTO> listar() {
         List<Album> listaAlbum = albumRepository.findAll();
@@ -52,32 +52,31 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public AlbumResponseDTO crear(String usernameArtista, MultipartFile img ,String titulo, String genero, String fechaPublicacion) throws MiException {
-        Album nuevoAlbum = new Album();
-
+    public Album crear(String usernameArtista, MultipartFile img, String titulo, String genero, String fechaPublicacion) throws MiException {
         try {
             LocalDate fechaPubli = validarFecha(fechaPublicacion);
             Artista artista = artistaService.getByUsername(usernameArtista);
-            
+
             Imagen imgAlbum = imagenService.save(img);
-            
+
+            Album nuevoAlbum = new Album();
             nuevoAlbum.setGenero(genero);
             nuevoAlbum.setFechaPublicacion(fechaPubli);
             nuevoAlbum.setTitulo(titulo);
             nuevoAlbum.setAlta(true);
             nuevoAlbum.setArtista(artista);
-            nuevoAlbum.setImgAlbum(imgAlbum);
+            nuevoAlbum.setUrlImagen(imgAlbum.getImagenUrl());
 
-            albumRepository.save(nuevoAlbum);
+            Album albumCreado = albumRepository.save(nuevoAlbum);
+
+            AlbumResponseDTO albumResponseDTO = new AlbumResponseDTO(albumCreado);
+            return albumCreado;
         } catch (Exception e) {
             e.printStackTrace();
             throw new MiException(e.getMessage());
         }
-
-        AlbumResponseDTO albumResponseDTO = new AlbumResponseDTO(nuevoAlbum);
-        return albumResponseDTO;
     }
-    
+
     @Override
     public AlbumResponseDTO modificar(Long id, AlbumRequestDTO albumDTO) throws MiException {
         Album albumModificado = albumRepository.findById(id).get();
@@ -117,7 +116,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public List<AlbumResponseDTO> listarPorArtista(String username) throws MiException{
+    public List<AlbumResponseDTO> listarPorArtista(String username) throws MiException {
         Optional<List<Album>> optionalAlbums = albumRepository.findByUsername(username);
 
         if (optionalAlbums.isPresent()) {
@@ -130,7 +129,7 @@ public class AlbumServiceImpl implements AlbumService {
 
                 return listaAlbumDTO;
             } else {
-               
+
                 throw new MiException("El artista no tiene album", HttpStatus.OK);
             }
         } else {
@@ -138,6 +137,5 @@ public class AlbumServiceImpl implements AlbumService {
             throw new MiException("El artista no fue encontrado", HttpStatus.BAD_REQUEST);
         }
     }
-
 
 }

@@ -7,7 +7,6 @@ package com.nocountry.s12.Dto.Response;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nocountry.s12.models.Album;
 import com.nocountry.s12.models.Cancion;
-import com.nocountry.s12.models.Imagen;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,13 +20,13 @@ public record AlbumResponseDTO(Long id,
         @JsonFormat(pattern = "yyyy-MM-dd")
         LocalDate fechaPublicacion, 
         List<Cancion> canciones,
-        Imagen imagen
+        String urlImagen
         
         ) {
     
 
     public AlbumResponseDTO(Album album){
-        this(album.getId(), album.getTitulo(),album.getGenero(), album.getFechaPublicacion(), album.getCanciones(), album.getImgAlbum());
+        this(album.getId(), album.getTitulo(),album.getGenero(), album.getFechaPublicacion(), album.getCanciones(), album.getUrlImagen());
     }
     
 

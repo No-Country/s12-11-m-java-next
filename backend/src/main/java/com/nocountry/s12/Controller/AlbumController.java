@@ -8,6 +8,7 @@ import com.nocountry.s12.Dto.Request.AlbumRequestDTO;
 import com.nocountry.s12.Dto.Response.AlbumResponseDTO;
 import com.nocountry.s12.Exception.MiException;
 import com.nocountry.s12.ServiceImpl.AlbumServiceImpl;
+import com.nocountry.s12.models.Album;
 import jakarta.validation.Valid;
 import java.io.IOException;
 import java.util.List;
@@ -63,25 +64,25 @@ public class AlbumController {
         }
         return new ResponseEntity<>(albumResponseDTO, HttpStatus.OK);
     }
-    
+     
     @Secured("ARTISTA")
-    @PostMapping()
-    public ResponseEntity<?> crear(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("img") MultipartFile img,
-																			    		@RequestParam("titulo") String titulo,
-																			    		@RequestParam("genero") String genero, 
-																			    		@RequestParam("fechaPublicacion") String fechaPublicacion) throws IOException {
+@PostMapping()
+public ResponseEntity<?> crear(@AuthenticationPrincipal UserDetails userDetails, 
+                                @RequestParam("img") MultipartFile img,
+                                @RequestParam("titulo") String titulo,
+                                @RequestParam("genero") String genero, 
+                                @RequestParam("fechaPublicacion") String fechaPublicacion) throws IOException {
 
-        String usernameArtista = userDetails.getUsername();
-        
-        try {
-            
-            albumService.crear(usernameArtista, img, titulo, genero, fechaPublicacion);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Album creado");
-        } catch (MiException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
+    String usernameArtista = userDetails.getUsername();
+
+    try {
+        Album albumCreado = albumService.crear(usernameArtista, img, titulo, genero, fechaPublicacion);
+        AlbumResponseDTO albumResponseDTO = new AlbumResponseDTO(albumCreado);
+        return ResponseEntity.status(HttpStatus.CREATED).body(albumResponseDTO);
+    } catch (MiException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
-        
+}
     
     @PutMapping("/{id}")
     public ResponseEntity<?> modificar(@PathVariable("id") Long id, @Valid @RequestBody AlbumRequestDTO albumRequestDTO) {

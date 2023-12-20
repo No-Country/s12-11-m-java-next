@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,10 +23,6 @@ public class Imagen {
     private String name;
     private String imagenUrl;
     private String cloudinaryId;
-    
-    
-    @OneToOne
-    private Album album;
 
     @OneToOne
     private Evento evento;
