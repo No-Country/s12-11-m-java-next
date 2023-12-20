@@ -71,17 +71,17 @@ const AddMusicCard = () => {
                             )}
                         </select>
                     </label>
-                    {/* <label htmlFor="" className='flex flex-col'>
+                    <label htmlFor="" className='flex flex-col'>
                         <small>Selecciona un album</small>
-                        <select name="album" id="" placeholder='album' defaultValue={''} className='outline-none border-2 p-2 border-negro rounded-md w-full'>
+                        <select name="albumId" id="albumId" placeholder='album' defaultValue={''} className='outline-none border-2 p-2 border-negro rounded-md w-full'>
                             {albums.map(res =>
                                 <option value={res.id} key={res.id}>{res.title}</option>
                             )}
                         </select>
-                    </label> */}
+                    </label>
                     <label htmlFor="">
                         <input name='fechaSubida' type="text" defaultValue={fechaSubida} hidden />
-                        <input name='albumId' type="text" id='albumId' defaultValue={1} hidden />
+                        {/* <input name='albumId' type="text" id='albumId' defaultValue={1} hidden /> */}
                     </label>
                     <label className='flex w-full justify-between'>
                         <input type='submit' className='px-4 py-2 bg-negro text-white rounded-full cursor-pointer'
