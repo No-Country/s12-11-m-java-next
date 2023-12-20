@@ -9,15 +9,14 @@ import { type AlbumsType } from "@/interfaces/album.interface"
 export const Albums = () => {
   const [albums, setAlbums] = useState<AlbumsType[] | null>(null)
 
+  const token = localStorage.getItem("tKeyId")
+
   useEffect(() => {
-    getAlbums()
-      .then((res: AlbumsType[]) => {
-        setAlbums(res)
-      })
-      .catch((e: Error) => {
-        console.error(e)
-      })
+    getAlbums(setAlbums, token).catch((e: Error) => {
+      console.error(e)
+    })
   }, [])
+  console.log(albums)
 
   return (
     <div className="grid grid-cols-auto gap-4 pt-8">
