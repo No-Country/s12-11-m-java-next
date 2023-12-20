@@ -52,7 +52,7 @@ public class MusicController {
 	}
 
 	// listar todo
-	@GetMapping
+	@GetMapping("/list")
 	public ResponseEntity<List<MusicResponseDto>> getAllCancion() {
 
 		return ResponseEntity.ok(musicService.listarAll());
