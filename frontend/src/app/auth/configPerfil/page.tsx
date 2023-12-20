@@ -6,16 +6,28 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { FaArrowLeft } from "react-icons/fa"
 
+interface dataType {
+  id: string,
+  rol: string,
+  nombreCompleto: string,
+  apellidoCompleto: string,
+  username: string,
+  generoMusical: string,
+  descripcion: string,
+}
+
 const pageConfigPerfil = () => {
   const [img, setImg] = useState('')
-  const [data, setData] = useState()
-  const [rol, setRol] = useState()
+  const [data, setData] = useState<dataType>()
+  const [rol, setRol] = useState<string>()
+
   useEffect(() => {
     const token = localStorage.getItem("tKeyId")
     data ? {} : getUserMe(token, setData)
     setRol(data ? data.rol : '')
     setImg(data?.fotoPerfil.imagenUrl)
   }, [data])
+
   const updateUser = (e: any) => {
     e.preventDefault()
     const formDatauser = Object.fromEntries(
@@ -23,9 +35,9 @@ const pageConfigPerfil = () => {
     );
     const token = localStorage.getItem("tKeyId")
     const Id = data ? data.id : ''
-
     putUserMe(formDatauser, token, Id)
   }
+
   return (
     // componetizar  elementos como el input , el switch o el form
     <section className="h-full w-full flex flex-col items-center bg-gradient-to-t from-lightViolet to-darkViolet">

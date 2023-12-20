@@ -1,6 +1,6 @@
 'use client'
-import postPosts from "../../utils/postRequest/postPosts"
 import { useRef, useState } from "react"
+import postPosts from "../../utils/postRequest/postPosts"
 
 const AddPostCard = () => {
     const [img, setImg] = useState('')
@@ -65,7 +65,7 @@ const AddPostCard = () => {
                                 type="file"
                                 placeholder="+ Agregar imagen"
                                 id="portrait"
-                                className={`outline-none text-center ${img.length > 0 ? ' border-b-2' : ''} w-full`}
+                                className={`outline-none text-center ${ img.length > 0 ? ' border-b-2' : '' } w-full`}
                                 onChange={(e) => {
                                     setImg(URL.createObjectURL(e.target.files[0]));
                                 }}

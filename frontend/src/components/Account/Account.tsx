@@ -1,11 +1,17 @@
 'use client'
-import postImgPerfil from '@/utils/imagesRequest/postImgPerfil'
 import postImgPortada from '@/utils/imagesRequest/postImgPortada'
-import postImg from '@/utils/imagesRequest/postImgPortada'
 import getUserMe from '@/utils/userRequest/getUserMe'
-import axios from 'axios'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+
+interface dataType {
+    nombreCompleto: string,
+    albums: string,
+    eventos: string,
+    publicaciones: string,
+    generoMusical: string,
+    descripcion: string,
+}
 
 const Account = () => {
     const [Id, setId] = useState()

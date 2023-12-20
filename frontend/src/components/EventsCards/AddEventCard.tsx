@@ -1,5 +1,5 @@
 import postEvents from '@/utils/eventsRequest/postEvents';
-import React, { useState, useRef } from 'react'
+import { useRef, useState } from 'react';
 import { FaPlus } from "react-icons/fa6";
 const AddEventCard = () => {
     const [eventData, setEventData] = useState({

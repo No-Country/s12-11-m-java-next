@@ -1,9 +1,9 @@
 'use client'
-import getAllEvents from "../../utils/eventsRequest/getAllEvents"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import getAllEvents from "../../utils/eventsRequest/getAllEvents"
 
-function FeedEventCard() {
+function FeedEventCard () {
   const [data, setData] = useState([])
   useEffect(() => {
     data[0] ? {} : getAllEvents(setData)
