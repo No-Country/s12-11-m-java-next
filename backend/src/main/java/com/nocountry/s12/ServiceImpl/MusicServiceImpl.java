@@ -56,7 +56,7 @@ public class MusicServiceImpl implements IMusicService {
 		
 		
 		// signarle el nombre de la cancion a la url
-		String urlCancion = "http://" + serverAddress +  ":8080/music/" + audio.getOriginalFilename();
+		String urlCancion = "http://" + serverAddress +  ":8080/music/artista" + audio.getOriginalFilename();
 
 		// buscar un album
 		Optional<Album> album = albumRepository.findById(Long.parseLong(albunId));
@@ -98,7 +98,7 @@ public class MusicServiceImpl implements IMusicService {
 		return musicResponse;
 
 	}
-
+/*
 	@Override
 	public ResponseEntity<Resource> obtenerCancionByName(String nombreCancion) throws MiException {
 		try {
@@ -119,6 +119,33 @@ public class MusicServiceImpl implements IMusicService {
 		} catch (Exception e) {
 			throw new MiException("error en el nombre de la cancion", HttpStatus.BAD_REQUEST);
 		}
+	} */
+	
+	
+	@Override
+	public ResponseEntity<Resource> obtenerCancionByName(String nombreCancion) throws MiException {
+	    try {
+	        Path musicPath = Paths.get(musicDir, nombreCancion);
+
+	        // Crea un recurso FileSystem para el archivo de música
+	        Resource musicResource = new FileSystemResource(musicPath);
+
+	        // Configura las cabeceras de la respuesta
+	        HttpHeaders headers = new HttpHeaders();
+	        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+	        headers.setContentLength(musicResource.contentLength());
+	        
+	        // Cambia el tipo de contenido según el formato de música (ej. audio/mp3)
+	        headers.setContentType(MediaType.parseMediaType("audio/mp3"));
+	        
+	        // Cambia el nombre de la cabecera Content-Disposition
+	        headers.setContentDispositionFormData("attachment", nombreCancion);
+
+	        // Devuelve una respuesta con el recurso de música y las cabeceras configuradas
+	        return ResponseEntity.ok().headers(headers).body(musicResource);
+	    } catch (Exception e) {
+	        throw new MiException("Error al obtener la canción", HttpStatus.BAD_REQUEST);
+	    }
 	}
 
 	@Override
