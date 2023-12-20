@@ -16,7 +16,7 @@ const Account = () => {
     useEffect(() => {
         const token = localStorage.getItem("tKeyId")
         data ? {} : getUserMe(token, setData)
-        data ? (setId(data.id), setImg(data.fotoPerfil.imagenUrl)) : setId();
+        data ? (setId(data.id), setImg(data.fotoPerfil?.imagenUrl)) : setId();
         console.log(data);
 
     }, [data])
@@ -34,7 +34,7 @@ const Account = () => {
 
     }
     return (
-        <label className={`w-full h-[350px] flex flex-col justify-end shadow-shadowInset cursor-pointer`} htmlFor="portada">
+        <label className={`w-full h-[390px] flex flex-col justify-end shadow-shadowInset cursor-pointer`} htmlFor="portada">
             {img ? <img src={img} alt="" className="object-cover  h-full w-full " /> : <></>}
             {!img ?
                 <span className="flex flex-col items-center gap-2 cursor-pointer h-full justify-center">

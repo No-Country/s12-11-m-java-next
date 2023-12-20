@@ -9,6 +9,8 @@ const pagePost = () => {
     useEffect(() => {
         const token = localStorage.getItem('tKeyId')
         data ? {} : getUserPost(setData, token)
+        console.log(getUserPost());
+
     }, [data])
     return (
         <section className='flex flex-wrap gap-5'>

@@ -12,7 +12,7 @@ import { SiExpertsexchange } from "react-icons/si"
 
 export default function Home() {
   return (
-    <div className="max-w-[1440px] m-auto">
+    <div className="">
       <header className="relative flex flex-col text-whiteColor">
         <Header />
         <picture>

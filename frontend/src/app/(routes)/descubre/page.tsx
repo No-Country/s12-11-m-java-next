@@ -8,7 +8,7 @@ const pageDescubre = () => {
     const data = [1, 3, 4, 5, 6, 7, 8, 9, 0]
 
     return (
-        <main className="w-full relative mb-20">
+        <main className="w-full relative mb-20 h-full">
             <div className="flex items-center border-2 border-rosa mt-10 rounded-xl gap-3 p-2 max-w-sm  w-full m-auto">
                 <FaSearch className='text-rosa' />
                 <input className="w-full bg-transparent outline-none" />

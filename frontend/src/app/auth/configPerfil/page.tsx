@@ -14,7 +14,7 @@ const pageConfigPerfil = () => {
     const token = localStorage.getItem("tKeyId")
     data ? {} : getUserMe(token, setData)
     setRol(data ? data.rol : '')
-    setImg(data?.fotoPerfil.imagenUrl)
+    setImg(data?.fotoPerfil?.imagenUrl)
   }, [data])
   const updateUser = (e: any) => {
     e.preventDefault()

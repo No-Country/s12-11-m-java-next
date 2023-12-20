@@ -6,7 +6,7 @@ const routesLayout = ({
     children: React.ReactNode
 }) => {
     return (
-        <main className="bg-gradient-to-b from-lightViolet to-darkViolet text-white w-full">
+        <main className="bg-gradient-to-b from-lightViolet to-darkViolet text-white w-full h-full mt-[20px]">
             <Header />
             {children}
         </main>
