@@ -3,6 +3,7 @@ const nextConfig = {
   distDir: 'build',
   images: {
     formats: ["image/webp"],
+    domains: ['res.cloudinary.com'],
   },
 }
 

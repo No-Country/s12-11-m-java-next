@@ -1,18 +1,39 @@
-import Image from "next/image"
-import { FaCirclePlay } from "react-icons/fa6"
+import Image from "next/image";
+import { FaCirclePlay } from "react-icons/fa6";
+import playlist from '../AudioPlayer/playlist';
 
-export const Song = () => {
+interface SongProps {
+  key: number;
+  title: string;
+  image: string;
+  music: string;
+  genre: string;
+}
+
+export const Song = ({ title, image, music, genre }: SongProps) => {
+  const songObject = {
+    audioSrc: music,
+    metadata: {
+      title,
+      artist: 'John Doe',
+      coverArtSrc: image,
+    },
+  }
+
   return (
     <div className="flex justify-between items-center gap-4">
       <div className="flex gap-4 py-2">
-        <button className="h-14 bg-negro flex rounded-md justify-center items-center">
-          <Image src='/production-home.webp' alt="" width={2000} height={2000} className="object-cover h-full w-full rounded-md" />
+        <button
+          onClick={() => playlist.push(songObject)}
+          className="h-14 bg-negro flex rounded-md justify-center items-center"
+        >
+          <Image src={image} alt="" width={2000} height={2000} className="object-cover h-full w-full rounded-md" />
           <FaCirclePlay className='h-10 w-10 absolute' />
         </button>
         <div className="grid">
-          <h3 className="text-sm line-clamp-1">Title music</h3>
-          <span className="text-xs">Artist</span>
-          <span className="text-xs">Genre</span>
+          <h3 className="text-sm line-clamp-1">{title}</h3>
+          {/* <span className="text-xs">Artist</span> */}
+          <span className="text-xs">{genre}</span>
         </div>
       </div>
       <div className="w-1/2 flex gap-4 justify-between items-center">

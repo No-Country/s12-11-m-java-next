@@ -23,7 +23,7 @@ const pageDescubre = () => {
                         data.slice(0, 6).map(item => (
                             <Artist key={item} />
                         ))
-                    }
+                    } 
                 </div>
             </section> */}
             <section className="p-4 w-full h-52 relative overflow-hidden text-center">
