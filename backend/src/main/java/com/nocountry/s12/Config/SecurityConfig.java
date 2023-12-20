@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .disable())
             .authorizeHttpRequests(authRequest ->
               authRequest
-                .requestMatchers("/auth/**", "/swagger-ui/**" , "/documentacion.html" , "/music/list").permitAll()          
+                .requestMatchers("/auth/**", "/swagger-ui/**" , "/documentacion.html" , "/music/list" , "/artista/{nombreCancion}").permitAll()          
               .anyRequest().authenticated()
                 )
             .sessionManagement(sessionManager->
