@@ -275,7 +275,18 @@ _Video demostración del proyecto._
 
 ## Capturas de la aplicación 📸
 
-_Video demostración del proyecto._
+![image](https://github.com/No-Country/s12-11-m-java-next/assets/106348660/044f40af-9628-40e0-98a3-225a272b5e91)
+
+![image](https://github.com/No-Country/s12-11-m-java-next/assets/106348660/bfa831f8-4d6c-428a-b36e-8c9009184718)
+
+![image](https://github.com/No-Country/s12-11-m-java-next/assets/106348660/29179b8a-5c88-4420-92b4-c77a378aff2f)
+
+![image](https://github.com/No-Country/s12-11-m-java-next/assets/106348660/51e1025f-3338-4f47-8f06-d07d8cd64bdb)
+
+![image](https://github.com/No-Country/s12-11-m-java-next/assets/106348660/92626276-fdd3-446f-945a-2d95ad62a584)
+
+![image](https://github.com/No-Country/s12-11-m-java-next/assets/106348660/a0765d7a-a1a6-4403-bd4b-879c786387b1)
+
 
 ## Agradecimientos 💝
 
