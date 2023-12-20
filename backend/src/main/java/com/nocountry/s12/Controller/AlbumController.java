@@ -66,7 +66,10 @@ public class AlbumController {
     
     @Secured("ARTISTA")
     @PostMapping()
-    public ResponseEntity<?> crear(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("img") MultipartFile img, @RequestParam("titulo") String titulo, @RequestParam("genero") String genero, @RequestParam("fechaPublicacion") String fechaPublicacion) throws IOException {
+    public ResponseEntity<?> crear(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("img") MultipartFile img,
+																			    		@RequestParam("titulo") String titulo,
+																			    		@RequestParam("genero") String genero, 
+																			    		@RequestParam("fechaPublicacion") String fechaPublicacion) throws IOException {
 
         String usernameArtista = userDetails.getUsername();
         
