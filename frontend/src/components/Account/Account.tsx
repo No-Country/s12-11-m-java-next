@@ -1,23 +1,28 @@
 'use client'
-import postImgPerfil from '@/utils/imagesRequest/postImgPerfil'
 import postImgPortada from '@/utils/imagesRequest/postImgPortada'
-import postImg from '@/utils/imagesRequest/postImgPortada'
 import getUserMe from '@/utils/userRequest/getUserMe'
-import axios from 'axios'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+
+interface dataType {
+    nombreCompleto: string,
+    albums: string,
+    eventos: string,
+    publicaciones: string,
+    generoMusical: string,
+    descripcion: string,
+}
 
 const Account = () => {
     const [Id, setId] = useState()
     const [i, setI] = useState()
     const [img, setImg] = useState()
     const [data, setData] = useState()
-    const [fileName, setFileName] = useState()
     useEffect(() => {
         const token = localStorage.getItem("tKeyId")
         data ? {} : getUserMe(token, setData)
-        data ? (setId(data.id), setImg(data.fotoPerfil?.imagenUrl)) : setId();
-        console.log(data);
+        data ? (setId(data.id), setImg(data.fotoPerfil)) : setId();
+        // console.log(data);
 
     }, [data])
     useEffect(() => {

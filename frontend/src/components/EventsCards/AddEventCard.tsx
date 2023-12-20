@@ -1,5 +1,5 @@
 import postEvents from '@/utils/eventsRequest/postEvents';
-import React, { useState, useRef } from 'react'
+import { useRef, useState } from 'react';
 import { FaPlus } from "react-icons/fa6";
 const AddEventCard = () => {
     const [eventData, setEventData] = useState({
@@ -25,7 +25,9 @@ const AddEventCard = () => {
                     onSubmit={(e) => {
                         e.preventDefault();
                         const token = localStorage.getItem('tKeyId')
-                        postEvents(eventData, closeModal, token, setErr)
+                        postEvents(eventData, closeModal, token, setErr).catch((e: Error) => {
+                            console.error(e)
+                        })
                     }}
                     className='flex flex-col gap-5 justify-center p-10'
                 >

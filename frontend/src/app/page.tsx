@@ -1,14 +1,14 @@
 import { Header } from "@/components/Header/Header"
 import Link from "next/link"
-import portrait from "../../public/production-home.webp"
-import find from "../../public/find.webp"
-import singer from "../../public/singer.webp"
-import disco from "../../public/people-disco.webp"
-import dancing from "../../public/dancing.webp"
-import phrase from "../../public/connect-phrase.png"
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa6"
 import { IoIosSearch } from "react-icons/io"
 import { SiExpertsexchange } from "react-icons/si"
+import phrase from "../../public/connect-phrase.png"
+import dancing from "../../public/dancing.webp"
+import find from "../../public/find.webp"
+import disco from "../../public/people-disco.webp"
+import portrait from "../../public/production-home.webp"
+import singer from "../../public/singer.webp"
 
 export default function Home() {
   return (

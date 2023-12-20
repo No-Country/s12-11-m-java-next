@@ -1,6 +1,6 @@
 'use client'
-import postPosts from "../../utils/postRequest/postPosts"
 import { useRef, useState } from "react"
+import postPosts from "../../utils/postRequest/postPosts"
 
 const AddPostCard = () => {
     const [img, setImg] = useState('')
@@ -25,7 +25,9 @@ const AddPostCard = () => {
         formData.append('mensaje', formDataPost.mensaje);
         formData.append('imagen', formDataPost.imagen);
 
-        postPosts(formData, token, closeModal, setErr)
+        postPosts(formData, token, closeModal, setErr).catch((e: Error) => {
+            console.error(e)
+        })
 
     }
 
@@ -56,9 +58,11 @@ const AddPostCard = () => {
                             htmlFor="portrait"
                             className={` flex flex-col items-center outline-1 outline-dashed outline-negro p-2 rounded-md text-center cursor-pointer`}
                         >
-                            {!img.length > 0 ? <span>+ Agregar imagen</span> : <></>}
+                            {img.length > 0 ? <></> : <span>+ Agregar imagen</span>}
 
-                            <img src={img} alt="" hidden={!img.length > 0} className="object-cover  h-[200px] w-full rounded-md" />
+                            <img src={img} alt=""
+                                hidden={img.length === 0}
+                                className="object-cover  h-[200px] w-full rounded-md" />
                             <input
                                 hidden
                                 name="imagen"
@@ -67,7 +71,7 @@ const AddPostCard = () => {
                                 id="portrait"
                                 className={`outline-none text-center ${img.length > 0 ? ' border-b-2' : ''} w-full`}
                                 onChange={(e) => {
-                                    setImg(URL.createObjectURL(e.target.files[0]));
+                                    e.target.files !== null ? setImg(URL.createObjectURL(e.target.files[0])) : setImg('')
                                 }}
                             />
                         </label>

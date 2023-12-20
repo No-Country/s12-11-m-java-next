@@ -1,6 +1,6 @@
 import axios from 'axios'
 const URL = process.env.NEXT_PUBLIC_NEWURL
-const getUserPost = async (setData: any, token: any) => {
+const getUserPost = async (token: any, setData: any) => {
     await axios.get(`${URL}/publicacion/usuario_posts`, {
         headers:
             { Authorization: `Bearer ${token}` }

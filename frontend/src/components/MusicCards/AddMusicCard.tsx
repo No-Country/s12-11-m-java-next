@@ -10,17 +10,23 @@ interface Album {
     title: string;
 }
 
-const initialAlbums: Album[] = [];
+// const initialAlbums: Album[] = [];
 
 const AddMusicCard = () => {
     const date = new Date
-    const [fechaSubida, setFechaSubida] = useState(`${ date.getFullYear() }-${ date.getMonth() + 1 }-${ date.getDate() }`)
+    const [fechaSubida, setFechaSubida] = useState(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`)
     const modalMusica = useRef<HTMLDialogElement>(null);
-    const [albums, setAlbums] = useState<Album[]>(initialAlbums);
+    const [albums, setAlbums] = useState<Album[] | string>('');
 
     useEffect(() => {
-        getAlbum(setAlbums)
-    }, [])
+        const token = localStorage.getItem('tKeyId')
+        getAlbum(token, setAlbums)
+            .catch((e: Error) => {
+                console.error(e)
+            })
+        console.log(albums);
+
+    }, [albums])
 
     const openModal = () => {
         modalMusica.current != null && modalMusica.current.showModal()
@@ -30,6 +36,17 @@ const AddMusicCard = () => {
         modalMusica.current != null && modalMusica.current.close()
     };
 
+    const subirMusica = (e: any) => {
+        e.preventDefault();
+        const token = localStorage.getItem('tKeyId')
+        const formDataMusic = Object.fromEntries(
+            new FormData(e.currentTarget)
+        );
+        console.log(formDataMusic);
+        postMusica(closeModal, formDataMusic, token).catch((e: Error) => {
+            console.error(e)
+        })
+    }
     return (
 
         <div className='flex items-center px-4 text-white self-start border-b-2 w-full cursor-pointer'>
@@ -41,31 +58,23 @@ const AddMusicCard = () => {
             <dialog ref={modalMusica} className='rounded-md'>
                 <form action="" encType="multipart/form-data"
                     onReset={closeModal}
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        const token = localStorage.getItem('tKeyId')
-                        const formDataMusic = Object.fromEntries(
-                            new FormData(e.currentTarget)
-                        );
-                        console.log(formDataMusic);
-                        postMusica(closeModal, formDataMusic, token)
-                    }}
+                    onSubmit={subirMusica}
                     className='flex flex-col gap-5 justify-center p-10'
                 >
                     <label htmlFor="fileMusic" className='border-2 p-2 border-negro border-dotted rounded-md w-full h-[43px] text-center cursor-pointer'>
                         + Agregar musica
                         <input required name='audio' type="file" hidden id='fileMusic' />
                     </label>
-                    <label htmlFor="fileMusicImg" className='border-2 p-2 border-negro border-dotted rounded-md w-full h-[43px] text-center cursor-pointer'>
+                    {/* <label htmlFor="fileMusicImg" className='border-2 p-2 border-negro border-dotted rounded-md w-full h-[43px] text-center cursor-pointer'>
                         + Agregar imagen
                         <input required name='img' type="file" hidden id='fileMusicImg' />
-                    </label>
+                    </label> */}
                     <label htmlFor="">
-                        <input required name='titulo' type="text" placeholder='Titulo' className='border-2 p-2 border-negro rounded-md w-full' />
+                        <input required name='titulo' id='titulo' type="text" placeholder='Titulo' className='border-2 p-2 border-negro rounded-md w-full' />
                     </label>
                     <label htmlFor="" className='flex flex-col'>
                         <small>Elija un genero</small>
-                        <select name="genero" id="" placeholder='Genero' defaultValue={''} className='outline-none border-2 p-2 border-negro rounded-md w-full'>
+                        <select name="genero" id="genero" placeholder='Genero' defaultValue={''} className='outline-none border-2 p-2 border-negro rounded-md w-full'>
                             {genres.map(res =>
                                 <option value={res.title} key={res.id}>{res.title}</option>
                             )}
@@ -73,15 +82,16 @@ const AddMusicCard = () => {
                     </label>
                     <label htmlFor="" className='flex flex-col'>
                         <small>Selecciona un album</small>
-                        <select name="album" id="" placeholder='album' defaultValue={''} className='outline-none border-2 p-2 border-negro rounded-md w-full'>
-                            {albums.map(res =>
+                        <select name="albumId" id="albumId" placeholder='album' defaultValue={''} className='outline-none border-2 p-2 border-negro rounded-md w-full'>
+                            {typeof albums !== "string" && albums.map(res =>
                                 <option value={res.id} key={res.id}>{res.title}</option>
                             )}
+
                         </select>
                     </label>
                     <label htmlFor="">
                         <input name='fechaSubida' type="text" defaultValue={fechaSubida} hidden />
-                        <input name='albumId' type="text" defaultValue={1} hidden />
+                        {/* <input name='albumId' type="text" id='albumId' defaultValue={1} hidden /> */}
                     </label>
                     <label className='flex w-full justify-between'>
                         <input type='submit' className='px-4 py-2 bg-negro text-white rounded-full cursor-pointer'
