@@ -9,6 +9,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nocountry.s12.Dto.Request.EventoRequestDTO;
 import com.nocountry.s12.Dto.Response.EventoResponseDTO;
@@ -75,55 +77,95 @@ public class EventoController {
 		}
     }
 
-	@PostMapping
-	public ResponseEntity<?> save(@RequestBody EventoRequestDTO evento) {
-		// revisamos que exista el campo titulo
-		if (StringUtils.isBlank(evento.titulo()))
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-					.body("{\"error\":\"Error: El campo nombre es obligatorio.\"");
+	// @PostMapping
+	// public ResponseEntity<?> save(@RequestBody EventoRequestDTO evento) {
+	// 	// revisamos que exista el campo titulo
+	// 	if (StringUtils.isBlank(evento.titulo()))
+	// 		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+	// 				.body("{\"error\":\"Error: El campo nombre es obligatorio.\"");
 
-		// revisamos que exista el campo Lugar
-		if (StringUtils.isBlank(evento.lugar()))
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-					.body("{\"error\":\"Error: El campo lugar es obligatorio.\"");
+	// 	// revisamos que exista el campo Lugar
+	// 	if (StringUtils.isBlank(evento.lugar()))
+	// 		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+	// 				.body("{\"error\":\"Error: El campo lugar es obligatorio.\"");
 
-		// revisamos que exista el campo hora
-		if (StringUtils.isBlank(evento.hora()))
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error: La Hora es obligatoria.\"");
+	// 	// revisamos que exista el campo hora
+	// 	if (StringUtils.isBlank(evento.hora()))
+	// 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error: La Hora es obligatoria.\"");
 
-		// validamos que la fecha exista
-		if (evento.fechaEvento().equals(null))
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-					.body("{\"error\":\"Error: La fecha del evento es obligatorio.\"");
+	// 	// validamos que la fecha exista
+	// 	if (evento.fechaEvento().equals(null))
+	// 		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+	// 				.body("{\"error\":\"Error: La fecha del evento es obligatorio.\"");
 
-		// revisamos que exista el campo precio y sea mayor q cero
-		if (evento.precio() < 0)
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-					.body("{\"error\":\"Error: El precio del evento es obligatorio.\"");
+	// 	// revisamos que exista el campo precio y sea mayor q cero
+	// 	if (evento.precio() < 0)
+	// 		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+	// 				.body("{\"error\":\"Error: El precio del evento es obligatorio.\"");
 
-		if (evento.precio() == null)
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-					.body("{\"error\":\"Error: El precio del evento es obligatorio.\"");
+	// 	if (evento.precio() == null)
+	// 		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+	// 				.body("{\"error\":\"Error: El precio del evento es obligatorio.\"");
 
-		// persistimos el nuevo evento
-		try {
-			return ResponseEntity.status(HttpStatus.OK).body(eventoService.save(evento));
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND)
-					.body("{\"error\":\"Error: Por favor intente mas tarde.\"");
-		}
-	}
+	// 	// persistimos el nuevo evento
+	// 	try {
+	// 		return ResponseEntity.status(HttpStatus.OK).body(eventoService.save(evento));
+	// 	} catch (Exception e) {
+	// 		return ResponseEntity.status(HttpStatus.NOT_FOUND)
+	// 				.body("{\"error\":\"Error: Por favor intente mas tarde.\"");
+	// 	}
+	// }
 
 		@PostMapping("/eventoArtista")
 		@Secured("ARTISTA")
-		public ResponseEntity<?> saveEventoArtista(@RequestBody EventoRequestDTO evento, @AuthenticationPrincipal UserDetails userDetails) {
-			//Buscar usuario logueado
+		public ResponseEntity<?> saveEventoArtista(@AuthenticationPrincipal UserDetails userDetails, 
+					@RequestParam("img") MultipartFile img,
+					@RequestParam("titulo") String titulo,
+					@RequestParam("lugar") String lugar,
+					@RequestParam("hora") String hora,
+					@RequestParam("precio") double precio,
+					@RequestParam("fechaEvento") String fechaEvento,
+					@RequestParam("descripcion") String descripcion
+
+			) {
 			
+			//control de atributos
+			// revisamos que exista el campo titulo
+			if (StringUtils.isBlank(titulo))
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+					.body("{\"error\":\"Error: El campo nombre es obligatorio.\"");
+
+			// revisamos que exista el campo Lugar
+			if (StringUtils.isBlank(lugar))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+						.body("{\"error\":\"Error: El campo lugar es obligatorio.\"");
+
+			// revisamos que exista el campo hora
+			if (StringUtils.isBlank(hora))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error: La Hora es obligatoria.\"");
+
+			// validamos que la fecha exista
+			if (fechaEvento.equals(null))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+						.body("{\"error\":\"Error: La fecha del evento es obligatorio.\"");
+
+			// revisamos que exista el campo precio y sea mayor q cero
+			if (precio < 0)
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+						.body("{\"error\":\"Error: El precio del evento es obligatorio.\"");
+
+			// if (precio null)
+			// 	return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+			// 			.body("{\"error\":\"Error: El precio del evento es obligatorio.\"");
+				
+			//Buscar usuario logueado
 			String usernameArtista = userDetails.getUsername();
 			//buscar Artista por username.email
 			//Usuario usuario = artistaService.buscarPorEmail(userDetail.getUsername()).get();
 			try {
-				return ResponseEntity.status(HttpStatus.OK).body(eventoService.saveEventoArtista(evento, usernameArtista));
+				return ResponseEntity.status(HttpStatus.OK).body(eventoService.saveEventoArtista(usernameArtista, img,
+				titulo, lugar,	hora, precio, fechaEvento, descripcion
+					));
 			} catch (Exception e) {
 				return ResponseEntity.status(HttpStatus.NOT_FOUND)
 						.body("{\"error\":\"Error: Por favor intente mas tarde.\"");

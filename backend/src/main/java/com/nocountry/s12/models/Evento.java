@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 
@@ -41,6 +42,9 @@ public class Evento {
     private LocalDate fechaEvento;
     private String descripcion;
     
+    @OneToOne
+    private Imagen imgEvento;
+
     @ManyToOne (fetch =FetchType.LAZY)
     @JoinColumn(name="id_artista")
     private Artista artista;
