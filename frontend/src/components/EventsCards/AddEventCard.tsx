@@ -1,5 +1,5 @@
 import postEvents from '@/utils/eventsRequest/postEvents';
-import React, { useState, useRef } from 'react'
+import { useRef, useState } from 'react';
 import { FaPlus } from "react-icons/fa6";
 const AddEventCard = () => {
     const [eventData, setEventData] = useState({
@@ -7,10 +7,10 @@ const AddEventCard = () => {
     const [err, setErr] = useState('')
     const modalEventos = useRef<HTMLDialogElement>(null);
     const openModal = () => {
-        modalEventos.current !== null ? modalEventos.current.showModal() : {};
+        modalEventos.current?.showModal()
     };
     const closeModal = () => {
-        modalEventos.current !== null ? modalEventos.current.close() : {};
+        modalEventos.current?.close()
     };
     return (
         <div className='flex h-36 w-[450px] items-center gap-5 bg-slate-200 rounded-md px-4 text-negro self-start'>
@@ -25,7 +25,9 @@ const AddEventCard = () => {
                     onSubmit={(e) => {
                         e.preventDefault();
                         const token = localStorage.getItem('tKeyId')
-                        postEvents(eventData, closeModal, token, setErr)
+                        postEvents(eventData, closeModal, token, setErr).catch((e: Error) => {
+                            console.error(e)
+                        })
                     }}
                     className='flex flex-col gap-5 justify-center p-10'
                 >

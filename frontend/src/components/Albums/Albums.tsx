@@ -8,7 +8,6 @@ import { type AlbumsType } from "@/interfaces/album.interface"
 
 export const Albums = () => {
   const [albums, setAlbums] = useState<AlbumsType[] | null>(null)
-
   const token = localStorage.getItem("tKeyId")
 
   useEffect(() => {
@@ -16,16 +15,16 @@ export const Albums = () => {
       console.error(e)
     })
   }, [])
-  console.log(albums)
 
   return (
     <div className="grid grid-cols-auto gap-4 pt-8">
       <AddAlbum />
       {albums?.map((album) => {
-        const { titulo, fechaPublicacion } = album
+        const { img, titulo, fechaPublicacion } = album
         return (
           <Album
             key={album.titulo}
+            img={img}
             titulo={titulo}
             fechaPublicacion={fechaPublicacion}
           />

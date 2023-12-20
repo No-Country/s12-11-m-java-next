@@ -5,8 +5,6 @@ import { genres } from "@/utils/genres"
 import { postAlbum } from "@/utils/albumsRequest/postAlbum"
 
 export const AddAlbum = () => {
-  const years = [2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030]
-
   const album = useRef<HTMLDialogElement>(null)
 
   const openModal = () => {
@@ -15,17 +13,6 @@ export const AddAlbum = () => {
   const closeModal = () => {
     album.current?.close()
   }
-
-  // const submitAlbum = async (albumData: any, token: any) => {
-  //   const response = await postAlbum(closeModal, albumData, token)
-  //   return response
-  // }
-
-  // const submitAlbum = () => {
-  //   event.preventDefault()
-
-  //   const formData = new FormData(event.target)
-  // }
 
   return (
     <>
@@ -55,9 +42,8 @@ export const AddAlbum = () => {
             data.append("genero", albumData.genero)
             data.append("fechaPublicacion", albumData.fechaPublicacion)
             console.log(albumData)
-            void postAlbum(data, closeModal, token).catch(console.error)
+            void postAlbum(data, token, closeModal).catch(console.error)
           }}
-          // console.log(albumData)
           className="w-fit bg-white text-negro flex flex-col gap-8 justify-center p-6 rounded-md shadow-2xl"
         >
           <fieldset className="flex flex-col gap-4">

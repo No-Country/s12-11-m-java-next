@@ -15,11 +15,12 @@ export const Header = () => {
       : setLog(log)
   }, [])
 
+
   return (
     <header
-      className={`absolute w-full top-0 z-10 py-4 px-8 flex items-center justify-between text-whiteColor bg-gradient-to-b from-navShadow font-semibold ${
-        pathname !== "/" && "bg-none relative"
-      }`}
+      className={` w-full top-0 z-10 py-4 px-8 flex items-center 
+      justify-between text-whiteColor bg-gradient-to-b from-navShadow font-semibold 
+     absolute`}
     >
       <div className="flex items-center gap-24">
         <h3 className="flex flex-col uppercase text-xs">

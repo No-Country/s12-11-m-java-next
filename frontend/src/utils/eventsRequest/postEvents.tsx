@@ -3,11 +3,12 @@ const URL = process.env.NEXT_PUBLIC_URL_API
 
 const postEvents = async (eventData: any, closeModal: any, token: any, setErr: any) => {
     await axios.post(
-        `${ URL }/eventos`,
-        eventData,
+        `${URL}/eventos/eventoArtista`,
+        eventData
+        ,
         {
             headers:
-                { Authorization: `Bearer ${ token }` }
+                { Authorization: `Bearer ${token}` }
         }
 
 

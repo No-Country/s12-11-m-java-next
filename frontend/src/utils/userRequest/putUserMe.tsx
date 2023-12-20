@@ -7,10 +7,8 @@ const putUserMe = async (formDatauser: any, token: any, Id: any) => {
             { Authorization: `Bearer ${token}` }
     }).then(function (res) {
         console.log('actualizado rey');
-
     }).catch(function (err) {
         console.log(err);
-
     })
 }
 

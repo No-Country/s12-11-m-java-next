@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 import { useState } from 'react';
 import { FaPauseCircle, FaPlayCircle, FaVolumeMute, FaVolumeUp } from "react-icons/fa";
@@ -74,15 +75,15 @@ const AudioPlayer = () => {
   return (
     <section className='flex items-center justify-evenly py-1'>
       <div className='flex gap-2 items-center'>
-        <button><MdSkipPrevious size={30} /></button>
+        <button onClick={() => playPreviousTrack}><MdSkipPrevious size={30} /></button>
         {playbackState === 'PLAYING'
           ? <button><FaPauseCircle size={35} onClick={togglePlayPause} /></button>
           : <button><FaPlayCircle size={35} onClick={togglePlayPause} /></button>
         }
-        <button><MdSkipNext size={30} /></button>
+        <button onClick={() => playNextTrack}><MdSkipNext size={30} /></button>
         <div className='flex flex-col'>
-          <p className='text-base drop-shadow-lg'>Titulo</p>
-          <p className='text-sm drop-shadow-lg'>Artista</p>
+          <p className='text-base drop-shadow-lg'>{currentTrackMetadata?.title}</p>
+          <p className='text-sm drop-shadow-lg'>{currentTrackMetadata?.artist}</p>
         </div>
       </div>
       <div className='flex flex-col'>
