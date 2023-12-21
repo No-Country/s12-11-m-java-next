@@ -123,11 +123,13 @@ public class EventoController {
 					@RequestParam("titulo") String titulo,
 					@RequestParam("lugar") String lugar,
 					@RequestParam("hora") String hora,
-					@RequestParam("precio") double precio,
+					@RequestParam("precio") String precio,
 					@RequestParam("fechaEvento") String fechaEvento,
 					@RequestParam("descripcion") String descripcion
 
 			) {
+			
+			double price = Double.parseDouble(precio);
 			
 			//control de atributos
 			// revisamos que exista el campo titulo
@@ -150,7 +152,7 @@ public class EventoController {
 						.body("{\"error\":\"Error: La fecha del evento es obligatorio.\"");
 
 			// revisamos que exista el campo precio y sea mayor q cero
-			if (precio < 0)
+			if (price < 0)
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 						.body("{\"error\":\"Error: El precio del evento es obligatorio.\"");
 
@@ -164,7 +166,7 @@ public class EventoController {
 			//Usuario usuario = artistaService.buscarPorEmail(userDetail.getUsername()).get();
 			try {
 				return ResponseEntity.status(HttpStatus.OK).body(eventoService.saveEventoArtista(usernameArtista, img,
-				titulo, lugar,	hora, precio, fechaEvento, descripcion
+				titulo, lugar,	hora, price, fechaEvento, descripcion
 					));
 			} catch (Exception e) {
 				return ResponseEntity.status(HttpStatus.NOT_FOUND)
