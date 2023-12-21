@@ -1,10 +1,14 @@
 <h1 align="center"> Stereos en la nube</h1>
 
-_Nuestra web, 'Estereos en la nube', ofrece a músicos independientes una plataforma integral para promocionar su música y eventos, abordando  la creciente necesidad de conectar los nuevos talentos y que puedan llegar directamente a una  audiencia más global, destacar sus últimas canciones,  lanzamientos  como así también promover sus eventos._
+Nuestra Web **Stereosenlanube** ofrece una plataforma integral a músicos independientes para promocionar su **música** y **eventos**, abordando la creciente necesidad de conectar los nuevos talentos a una audiencia más global. 
 <br>
-_La web conlleva a una comunidad de seguidores donde puedes informarte sobre sus actividades, músicas, post que realicen fomentando una comunidad donde poder conectarse directamente con tus músicos favoritos._
+La web invita a la comunidad de seguidores a conectar con tus **artistas** favoritos, asistir a sus **eventos**, como hacer tus propias **publicaciones**. 
 <br>
-_Nuestra web impulsa la creación de una comunidad que celebra la diversidad musical, promueve la conexión directa entre músicos y  seguidores,  impulsando la visibilidad y oportunidades de colaboración entre los músicos independientes brindando la posibilidad de conectarse con otros artistas._ <br>
+A su vez, celebra la diversidad musical, promueve la conexión directa entre músicos y seguidores, impulsa la visibilidad y la oportunidad de colaboración entre músicos independientes para tener un alcance más global. 
+<br>
+En resumen, es una web donde cada artista tiene la oportunidad de brillar y cada fan puede descubrir a su próximo favorito. 
+<br>
+**Sumérgete dentro de la música junto a nosotros!**
 
 # Contenido
 * [Comenzando 🚀](#comenzando-)
@@ -74,7 +78,7 @@ _Como hacer un deploy_
 
 ## Link Deploy 🚀
 
-_Falta Link del Deploy_
+https://estereos-en-la-nube.vercel.app/
 
 ## Link Figma 🎨
 
