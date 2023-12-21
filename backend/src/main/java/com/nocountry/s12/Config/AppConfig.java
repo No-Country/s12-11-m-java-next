@@ -50,6 +50,7 @@ public class AppConfig {
         .orElseThrow(()-> new UsernameNotFoundException("User not fournd"));
     }
 
+    /*
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
@@ -61,7 +62,7 @@ public class AppConfig {
                        // .allowCredentials(true);
             }
         };
-    }
+    }  */
     
    
 }

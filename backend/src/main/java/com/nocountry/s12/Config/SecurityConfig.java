@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
 
 import com.nocountry.s12.Jwt.JwtAuthenticationFilter;
 
@@ -26,10 +27,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
     {
-        return http
-            .csrf(csrf -> 
-                csrf
-                .disable())
+         http
+            .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authRequest ->
               authRequest
                 .requestMatchers("/auth/**", "/swagger-ui/**" , "/documentacion.html" , "/music/**" ).permitAll()          
@@ -39,8 +38,11 @@ public class SecurityConfig {
                 sessionManager 
                   .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authenticationProvider(authProvider)
-            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-            .build();
+            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+            
+        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+        
+        return http.build();
             
             
     }
