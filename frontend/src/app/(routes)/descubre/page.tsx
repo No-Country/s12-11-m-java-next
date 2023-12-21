@@ -21,7 +21,7 @@ const pageDescubre = () => {
             <section className="full p-6">
                 <Music />
             </section>
-            <div className="fixed bottom-0 left-0 h-14 w-full bg-rosa text-negro">
+            <div className="fixed bottom-0 left-0 h-16 w-full bg-rosa text-negro">
                 <AudioPlayer />
             </div>
         </main>

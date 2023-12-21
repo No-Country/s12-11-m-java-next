@@ -20,11 +20,18 @@ export const Song = ({ title, image, music, genre }: SongProps) => {
     },
   }
 
+  const addSong = () => {
+    playlist.push(songObject)
+    // if (playlist[0].audioSrc === '') {
+    //   playlist.shift();
+    // }
+  }
+
   return (
     <div className="flex justify-between items-center gap-4">
       <div className="flex gap-4 py-2">
         <button
-          onClick={() => playlist.push(songObject)}
+          onClick={addSong}
           className="h-14 bg-negro flex rounded-md justify-center items-center"
         >
           <Image src={image} alt="" width={2000} height={2000} className="object-cover h-full w-full rounded-md" />

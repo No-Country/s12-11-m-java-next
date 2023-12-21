@@ -97,7 +97,7 @@ const AudioPlayer = () => {
   })
 
   return (
-    <section className='flex items-center justify-evenly py-1'>
+    <section className='flex items-center justify-evenly h-full py-1'>
       <div className='flex gap-2 items-center'>
         <button onClick={playPreviousTrack}><MdSkipPrevious size={30} /></button>
         {playbackState === 'PLAYING'

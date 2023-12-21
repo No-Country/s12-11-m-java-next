@@ -106,7 +106,6 @@ const AddMusicCard = () => {
                             type="text"
                             placeholder="Titulo"
                             className="border-2 p-2 border-negro rounded-md w-full"
-
                         />
                     </label>
                     <label htmlFor="" className="flex flex-col">
