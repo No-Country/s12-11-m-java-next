@@ -57,7 +57,7 @@ class MusicControllerMockMvcTest {
         new MusicResponseDto(2L, "Titulo2", "Genero2",
             LocalDate.now().toString(), List.of(), "AudioUrl", 2L));
     //given
-    given(musicService.listarAlll()).willReturn(musicResponseDtos);
+    given(musicService.listarAll()).willReturn(musicResponseDtos);
 
     //when
     MockHttpServletResponse response = mockMvc.perform(get("/music").accept(

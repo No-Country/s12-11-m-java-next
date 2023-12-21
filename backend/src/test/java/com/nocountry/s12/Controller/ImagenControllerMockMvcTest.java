@@ -15,6 +15,7 @@ import com.nocountry.s12.Jwt.JwtService;
 import com.nocountry.s12.Service.CloudinaryService;
 import com.nocountry.s12.Service.ImagenService;
 import com.nocountry.s12.models.Cancion;
+import com.nocountry.s12.models.Evento;
 import com.nocountry.s12.models.Imagen;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -76,7 +77,7 @@ class ImagenControllerMockMvcTest {
   @Test
   void canRetrieveImageById() throws Exception {
     Imagen imagen = new Imagen(1L, "Nombre", "Url", "Cloudinary Id",
-        new Cancion());
+        new Evento());
     //given
     given(imagenService.getImagen(1L)).willReturn(Optional.of(imagen));
 
@@ -104,7 +105,7 @@ class ImagenControllerMockMvcTest {
 
     Imagen imagen = new Imagen(1L, "MyImageFile", "Url",
         "Cloudinary Id",
-        new Cancion());
+        new Evento());
 
     //given
     given(imagenService.save(mockMultipartFile)).willReturn(imagen);
@@ -127,7 +128,7 @@ class ImagenControllerMockMvcTest {
   @Test
   void canDeleteImageById() throws Exception {
     Imagen imagen = new Imagen(1L, "Nombre", "Url", "Cloudinary Id",
-        new Cancion());
+        new Evento());
 
     //given
     given(cloudinaryService.delete(imagen.getCloudinaryId())).willReturn(

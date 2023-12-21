@@ -5,9 +5,10 @@ import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.willDoNothing;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 
 import com.nocountry.s12.Dto.Request.PublicacionRequestDTO;
@@ -16,7 +17,8 @@ import com.nocountry.s12.Dto.Response.UsuarioPublicacionResponseDTO;
 import com.nocountry.s12.Jwt.JwtService;
 import com.nocountry.s12.Service.PublicacionService;
 import com.nocountry.s12.models.Imagen;
-import com.nocountry.s12.models.Publicacion;
+import java.io.File;
+import java.nio.file.Files;
 import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -29,7 +31,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.util.ResourceUtils;
 
 @AutoConfigureJsonTesters
 @WebMvcTest(PublicacionController.class)
@@ -87,7 +92,7 @@ class PublicacionControllerMockMvcTest {
             new UsuarioPublicacionResponseDTO(1L, "FavioFz", new Imagen())));
 
     //given
-    given(publicacionService.getPublicacionesPorUsuario(1L)).willReturn(
+    given(publicacionService.getPublicacionesPorUsuario("FavioFz")).willReturn(
         publicacionResponseDTOS);
 
     //when
@@ -128,29 +133,37 @@ class PublicacionControllerMockMvcTest {
   }
 
   @Test
+  @WithUserDetails
   void crearPublicacion() throws Exception {
-    PublicacionRequestDTO publicacionRequestDTO = new PublicacionRequestDTO(
-        "Mensaje1");
+    File imageFile = ResourceUtils.getFile("classpath:images/cat.bmp");
+    byte[] imageBytes = Files.readAllBytes(imageFile.toPath());
+    MockMultipartFile mockMultipartFile = new MockMultipartFile("imagen",
+        imageFile.getName(),
+        MediaType.MULTIPART_FORM_DATA_VALUE, imageBytes);
 
-//    PublicacionResponseDTO publicacionResponseDTO = new PublicacionResponseDTO(
-//        1L, "Mensaje1", LocalDate.now(),
-//        new Imagen(),
-//        new UsuarioPublicacionResponseDTO(1L, "FavioFz", new Imagen()));
+    String mensajeRequest = "Mensaje1";
+
+    PublicacionRequestDTO publicacionRequestDTO = new PublicacionRequestDTO(
+        mensajeRequest, mockMultipartFile);
+
+    PublicacionResponseDTO publicacionResponseDTO = new PublicacionResponseDTO(
+        1L, "Mensaje1", LocalDate.now(),
+        new Imagen(),
+        new UsuarioPublicacionResponseDTO(1L, "FavioFz", new Imagen()));
 
     //given
-    given(
-        publicacionService.crearPublicacion(publicacionRequestDTO)).willReturn(
-        new Publicacion());//Falta completar por falta de implementacion en
+    given(publicacionService.crearPublicacion(publicacionRequestDTO,
+        "FavioFz")).willReturn(
+        publicacionResponseDTO);//Falta completar por falta de implementacion en
     // la clase PublicacionController
 
     //when
     MockHttpServletResponse response =
-        mockMvc.perform(post("/publicacion")
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(
-                    publicacionRequestDTOJacksonTester.write(publicacionRequestDTO)
-                        .getJson())).andReturn()
+        mockMvc.perform(multipart("/publicacion")
+                .file(mockMultipartFile)
+                .param("mensaje", mensajeRequest)
+                .contentType(MediaType.MULTIPART_FORM_DATA_VALUE)
+                .accept(MediaType.APPLICATION_JSON)).andReturn()
             .getResponse();
 
     //then
@@ -159,9 +172,18 @@ class PublicacionControllerMockMvcTest {
   }
 
   @Test
+  @WithUserDetails
   void canUpdatePublicacionById() throws Exception {
+    File imageFile = ResourceUtils.getFile("classpath:images/cat.bmp");
+    byte[] imageBytes = Files.readAllBytes(imageFile.toPath());
+    MockMultipartFile mockMultipartFile = new MockMultipartFile("imagen",
+        imageFile.getName(),
+        MediaType.MULTIPART_FORM_DATA_VALUE, imageBytes);
+
+    String mensajeRequest = "Mensaje1";
+
     PublicacionRequestDTO publicacionRequestDTO = new PublicacionRequestDTO(
-        "Mensaje1");
+        mensajeRequest, mockMultipartFile);
 
     PublicacionResponseDTO publicacionResponseDTO = new PublicacionResponseDTO(
         1L, "Mensaje1", LocalDate.now(),
@@ -170,14 +192,14 @@ class PublicacionControllerMockMvcTest {
 
     //given
     given(publicacionService.editarPublicacion(1L,
-        publicacionRequestDTO)).willReturn(new Publicacion());
+        publicacionRequestDTO, "FavioFz")).willReturn(publicacionResponseDTO);
 
     //when
-    MockHttpServletResponse response = mockMvc.perform(put("/publicacion/1")
-            .accept(MediaType.APPLICATION_JSON)
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(publicacionRequestDTOJacksonTester.write(publicacionRequestDTO)
-                .getJson())).andReturn()
+    MockHttpServletResponse response = mockMvc.perform(multipart("/publicacion")
+            .file(mockMultipartFile)
+            .param("mensaje", mensajeRequest)
+            .contentType(MediaType.MULTIPART_FORM_DATA_VALUE)
+            .accept(MediaType.APPLICATION_JSON)).andReturn()
         .getResponse();
 
     //then
@@ -186,10 +208,12 @@ class PublicacionControllerMockMvcTest {
   }
 
   @Test
+  @WithUserDetails
   void canDeletePublicacionById() throws Exception {
 
     //given
-    given(publicacionService.eliminarPublicacion(1L)).willReturn(true);
+    willDoNothing().given(publicacionService)
+        .eliminarPublicacion(1L, "FavioFz");
 
     //when
     MockHttpServletResponse response =
