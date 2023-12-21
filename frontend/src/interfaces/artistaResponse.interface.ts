@@ -1,4 +1,4 @@
-export type ArtistaResponse = {
+export interface ArtistaResponse {
     id: number
     nombreCompleto: string
     apellidoCompleto: string

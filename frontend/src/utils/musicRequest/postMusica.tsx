@@ -8,7 +8,7 @@ const postMusica = async (closeModal: any, formDataMusic: any, token: any) => {
     })
     .then(function (response: any) {
       closeModal()
-      console.log(response)
+      window.location.reload()
     })
     .catch(function (err) {
       console.log(err)

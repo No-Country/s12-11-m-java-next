@@ -1,4 +1,4 @@
-//Put request
+// Put request
 export interface ArtistaRequest {
     nombre: string;
     apellido: string;

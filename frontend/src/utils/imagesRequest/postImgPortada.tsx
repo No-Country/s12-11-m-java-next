@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const postImgPortada = async (Id: any, formdata: any, token: any) => {
-    const URL = process.env.NEXT_PUBLIC_URL_API
+    // const URL = process.env.NEXT_PUBLIC_URL_API
     await axios.post(`https://stereos.fly.dev/Usuario/fotoPortada/${Id}`, formdata, {
         headers:
         {

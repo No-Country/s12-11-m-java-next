@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import getAllEvents from "../../utils/eventsRequest/getAllEvents"
 
 function FeedEventCard() {
-  const [data, setData] = useState([])
+  const [data, setData] = useState<any>([])
   useEffect(() => {
     getAllEvents(setData).catch((e: Error) => {
       console.error(e)
@@ -14,7 +14,7 @@ function FeedEventCard() {
   return (
     <>
       <article className="flex flex-col w-full gap-10 py-5 items-center" >
-        {data.map(res => (
+        {data.map((res: any) => (
           <div key={res.idEvento}
             className="flex flex-col border p-6 border-black  rounded-3xl w-full min-w-[280px] 
             max-w-[800px] h-auto bg-white text-black gap-2">

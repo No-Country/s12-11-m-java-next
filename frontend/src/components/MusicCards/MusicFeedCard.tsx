@@ -2,34 +2,22 @@
 import { useEffect, useState } from "react"
 import { FaCirclePlay } from "react-icons/fa6"
 import AudioPlayer from "../Discover/Audioplayer"
-<<<<<<< HEAD
+import { type MusicResponse } from "@/interfaces/musicResponse.interface"
 import getPerfilMusic from "@/utils/musicRequest/getPerfilMusic"
 
 const MusicFeedCard = () => {
-  const [data, setData] = useState([])
-
-  useEffect(() => {
-    getPerfilMusic(setData).catch((e: Error) => {
-      console.error(e)
-    })
-  }, [data])
-=======
-import { type MusicResponse } from "@/interfaces/musicResponse.interface"
-
-const MusicFeedCard = () => {
   const [data, setData] = useState<MusicResponse[] | null>(null)
-  const token = localStorage.getItem("tKeyId")
 
   useEffect(() => {
-    getFeedMusic(setData, token).catch((e: Error) => {
+    const token = localStorage.getItem("tKeyId")
+    getPerfilMusic(token, setData).catch((e: Error) => {
       console.error(e)
     })
   }, [])
->>>>>>> 380b46a6e8af271d06b3cda1287d8225dd502d03
 
   return (
     <>
-      {data != null ? (
+      {data !== null ? (
         data?.map((res) => (
           <ul
             key={res.id}
@@ -42,7 +30,7 @@ const MusicFeedCard = () => {
             <li className="min-w-[55px] text-center ">{res.genero}</li>
             {/* <li className="min-w-[67px] text-center">{res.audioUrl}</li> */}
             {/* <audio
-              src={`https://stereos.fly.dev/music/panic_show.mp3`}
+              src={http://3.140.251.16:8080/music/artista/bara ven.mp4}
               controls
             /> */}
           </ul>

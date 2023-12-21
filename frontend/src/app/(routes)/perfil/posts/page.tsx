@@ -19,7 +19,9 @@ const pagePost = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('tKeyId')
-        getUserPost(token, setData)
+        getUserPost(token, setData).catch((e: Error) => {
+            console.error(e)
+        })
 
     }, [])
 
@@ -29,15 +31,17 @@ const pagePost = () => {
                 <AddPostCard />
             </div>
 
-            {data.length !== 0 && data.map(res =>
+            {data.length !== 0 && data.map((res: any) =>
                 <div key={res.id} className='h-[200px] w-[200px] bg-white rounded-md'
                 >
                     <span className='hover:text-red-500 text-2xl absolute cursor pointer'
                         onClick={() => {
                             const token = localStorage.getItem('tKeyId');
-                            deletePost(res.id, token)
+                            deletePost(res.id, token).catch((e: Error) => {
+                                console.error(e)
+                            })
                         }}>x</span>
-                    <Image width={200} height={200} src={res.imagen ? res.imagen.imagenUrl : ''} alt="" className='rounded-md object-cover' />
+                    <Image width={200} height={200} src={res.imagen.imagenUrl} alt="" className='rounded-md object-cover' />
                 </div>
             )}
         </section>

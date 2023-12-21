@@ -8,7 +8,7 @@ const deleteEvent = (Id: any, token: any) => {
                 { Authorization: `Bearer ${token}` }
         })
         .then(function (res) {
-            console.log('se elimino pa');
+            window.location.reload()
 
         }).catch(function (err) {
             console.log(err);

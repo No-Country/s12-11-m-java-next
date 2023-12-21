@@ -1,5 +1,5 @@
 export interface AlbumsType {
-  img?: File
+  img?: string
   titulo: string
   genero?: string
   fechaPublicacion: string

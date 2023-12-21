@@ -3,7 +3,7 @@ const URL = process.env.NEXT_PUBLIC_URL_API
 
 const getMusic = async (setData: any) => {
   await axios.get(
-    `http://3.140.251.16:8080/music`,
+    `${URL}/music/list`,
   )
     .then(function (response: any) {
       setData(response.data);

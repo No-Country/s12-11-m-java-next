@@ -79,7 +79,7 @@ export const AddAlbum = () => {
                 <select
                   name="genero"
                   id="genre"
-                  placeholder="Seleccionar"
+
                   className="w-full outline outline-1 px-3 py-2 outline-blackMd rounded-md text-blackMd"
                 >
                   <option value="">Seleccionar</option>

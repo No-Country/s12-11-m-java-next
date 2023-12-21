@@ -1,5 +1,5 @@
 import axios from 'axios'
-const URL = process.env.NEXT_PUBLIC_NEWURL
+const URL = process.env.NEXT_PUBLIC_URL_API
 const getUserPost = async (token: any, setData: any) => {
     await axios.get(`${URL}/publicacion/usuario_posts`, {
         headers:

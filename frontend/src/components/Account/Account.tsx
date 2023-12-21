@@ -1,4 +1,8 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
+
 import postImgPortada from '@/utils/imagesRequest/postImgPortada'
 import getUserMe from '@/utils/userRequest/getUserMe'
 import Link from 'next/link'
@@ -14,24 +18,28 @@ interface dataType {
 }
 
 const Account = () => {
-    const [Id, setId] = useState()
-    const [i, setI] = useState()
-    const [img, setImg] = useState()
-    const [data, setData] = useState()
+    const [Id, setId] = useState<any>()
+    const [i, setI] = useState<any>()
+    const [img, setImg] = useState<any>()
+    const [data, setData] = useState<any>()
     useEffect(() => {
         const token = localStorage.getItem("tKeyId")
-        data ? {} : getUserMe(token, setData)
-        data ? (setId(data.id), setImg(data.fotoPortada)) : setId();
+        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+        void (data ? {} : getUserMe(token, setData))
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions, @typescript-eslint/no-confusing-void-expression, @typescript-eslint/strict-boolean-expressions
+        data ? (setId(data.id), setImg(data.fotoPortada)) : setId('');
     }, [data])
     useEffect(() => {
         setI(i)
-        Id ? subirImagen() : {}
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions, @typescript-eslint/strict-boolean-expressions
+            ; (Id) ? subirImagen() : {}
     }, [i])
 
     const subirImagen = () => {
         const token = localStorage.getItem("tKeyId")
         const formdata = new FormData()
         formdata.append('imagen', i)
+
         postImgPortada(Id, formdata, token);
 
 
@@ -59,8 +67,10 @@ const Account = () => {
                 : <></>}
             <input hidden type="file" name="imagen" id="portada"
                 onChange={(e) => {
-                    setImg(URL.createObjectURL(e.target.files[0]))
-                    setI(e.target.files[0])
+                    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                    e.target.files ? setImg(URL.createObjectURL(e.target.files[0])) : {}
+                    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                    e.target.files ? setI(e.target.files[0]) : {}
                 }} />
             <div className='absolute px-5 shadow-shadowInset w-full' >
                 <span className='flex flex-col gap-5'>

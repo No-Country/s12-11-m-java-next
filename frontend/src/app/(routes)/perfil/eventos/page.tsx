@@ -13,7 +13,7 @@ const pageEventos = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('tKeyId')
-        getUserEvents(setData, token)
+        getUserEvents(setData, token).catch(console.error)
     }, [data])
 
     return (

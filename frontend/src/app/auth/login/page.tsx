@@ -23,7 +23,7 @@ const LoginPage = () => {
                     </div>
                     <form className='flex flex-col gap-6 my-9 w-[60%]' onSubmit={(e) => {
                         e.preventDefault();
-                        loginPost(userData, router);
+                        loginPost(userData, router).catch(console.error);
                     }}>
                         <div className='flex flex-col gap-2'>
                             <label>Email</label>

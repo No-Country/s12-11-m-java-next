@@ -13,7 +13,7 @@ const deletePost = async (Id: any, token: any) => {
 
         }
     ).then(function (res) {
-        console.log('se elimino pa');
+        window.location.reload()
 
     }).catch(function (res) {
         console.log(res);

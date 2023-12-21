@@ -10,7 +10,7 @@ export const RedirectNoLogin = () => {
   if (typeof window !== 'undefined') {
     // Perform localStorage action
     const item = localStorage.getItem('tKeyId')
-    !item && router.push("/auth/login")
+      ; (item == null) && router.push("/auth/login")
   }
 
   return null

@@ -19,9 +19,9 @@ interface dataType {
 }
 
 const pageConfigPerfil = () => {
-  const [Id, setId] = useState('')
-  const [i, setI] = useState('')
-  const [img, setImg] = useState('')
+  const [Id, setId] = useState<any>()
+  const [i, setI] = useState<any>()
+  const [img, setImg] = useState<any>()
   const [data, setData] = useState<dataType>()
   const [rol, setRol] = useState<string>()
 
@@ -87,7 +87,7 @@ const pageConfigPerfil = () => {
               htmlFor="upload"
               className="flex flex-col items-center gap-2 cursor-pointer"
             >
-              {!img ?
+              {img === null ?
                 <span className="flex flex-col items-center gap-2 cursor-pointer">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -103,13 +103,13 @@ const pageConfigPerfil = () => {
                     />
                   </svg>
                   <span className="text-white font-medium">Agregar Foto</span>
-                </span>
-                : <img src={img} alt="" hidden={!img.length > 0} className="object-cover  h-[200px] w-full rounded-md" />}
-
+                </span> : <img src={img} alt="" className={`object-cover  h-[200px] w-full rounded-md `} />}
               <input id="upload" type="file" hidden className="h-full  w-full"
                 onChange={(e) => {
-                  setImg(URL.createObjectURL(e.target.files[0]))
-                  setI(e.target.files[0])
+                  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                  (e.target.files != null) ? setImg(URL.createObjectURL(e.target.files[0])) : {}
+                  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                  e.target.files !== null ? setI(e.target.files[0]) : {}
                 }} />
             </label>
           </div>
@@ -157,7 +157,7 @@ const pageConfigPerfil = () => {
                   )
                 }} />
               <input hidden type="text" name='rol'
-                defaultValue={rol || data?.rol} />
+                defaultValue={data?.rol} />
               <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
               <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">{rol}</span>
             </label>
@@ -170,10 +170,10 @@ const pageConfigPerfil = () => {
               <select
                 defaultValue={data?.generoMusical}
                 name='generoMusical'
-                placeholder="Seleccione"
+
                 className="px-3 py-2 border-2 rounded-lg text-zinc-500  bg-transparent border-zinc-500 placeholder:text-zinc-500   focus:outline-none"
               >
-                {data?.generoMusical ? <></> : <option value="">Elija su genero</option>}
+                {((data?.generoMusical) != null) ? <></> : <option value="">Elija su genero</option>}
                 {genres.map((genre) => (
                   <option
                     value={genre.title}

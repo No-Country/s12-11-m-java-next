@@ -3,7 +3,7 @@ export interface MusicResponse {
     titulo: string
     genero: string
     fechaSubida: string
-    imagenes: Array<string>
+    imagenes: string[]
     audioUrl: string
     albumId: number
 }

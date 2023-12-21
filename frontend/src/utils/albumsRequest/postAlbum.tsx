@@ -6,6 +6,7 @@ export async function postAlbum(albumData: any, token: any, closeModal: any) {
       headers: { Authorization: `Bearer ${token}` },
     })
     closeModal()
+    window.location.reload()
   } catch (error) {
     console.log(error)
   }

@@ -15,6 +15,7 @@ const postEvents = async (formData: any, token: any, closeModal: any, setErr: an
     )
         .then(function (response: any) {
             closeModal()
+            window.location.reload()
         })
         .catch(function (err) {
             console.log(err);

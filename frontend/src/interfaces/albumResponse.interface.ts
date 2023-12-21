@@ -7,8 +7,8 @@ export interface AlbumResponse {
         id: number
         titulo: string
         genero: string
-        fechaSubida: Array<number>
+        fechaSubida: number[]
         urlCancion: string
-        imagenes: Array<string>
+        imagenes: string[]
     }>
 }

@@ -30,7 +30,7 @@ export default function SingUpPage() {
                     </div>
                     <form className='flex flex-col gap-6  w-[60%]' onSubmit={(e) => {
                         e.preventDefault();
-                        registerPost(userData, router);
+                        registerPost(userData, router).catch(console.error);
                     }}>
                         <div className='flex flex-col gap-2'>
                             <label>Nombre completo</label>
