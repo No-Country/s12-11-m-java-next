@@ -129,6 +129,16 @@ public class EventoController {
 
 			) {
 			
+			
+			 // Imprimir los datos por pantalla
+	        System.out.println("Imagen: " + img.getOriginalFilename());
+	        System.out.println("Título: " + titulo);
+	        System.out.println("Lugar: " + lugar);
+	        System.out.println("Hora: " + hora);
+	        System.out.println("Precio: " + precio);
+	        System.out.println("Fecha del Evento: " + fechaEvento);
+	        System.out.println("Descripción: " + descripcion);
+			
 			double price = Double.parseDouble(precio);
 			
 			//control de atributos
@@ -169,8 +179,8 @@ public class EventoController {
 				titulo, lugar,	hora, price, fechaEvento, descripcion
 					));
 			} catch (Exception e) {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND)
-						.body("{\"error\":\"Error: Por favor intente mas tarde.\"");
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+						.body(e.getMessage());
 			}
 		}
 
