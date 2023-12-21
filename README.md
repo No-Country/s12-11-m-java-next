@@ -168,7 +168,7 @@ https://www.figma.com/file/LbEOujnv7akiZmAQ0vArWS/Stereos-en-la-nube
       <td style="border: 1px #000000 solid">
         <a href='https://postimg.cc/bdWhCz98' target='_blank'><img src='https://i.postimg.cc/bdWhCz98/image.jpg' border='0' alt='image'/></a>
         <h4 style="margin-top: 1rem;">Joaquin Pedraza</h4>
-        <h4 style="margin-top: 1rem;">Frontend Developer</h4>
+        <h4 style="margin-top: 1rem;">Frontend <br> Developer</h4>
           <a href="https://github.com/J0AQUINPEDRAZA" target="_blank">
             <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
           </a>
@@ -237,11 +237,12 @@ https://www.figma.com/file/LbEOujnv7akiZmAQ0vArWS/Stereos-en-la-nube
       </td>
 <td style="border: 1px #000000 solid">
 <a href='https://postimg.cc/tn6CP3zJ' target='_blank'><img src='https://i.postimg.cc/tn6CP3zJ/kim.jpg' border='0' alt='kim'/></a>
-        <h4 style="margin-top: 1rem;">Kimberly Pinto</h4>
-        <h4 style="margin-top: 1rem;">QA tester</h4>
+        <h4 style="margin-top: 1rem;">Kimberly Pinto <br>   </h4>
+        <h4 style="margin-top: 1rem;">QA tester <br><br><br></h4>
           <a href="https://www.linkedin.com/in/kimberly-pinto-perales/" target="_blank">
             <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
           </a>
+	<br>
       </td>
    <td style="border: 1px #000000 solid">
 <a href='https://postimg.cc/3yw895ZP' target='_blank'><img src='https://i.postimg.cc/3yw895ZP/melina.jpg' border='0' alt='melina'/></a>
