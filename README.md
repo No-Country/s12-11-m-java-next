@@ -177,18 +177,6 @@ https://www.figma.com/file/LbEOujnv7akiZmAQ0vArWS/Stereos-en-la-nube
           </a>
       </td>
 
-   <td style="border: 1px #000000 solid">
-        <a href='https://postimg.cc/2V8Jmgjy' target='_blank'><img src='https://i.postimg.cc/2V8Jmgjy/image.jpg' border='0' alt='image'/></a>
-        <h4 style="margin-top: 1rem;">Daniel Ramos</h4>
-        <h4 style="margin-top: 1rem;">Frontend Developer</h4>
-          <a href="https://github.com/danielghost20" target="_blank">
-            <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
-          </a>
-          <a href="https://www.linkedin.com/in/daniel-ramos21/" target="_blank">
-            <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
-          </a>
-      </td>
-
 <td style="border: 1px #000000 solid">
 <a href='https://postimg.cc/FYNsdJkF' target='_blank'><img src='https://i.postimg.cc/FYNsdJkF/fernando.jpg' border='0' alt='fernando'/></a>
         <h4 style="margin-top: 1rem;">Fernando Malan</h4>
