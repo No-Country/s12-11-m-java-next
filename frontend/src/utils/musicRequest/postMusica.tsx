@@ -1,10 +1,10 @@
 import axios from "axios"
 const URL = process.env.NEXT_PUBLIC_URL_API
 
-const postMusica = async (closeModal: any, formDataMusic: any, token: any) => {
+const postMusica = async (closeModal: any, form: any, token: any) => {
   await axios
-    .post(`${URL}/music`, formDataMusic, {
-      headers: { Authorization: `Bearer ${token}` },
+    .post(`${ URL }/music`, form, {
+      headers: { Authorization: `Bearer ${ token }` },
     })
     .then(function (response: any) {
       closeModal()

@@ -11,8 +11,7 @@ const AddMusicCard = () => {
     const [a, setA] = useState<any>()
     const [i, setI] = useState<any>()
     const date = new Date()
-    const fechaSubida = `${date.getFullYear()}-${date.getMonth() + 1
-        }-${date.getDate()}`
+    const fechaSubida = `${ date.getFullYear() }-${ date.getMonth() + 1 }-${ date.getDate() }`
     const modalMusica = useRef<HTMLDialogElement>(null)
     const [albums, setAlbums] = useState<AlbumsType[] | string>([])
 
@@ -32,6 +31,7 @@ const AddMusicCard = () => {
         setA('')
         setI('')
     }
+
     const subirMusica = (e: any) => {
         e.preventDefault()
         const token = localStorage.getItem("tKeyId")
@@ -51,6 +51,7 @@ const AddMusicCard = () => {
 
         postMusica(closeModal, form, token).catch(console.error)
     }
+
     return (
         <div className="flex items-center px-4 text-white self-start border-b-2 w-full cursor-pointer">
             <button

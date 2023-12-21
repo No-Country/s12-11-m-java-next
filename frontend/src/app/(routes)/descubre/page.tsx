@@ -6,7 +6,6 @@ import Music from '@/components/Discover/Music'
 import { FaSearch } from "react-icons/fa"
 
 const pageDescubre = () => {
-    // const [selectedGenre, setSelectedGenre] = useState<string | null>(null)
 
     return (
         <main className="w-full relative mb-20 h-full pt-[80px]">
@@ -14,17 +13,6 @@ const pageDescubre = () => {
                 <FaSearch className='text-rosa' />
                 <input className="w-full bg-transparent outline-none" />
             </div>
-            {/* <section className="p-4 w-full h-96 relative overflow-hidden text-center mt-10">
-                <h2 className="text-2xl font-semibold">Artistas destacados</h2>
-
-                <div className="w-full flex mt-4 gap-4 absolute justify-center ">
-                    {
-                        data.slice(0, 6).map(item => (
-                            <Artist key={item} />
-                        ))
-                    } 
-                </div>
-            </section> */}
             <section className="p-4 w-full h-52 relative overflow-hidden text-center">
                 <div className="w-full flex gap-4 absolute justify-center ">
                     <Genres />

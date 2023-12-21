@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { FaArrowLeft } from "react-icons/fa"
 
-export default function SingUpPage() {
+export default function SingUpPage () {
     const router = useRouter()
     const [userData, setUserData] = useState({
         nombreCompleto: "",
