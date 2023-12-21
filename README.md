@@ -266,7 +266,7 @@ https://www.figma.com/file/LbEOujnv7akiZmAQ0vArWS/Stereos-en-la-nube
 
 ## Video demo 🎥
 
-_Video demostración del proyecto._
+https://www.youtube.com/watch?v=Vh2MoZDUK5c
 
 ## Capturas de la aplicación 📸
 
